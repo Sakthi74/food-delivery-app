@@ -1,13 +1,10 @@
 import React from "react";
-import PopularBurgers from "./component/PopularBurgers";
-import Allcategories from "./component/Allcategories";
-
 
 function App() {
   return (
     <>
-      {/* <PopularBurgers/> */}
-      <Allcategories/>
+      <h1 className="bg-green-400">hii</h1>
+      <p>d</p>
     </>
   );
 }
