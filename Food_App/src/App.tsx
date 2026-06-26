@@ -1,10 +1,15 @@
 import React from "react";
+import PopularBurgers from "./component/PopularBurgers";
+import Allcategories from "./component/Allcategories";
+import Allcategories1 from "./component/Allcategories1";
+import RestaurantCarousel from "./component/RestaurantCarousel";
 
 function App() {
   return (
     <>
-      <h1 className="bg-green-400">hii</h1>
-      <p>d</p>
+      {/* <Allcategories /> */}
+      {/* <Allcategories1/>  */}
+      <RestaurantCarousel />
     </>
   );
 }

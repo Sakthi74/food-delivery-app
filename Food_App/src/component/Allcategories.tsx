@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { FiClock, FiSearch, FiTruck, FiShoppingBag } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegStar } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+import { TextAlignStart } from "lucide-react";
 
 interface Category {
   id: number;
@@ -24,6 +26,7 @@ interface Restaurant {
 function Allcategories() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [popup, setpopup] = useState("none");
 
   useEffect(() => {
     fetch("http://localhost:3001/categories")
@@ -39,8 +42,14 @@ function Allcategories() {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setpopup("block");
+    }, 2000);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen relative bg-gray-50">
       {/* Main Container */}
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -154,6 +163,39 @@ function Allcategories() {
           </div>
         </div>
       </div>
+
+      {popup === "block" && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="relative w-full max-w-2xl rounded-3xl bg-amber-500 p-6 md:p-10">
+            {/* Close Button */}
+            <button
+              onClick={() => setpopup("none")}
+              className="absolute top-4 right-4 rounded-full bg-amber-700 p-3 text-white"
+            >
+              <IoClose size={24} />
+            </button>
+
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-white md:text-5xl">
+                Hurry Offers!
+              </h1>
+
+              <h2 className="mt-6 text-xl text-white md:text-3xl">#1243CD2</h2>
+
+              <p className="mt-6 text-base text-white md:text-2xl">
+                Use this coupon to get 25% discount
+              </p>
+
+              <button
+                onClick={() => setpopup("none")}
+                className="mt-8 w-full rounded-xl border-2 border-white py-4 text-lg font-semibold text-white hover:bg-white hover:text-amber-500"
+              >
+                GOT IT
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
