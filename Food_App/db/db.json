@@ -199,5 +199,67 @@
       "image": "../src/assets/Images/rest9.jpg",
       "category": "Dessert"
     }
-  ]
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Pizza",
+      "startingPrice": 70,
+      "image": "../src/assets/Images/allcatecories/Pizza.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Burger",
+      "startingPrice": 50,
+      "image": "../src/assets/Images/allcatecories/download (6).jpg"
+    },
+    {
+      "id": 3,
+      "name": "Sandwich",
+      "startingPrice": 45,
+      "image": "../src/assets/Images/allcatecories/Sandwich.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Pasta",
+      "startingPrice": 80,
+      "image": "../src/assets/Images/allcatecories/download (7).jpg"
+    },
+    {
+      "id": 5,
+      "name": "Fried Chicken",
+      "startingPrice": 90,
+      "image": "../src/assets/Images/allcatecories/Fried Chicken.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Biryani",
+      "startingPrice": 120,
+      "image": "../src/assets/Images/allcatecories/Biryani.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Sushi",
+      "startingPrice": 150,
+      "image": "../src/assets/Images/allcatecories/Sushi.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Salad",
+      "startingPrice": 60,
+      "image": "../src/assets/Images/allcatecories/Salad.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Tacos",
+      "startingPrice": 75,
+      "image": "../src/assets/Images/allcatecories/Taco.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Desserts",
+      "startingPrice": 40,
+      "image": "../src/assets/Images/allcatecories/Pudding.jpg"
+    }
+    ]
 }
