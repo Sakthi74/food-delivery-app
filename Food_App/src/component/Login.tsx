@@ -23,53 +23,52 @@ const Login = () => {
     return () => clearTimeout(timer);
   }, []);
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-      if (!emailRef.current || !passwordRef.current) {
-        return;
-      }
+    if (!emailRef.current || !passwordRef.current) {
+      return;
+    }
 
-      const email = emailRef.current.value.trim();
-      const password = passwordRef.current.value.trim();
+    const email = emailRef.current.value.trim();
+    const password = passwordRef.current.value.trim();
 
-      // Email Validation
-      if (email === "") {
-        alert("Email is required");
-        emailRef.current.focus();
-        return;
-      }
+    // Email Validation
+    if (email === "") {
+      alert("Email is required");
+      emailRef.current.focus();
+      return;
+    }
 
-      if (!email.includes("@")) {
-        alert("Please enter a valid email");
-        emailRef.current.focus();
-        return;
-      }
+    if (!email.includes("@")) {
+      alert("Please enter a valid email");
+      emailRef.current.focus();
+      return;
+    }
 
-      // Password Validation
-      if (password === "") {
-        alert("Password is required");
-        passwordRef.current.focus();
-        return;
-      }
+    // Password Validation
+    if (password === "") {
+      alert("Password is required");
+      passwordRef.current.focus();
+      return;
+    }
 
-      if (password.length < 6) {
-        alert("Password must be at least 6 characters");
-        passwordRef.current.focus();
-        return;
-      }
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters");
+      passwordRef.current.focus();
+      return;
+    }
 
-        if (loading) {
-          return <OpeningPage />;
-        }
+    if (loading) {
+      return <OpeningPage />;
+    }
 
-      // alert("Login Successful!");
+    // alert("Login Successful!");
 
-      // Clear input fields
-      emailRef.current.value = "";
-      passwordRef.current.value = "";
-    };
-
+    // Clear input fields
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
+  };
 
   return (
     <>
