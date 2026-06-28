@@ -1,0 +1,15 @@
+@keyframes slidePizza {
+  0% {
+    transform: translateX(-350px) rotate(35deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0) rotate(35deg);
+    opacity: 1;
+  }
+}
+
+.animate-slidePizza {
+  animation: slidePizza 1s ease-out forwards;
+}
