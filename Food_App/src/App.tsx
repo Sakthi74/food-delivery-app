@@ -7,14 +7,16 @@ import PopularBurgers from "./component/PopularBurgers";
 import Allcategories from "./component/Allcategories";
 import Allcategories1 from "./component/Allcategories1";
 import RestaurantCarousel from "./component/RestaurantCarousel";
+import Details from "./component/Details";
 
 function App() {
   return (
     <>
-      <Login />
+      {/* <Login /> */}
       {/* <Allcategories /> */}
       {/* <Allcategories1/>  */}
       <RestaurantCarousel />
+      {/* <Details/> */}
     </>
   );
 }

@@ -20,10 +20,10 @@ const RestaurantCarousel = () => {
         <CarouselPrevious className="z-2" />
         <CarouselContent>
           <CarouselItem>
-            <img className=" w-full h-[400px]" src={carousel1} alt="" />
+            <img className=" w-[900px] h-[400px]" src={carousel1} alt="" />
           </CarouselItem>
           <CarouselItem>
-            <img className=" w-full h-[400px]" src={carousel2} alt="" />
+            <img className=" w-72 h-[400px]" src={carousel2} alt="" />
           </CarouselItem>
           <CarouselItem>
             <img className=" w-full h-[400px]" src={carousel3} alt="" />
@@ -33,7 +33,7 @@ const RestaurantCarousel = () => {
           </CarouselItem>
         </CarouselContent>
 
-        <CarouselNext />
+        <CarouselNext className="bg-black ml-24"/>
       </Carousel>
     </div>
   );
