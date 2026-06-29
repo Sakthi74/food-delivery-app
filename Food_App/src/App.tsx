@@ -4,20 +4,38 @@ import Login from "./component/Login";
 import Details from "./component/Details";
 import RestarauntView from "./component/RestarauntView";
 import PopularBurgers from "./component/PopularBurgers";
-import AccessLoaction from "./component/AccessLoaction";
+import AccessLocation from "./component/AccessLoaction";
 import OpeningPage from "./component/OpeningPage";
+import Searching from "./component/Searching";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignupPage from "./component/SignupPage";
+import ForgotPassword from "./component/ForgotPassword";
+import Verify from "../src/component/Verification";
+import Verification from "../src/component/Verification";
+import Allcategories from "./component/Allcategories";
 function App() {
   return (
     <>
       {/* <Login /> */}
       {/* <Allcategories /> */}
-      {/* <Allcategories1/>  */}
+      {/* <Allcategories1 /> */}
       {/* <RestarauntView /> */}
       {/* <Details /> */}
       {/* <PopularBurgers /> */}
-      <AccessLoaction />
+
       {/* <OpeningPage /> */}
+      {/* <Searching /> */}
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/location" element={<AccessLocation />} />
+          <Route path="/Signup" element={<SignupPage />} />
+          <Route path="/verify" element={<Verification />} />
+          <Route path="/search" element={<Allcategories />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -4,10 +4,17 @@ import xIcon from "../assets/Images/x-icon.png";
 import fb from "../assets/Images/fb.png";
 import apple from "../assets/Images/apple.png";
 import OpeningPage from "./OpeningPage";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
+
+  function routing(path: string) {
+    navigate(path);
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -66,12 +73,22 @@ const Login = () => {
                 Remember me
               </h6>
             </div>
-            <h6 className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer">
+            <h6
+              className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer"
+              onClick={() => {
+                routing("/verify");
+              }}
+            >
               Forgot Password
             </h6>
           </div>
 
-          <button className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors">
+          <button
+            className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors"
+            onClick={() => {
+              routing("/location");
+            }}
+          >
             Log In
           </button>
           <div className="flex ">
@@ -79,7 +96,12 @@ const Login = () => {
               Don't have an account?
             </h6>
 
-            <h6 className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer">
+            <h6
+              className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer"
+              onClick={() => {
+                routing("/signup");
+              }}
+            >
               SIGN UP
             </h6>
           </div>

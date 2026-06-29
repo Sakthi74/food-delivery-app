@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FiClock, FiSearch, FiShoppingBag, FiTruck } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegStar } from "react-icons/fa";
+import AccessLoaction from "./AccessLoaction";
 
 interface Category {
   id: number;

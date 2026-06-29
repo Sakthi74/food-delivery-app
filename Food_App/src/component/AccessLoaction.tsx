@@ -3,6 +3,7 @@ import locationlogo from "../assets/Images/locationlogo.jpg";
 import "../css/LocationAnimation.css";
 import { MapPin } from "lucide-react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { useNavigate } from "react-router-dom";
 
 interface LocationDetails {
   lat: number;
@@ -23,8 +24,15 @@ const AccessLoaction = () => {
       const data = await response.json();
 
       console.log(data.display_name);
+      navigate("/search");
     });
   };
+
+  const navigate = useNavigate();
+
+  function routing(path: string) {
+    navigate(path);
+  }
 
   console.log(location);
   return (
@@ -38,7 +46,9 @@ const AccessLoaction = () => {
         />
         <button
           className="mt-8 w-82 cursor-pointer md:w-[400px] lg:w-[700px] relative rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors flex items-center justify-center gap-4"
-          onClick={handleLocation}
+          onClick={() => {
+            (handleLocation(), routing("/search"));
+          }}
         >
           ACCESS LOCATION
           <MapPin className="inline-block" />
