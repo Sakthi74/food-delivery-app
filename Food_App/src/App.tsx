@@ -4,6 +4,7 @@ import Allcategories from "./component/Allcategories";
 import Allcategories1 from "./component/Allcategories1";
 import RestaurantCarousel from "./component/RestaurantCarousel";
 import Payment from "./component/Payment";
+import ContratsPage from "./component/ContratsPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Allcategories1/> 
       <RestaurantCarousel />
       <Payment/> */}
+      <ContratsPage/>
     </>
   );
 }
