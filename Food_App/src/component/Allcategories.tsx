@@ -99,7 +99,7 @@ function Allcategories() {
             {categories.map((category) => (
               <div
                 key={category.id}
-                className="min-w-[200px] sm:min-w-[220px] md:min-w-[240px] bg-white rounded-3xl shadow-lg p-4 flex-shrink-0 hover:shadow-xl transition"
+                className="min-w-[200px]  cursor-pointer sm:min-w-[220px] md:min-w-[240px] bg-white rounded-3xl shadow-lg p-4 flex-shrink-0 hover:shadow-xl transition"
               >
                 <img
                   src={category.image}
@@ -128,7 +128,7 @@ function Allcategories() {
             {restaurants.map((restaurant) => (
               <div
                 key={restaurant.id}
-                className="overflow-hidden transition duration-300 bg-white shadow-lg rounded-3xl hover:shadow-2xl"
+                className="overflow-hidden cursor-pointer transition duration-300 rounded-3xl hover:shadow-2xl"
               >
                 <img
                   src={restaurant.image}
@@ -138,6 +138,7 @@ function Allcategories() {
 
                 <div className="p-5">
                   <h3 className="text-xl font-semibold">{restaurant.name}</h3>
+                  <p className="mt-4 text-gray-500">{restaurant.description}</p>
 
                   <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
@@ -146,17 +147,15 @@ function Allcategories() {
                     </div>
 
                     <div className="flex items-center gap-1">
-                      <FiTruck />
+                      <FiTruck className="text-yellow-500" />
                       <span>{restaurant.deliveryFee}</span>
                     </div>
 
                     <div className="flex items-center gap-1">
-                      <FiClock />
+                      <FiClock className="text-yellow-500" />
                       <span>{restaurant.deliveryTime}</span>
                     </div>
                   </div>
-
-                  <p className="mt-4 text-gray-500">{restaurant.description}</p>
                 </div>
               </div>
             ))}

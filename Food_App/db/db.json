@@ -261,5 +261,31 @@
       "startingPrice": 40,
       "image": "../src/assets/Images/allcatecories/Pudding.jpg"
     }
-    ]
+  ],
+  "paymentMethods": [
+    {
+      "id": 1,
+      "name": "Cash",
+      "image": "../src/assets/Images/payment/cash.png",
+      "isSelected": false
+    },
+    {
+      "id": 2,
+      "name": "Visa",
+      "image": "../src/assets/Images/payment/Visa.jpg",
+      "isSelected": false
+    },
+    {
+      "id": 3,
+      "name": "Mastercard",
+      "image": "../src/assets/Images/payment/mastercard.png",
+      "isSelected": true
+    },
+    {
+      "id": 4,
+      "name": "PayPal",
+      "image": "../src/assets/Images/payment/PayPal.jpg",
+      "isSelected": false
+    }
+  ]
 }

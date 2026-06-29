@@ -69,7 +69,7 @@ function Allcategories1() {
 
       {/* Search */}
       <div className="relative px-4 mt-8 sm:px-6 lg:px-10">
-        <FiSearch className="absolute left-8 sm:left-10 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
+        <FiSearch className="absolute ml-[10px] left-8 sm:left-10 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
 
         <input
           type="text"
@@ -91,9 +91,9 @@ function Allcategories1() {
           {categories.map((category) => (
             <div
               key={category.id}
-              className="flex-shrink-0 bg-white rounded-3xl shadow-lg p-5 hover:shadow-xl transition duration-300 w-52"
+              className="flex-shrink-0 cursor-pointer bg-white rounded-3xl shadow-lg p-5 hover:shadow-xl transition duration-300 w-52"
             >
-              <div className="flex items-center gap-4">
+              <div className="flex cursor-poiter items-center gap-4">
                 <img
                   src={category.image}
                   alt={category.name}
@@ -121,7 +121,7 @@ function Allcategories1() {
           {restaurants.map((restaurant) => (
             <div
               key={restaurant.id}
-              className="overflow-hidden transition duration-300 bg-white shadow-lg rounded-3xl hover:shadow-2xl"
+              className="overflow-hidden cursor-pointer transition duration-300 rounded-3xl hover:shadow-2xl"
             >
               <img
                 src={restaurant.image}
