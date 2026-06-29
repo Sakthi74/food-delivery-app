@@ -8,10 +8,11 @@ import Payment from "./component/Payment";
 function App() {
   return (
     <>
-      {/* <Allcategories />
-      <Allcategories1/> 
-      <RestaurantCarousel />
-      <Payment/> */}
+      {/* <Allcategories /> */}
+      {/* <Allcategories1/>  */}
+      {/* <RestaurantCarousel /> */}
+      {/* <Payment/> */}
+      <PopularBurgers/>
     </>
   );
 }
