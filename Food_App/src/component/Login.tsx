@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import xIcon from "../assets/Images/x-icon.png";
 import fb from "../assets/Images/fb.png";
 import apple from "../assets/Images/apple.png";
+import OpeningPage from "./OpeningPage";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 4000); //show splash for  2 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <OpeningPage />;
+  }
   return (
     <>
       <div className="min-h-screen bg-white ">
