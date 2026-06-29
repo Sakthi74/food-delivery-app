@@ -25,6 +25,7 @@ import Payment from "./component/Payment";
 function App() {
   return (
     <>
+<<<<<<< HEAD
       {/* <Login /> */}
       {/* <Allcategories /> */}
 <<<<<<< HEAD
@@ -49,6 +50,14 @@ function App() {
       {/* <Allcategories1/>  */}
       <RestaurantCarousel />
       <Payment/> */}
+=======
+      {/* <Allcategories /> */}
+      {/* <Allcategories1/>  */}
+      {/* <RestaurantCarousel /> */}
+      {/* <Payment/> */}
+      <ContratsPage/>
+      <PopularBurgers/>
+>>>>>>> 7397ca9 (congrats page)
     </>
   );
 }

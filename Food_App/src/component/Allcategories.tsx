@@ -142,7 +142,7 @@ function Allcategories() {
                   <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <FaRegStar className="text-yellow-500" />
-                      <span>{restaurant.rating}</span>
+                      <span className="font-bold">{restaurant.rating}</span>
                     </div>
 
                     <div className="flex items-center gap-1">
