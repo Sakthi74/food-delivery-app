@@ -25,31 +25,10 @@ import Payment from "./component/Payment";
 function App() {
   return (
     <>
-      {/* <Login /> */}
-      {/* <Allcategories /> */}
-<<<<<<< HEAD
-      {/* <Allcategories1 /> */}
-      {/* <RestarauntView /> */}
-      {/* <Details /> */}
-      {/* <PopularBurgers /> */}
-      {/* <OpeningPage /> */}
-      {/* <Searching /> */}
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/location" element={<AccessLocation />} />
-        <Route path="/Signup" element={<SignupPage />} />
-        <Route path="/verify" element={<Verification />} />
-        <Route path="/search" element={<Allcategories />} />
-        <Route path="/restaurant/:id" element={<RestarauntView />} />
-        <Route path="/Details" element={<Details />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/popularburgers" element={<PopularBurgers />} />
-      </Routes>
-=======
-      {/* <Allcategories1/>  */}
+      {/* <Allcategories />
+      <Allcategories1/> 
       <RestaurantCarousel />
-      {/* <Payment/> */}
->>>>>>> 2fc0652 (done payments and restaurantcarousel)
+      <Payment/> */}
     </>
   );
 }
