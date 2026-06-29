@@ -3,8 +3,7 @@ import { FiClock, FiSearch, FiShoppingBag, FiTruck } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegStar } from "react-icons/fa";
 import AccessLoaction from "./AccessLoaction";
-import useNavigate from "react-router-dom"
-
+import useNavigate from "react-router-dom";
 
 interface Category {
   id: number;
@@ -28,7 +27,7 @@ function Allcategories1() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:3001/categories")
@@ -43,7 +42,7 @@ function Allcategories1() {
       .then((data: Restaurant[]) => setRestaurants(data))
       .catch((err) => console.log(err));
   }, []);
-//navigating function
+  //navigating function
   function routing(path: string) {
     navigate(path);
   }
@@ -91,7 +90,12 @@ function Allcategories1() {
       <div className="flex items-center justify-between px-4 mt-10 sm:px-6 lg:px-10">
         <h2 className="text-2xl font-bold">All Categories</h2>
 
-        <button className="font-semibold text-orange-500" onClick={()=>routing("/popularburgers")}>See All</button>
+        <button
+          className="font-semibold text-orange-500"
+          onClick={() => routing("/popularburgers")}
+        >
+          See All
+        </button>
       </div>
 
       {/* Categories */}

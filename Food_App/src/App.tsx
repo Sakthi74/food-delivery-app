@@ -16,6 +16,12 @@ import Allcategories from "./component/Allcategories";
 import RestarauntView from "./component/RestarauntView";
 import Cart from "./component/Cart";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignupPage from "./component/SignupPage";
+import ForgotPassword from "./component/ForgotPassword";
+import Verify from "../src/component/Verification";
+import Verification from "../src/component/Verification";
+import Allcategories from "./component/Allcategories";
 function App() {
   return (
     <>
@@ -25,7 +31,7 @@ function App() {
       {/* <RestarauntView /> */}
       {/* <Details /> */}
       {/* <PopularBurgers /> */}
-      {/* <AccessLoaction /> */}
+
       {/* <OpeningPage /> */}
       {/* <Searching /> */}
       <Routes>
