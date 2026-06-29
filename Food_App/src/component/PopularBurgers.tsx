@@ -6,9 +6,8 @@ import { FaPlus, FaRegStar } from "react-icons/fa";
 import { SlidersVertical } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-/
 export default function PopularBurgers() {
-  const[filter,setfilter]=useState<String>("Burgers")
+  const [filter, setfilter] = useState<String>("Burgers");
   const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-white">
