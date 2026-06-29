@@ -6,12 +6,9 @@ import { FaPlus, FaRegStar } from "react-icons/fa";
 import { SlidersVertical } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-// You also need to define the restaurants data
-const restaurants = [
-  // Add your restaurant data here
-];
-
+/
 export default function PopularBurgers() {
+  const[filter,setfilter]=useState<String>("Burgers")
   const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-white">
