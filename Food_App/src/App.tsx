@@ -9,11 +9,12 @@ import ContratsPage from "./component/ContratsPage";
 function App() {
   return (
     <>
-      {/* <Allcategories />
-      <Allcategories1/> 
-      <RestaurantCarousel />
-      <Payment/> */}
+      {/* <Allcategories /> */}
+      {/* <Allcategories1/>  */}
+      {/* <RestaurantCarousel /> */}
+      {/* <Payment/> */}
       <ContratsPage/>
+      <PopularBurgers/>
     </>
   );
 }
