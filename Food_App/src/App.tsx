@@ -12,6 +12,7 @@ import ContratsPage from "./component/ContratsPage";
 import AccessLoaction from "./component/AccessLoaction";
 import OpeningPage from "./component/OpeningPage";
 import FilterSearch from "./component/FilterSearch";
+import FavoriteCarousel from "./component/FavoriteCarousel";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       {/* <Allcategories1/>  */}
       {/* <RestaurantCarousel /> */}
       {/* <Payment/> */}
-      <FilterSearch/>
+      {/* <FilterSearch/> */}
       {/* <ContratsPage/>
       <PopularBurgers/> */}
       {/* <Login /> */}
@@ -31,6 +32,7 @@ function App() {
       {/* <PopularBurgers /> */}
       {/* <AccessLoaction /> */}
       {/* <OpeningPage /> */}
+      <FavoriteCarousel/>
     </>
   );
 }
