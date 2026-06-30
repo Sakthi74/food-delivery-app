@@ -15,6 +15,8 @@ import Verification from "../src/component/Verification";
 import Allcategories from "./component/Allcategories";
 import RestarauntView from "./component/RestarauntView";
 import Cart from "./component/Cart";
+import Payment from "./component/Payment";
+import FavoriteCarousel from "./component/FavoriteCarousel";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignupPage from "./component/SignupPage";
@@ -45,6 +47,8 @@ function App() {
         <Route path="/Details" element={<Details />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/popularburgers" element={<PopularBurgers />} />
+        <Route path="/paymentpage" element={<Payment />} />
+        <Route path="/slidingpage" element={<FavoriteCarousel />} />
       </Routes>
     </>
   );

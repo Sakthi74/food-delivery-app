@@ -96,6 +96,121 @@
       "image": "../src/assets/Images/bur_img5.jpg",
       "category": "Burger"
     }
+     [
+  {
+    "id": 13,
+    "name": "Margherita Pizza",
+    "restaurant": "Pizza Palace",
+    "price": 120,
+    "image": "../src/assets/Images/pizza_img1.jpg",
+    "category": "Pizza"
+  },
+  {
+    "id": 14,
+    "name": "Pepperoni Pizza",
+    "restaurant": "Pizza Hub",
+    "price": 150,
+    "image": "../src/assets/Images/pizza_img2.jpg",
+    "category": "Pizza"
+  },
+  {
+    "id": 15,
+    "name": "Veggie Supreme Pizza",
+    "restaurant": "Cheese Corner",
+    "price": 140,
+    "image": "../src/assets/Images/pizza_img3.jpg",
+    "category": "Pizza"
+  },
+  {
+    "id": 16,
+    "name": "BBQ Chicken Pizza",
+    "restaurant": "Pizza Mania",
+    "price": 180,
+    "image": "../src/assets/Images/pizza_img4.jpg",
+    "category": "Pizza"
+  },
+  {
+    "id": 17,
+    "name": "Farmhouse Pizza",
+    "restaurant": "Italian Oven",
+    "price": 160,
+    "image": "../src/assets/Images/pizza_img5.jpg",
+    "category": "Pizza"
+  },
+  {
+    "id": 18,
+    "name": "Cheese Burst Pizza",
+    "restaurant": "Pizza World",
+    "price": 190,
+    "image": "../src/assets/Images/pizza_img6.jpg",
+    "category": "Pizza"
+  },
+  {
+    "id": 19,
+    "name": "Mexican Fiesta Pizza",
+    "restaurant": "Hot Slice",
+    "price": 175,
+    "image": "../src/assets/Images/pizza_img7.jpg",
+    "category": "Pizza"
+  },
+
+  {
+    "id": 20,
+    "name": "Grilled Chicken Sandwich",
+    "restaurant": "Sandwich Spot",
+    "price": 90,
+    "image": "../src/assets/Images/sandwich_img1.jpg",
+    "category": "Sandwich"
+  },
+  {
+    "id": 21,
+    "name": "Veg Club Sandwich",
+    "restaurant": "Fresh Bites",
+    "price": 80,
+    "image": "../src/assets/Images/sandwich_img2.jpg",
+    "category": "Sandwich"
+  },
+  {
+    "id": 22,
+    "name": "Cheese Corn Sandwich",
+    "restaurant": "Snack Hub",
+    "price": 85,
+    "image": "../src/assets/Images/sandwich_img3.jpg",
+    "category": "Sandwich"
+  },
+  {
+    "id": 23,
+    "name": "Paneer Tikka Sandwich",
+    "restaurant": "Grill House",
+    "price": 95,
+    "image": "../src/assets/Images/sandwich_img4.jpg",
+    "category": "Sandwich"
+  },
+  {
+    "id": 24,
+    "name": "Egg Mayo Sandwich",
+    "restaurant": "Toast Cafe",
+    "price": 75,
+    "image": "../src/assets/Images/sandwich_img5.jpg",
+    "category": "Sandwich"
+  },
+  {
+    "id": 25,
+    "name": "Spicy Chicken Sandwich",
+    "restaurant": "Fast Feast",
+    "price": 110,
+    "image": "../src/assets/Images/sandwich_img6.jpg",
+    "category": "Sandwich"
+  },
+  {
+    "id": 26,
+    "name": "Double Cheese Sandwich",
+    "restaurant": "Cheesy Delights",
+    "price": 100,
+    "image": "../src/assets/Images/sandwich_img7.jpg",
+    "category": "Sandwich"
+  }
+]
   ],
 
   "restaurants": [

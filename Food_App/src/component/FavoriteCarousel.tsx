@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Carousel,
   CarouselContent,
@@ -40,6 +41,7 @@ const slides = [
 function FavoriteCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!api) return;
@@ -96,10 +98,12 @@ function FavoriteCarousel() {
       </div>
       <div className="mt-[10px]">
         <div className="text-center mt-[10px]">
-          <button className="px-[125px] py-[10px] rounded-2xl bg-[#FF7622]">NEXT</button>
+          <button className="px-[125px] py-[10px] rounded-2xl bg-[#FF7622]">
+            NEXT
+          </button>
         </div>
         <div className="text-center mt-[10px]">
-          <button>skip</button>
+          <button onClick={() => navigate("location")}>skip</button>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { X, ChevronRight } from "lucide-react";
 import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
+import { Spinner } from "@/components/ui/spinner";
 
 const Cart = () => {
   interface CartItem {
@@ -18,6 +19,8 @@ const Cart = () => {
 
   const [cartData, setCartData] = useState<CartItem[]>([]);
   const [open, setopen] = useState<boolean>(false);
+  const [spinneropen, setspinneropen] = useState<boolean>(false);
+
   const { locationName } = useContext(LocationContext);
 
   const navigate = useNavigate();
@@ -26,6 +29,11 @@ const Cart = () => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     setCartData(cart);
   }, []);
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+
+  // }, 2000);,[])
 
   // delete function
   function del(id: number): void {
@@ -52,10 +60,10 @@ const Cart = () => {
     setCartData(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
   }
-    
-    function routing(path: string) {
-      navigate(path);
-    }
+
+  function routing(path: string) {
+    navigate(path);
+  }
 
   // when cart is empty
   if (cartData.length === 0) {
@@ -216,7 +224,10 @@ const Cart = () => {
             </div>
 
             {/* place order button */}
-            <button className="w-full mt-6 sm:mt-7 md:mt-8 bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold tracking-wide rounded-2xl py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg" onClick={()=>routing("/paymentpage")}>
+            <button
+              className="w-full mt-6 sm:mt-7 md:mt-8 bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold tracking-wide rounded-2xl py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg"
+              onClick={() => routing("/paymentpage")}
+            >
               PLACE ORDER
             </button>
           </div>

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-
-
+import React, { useEffect, useState } from "react";
 
 interface Payments {
   id: number;
@@ -9,14 +7,14 @@ interface Payments {
 }
 
 function PaymentOptions() {
-      const [payments, setPayments] = useState<Payments[]>([]);
-    
-      useEffect(() => {
-        fetch("http://localhost:3001/paymentMethods")
-          .then((res) => res.json())
-          .then((res) => setPayments(res))
-          .catch((err) => console.log(err));
-      }, []);
+  const [payments, setPayments] = useState<Payments[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/paymentMethods")
+      .then((res) => res.json())
+      .then((res) => setPayments(res))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div>
       <div className="w-full overflow-x-auto px-4">
@@ -54,4 +52,4 @@ function PaymentOptions() {
   );
 }
 
-export default PaymentOptions
+export default PaymentOptions;

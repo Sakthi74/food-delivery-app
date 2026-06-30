@@ -9,12 +9,10 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(true);
-
   const navigate = useNavigate();
 
-  function routing(path: string) {
-    navigate(path);
-  }
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,6 +20,10 @@ const Login = () => {
     }, 4000); //show splash for  2 seconds
     return () => clearTimeout(timer);
   }, []);
+
+  if (loading) {
+    return <OpeningPage />;
+  }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,11 +61,8 @@ const Login = () => {
       return;
     }
 
-    if (loading) {
-      return <OpeningPage />;
-    }
-
     // alert("Login Successful!");
+    navigate("/slidingpage");
 
     // Clear input fields
     emailRef.current.value = "";
@@ -94,49 +93,45 @@ const Login = () => {
               />
             </div>
 
-          {/* PASSWORD */}
-          <div className="relative  w-full md:w-[400px] lg:w-[700px]">
-            <span className="text-black font-thin text-sm p-1">PASSWORD</span>
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter password"
-              className="w-full border bg-[#f0f5fa] border-gray-300 rounded-lg px-4 py-6 pr-12 focus:outline-none focus:border-[#ff7622]"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"
-            >
-              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-            </button>
-          </div>
-          {/* remember me part */}
-          <div className="flex justify-between w-full md:w-[400px] lg:w-[700px] ">
-            {/* input checkbox+h6 */}
-            <div className="flex ">
-              <input type="checkbox" className="cursor-pointer" />
-              <h6 className="text-gray-900 font-thin text-md p-1">
-                Remember me
+            {/* PASSWORD */}
+            <div className="relative  w-full md:w-[400px] lg:w-[700px]">
+              <span className="text-black font-thin text-sm p-1">PASSWORD</span>
+              <input
+                type={showPassword ? "text" : "password"}
+                ref={passwordRef}
+                placeholder="Enter password"
+                className="w-full border bg-[#f0f5fa] border-gray-300 rounded-lg px-4 py-6 pr-12 focus:outline-none focus:border-[#ff7622]"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
+
+            {/* remember me part */}
+            <div className="flex justify-between w-full md:w-[400px] lg:w-[700px] ">
+              {/* input checkbox+h6 */}
+              <div className="flex ">
+                <input type="checkbox" className="cursor-pointer" />
+                <h6 className="text-gray-900 font-thin text-md p-1">
+                  Remember me
+                </h6>
+              </div>
+              <h6
+                className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer"
+                onClick={() => navigate("/verify")}
+              >
+                Forgot Password
               </h6>
             </div>
-            <h6
-              className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer"
-              onClick={() => {
-                routing("/verify");
-              }}
-            >
-              Forgot Password
-            </h6>
-          </div>
 
-          <button
-            className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors"
-            onClick={() => {
-              routing("/location");
-            }}
-          >
-            Log In
-          </button>
+            <button className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors">
+              Log In
+            </button>
+          </form>
           <div className="flex ">
             <h6 className="text-gray-900 font-thin text-md p-1">
               Don't have an account?
@@ -144,9 +139,7 @@ const Login = () => {
 
             <h6
               className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer"
-              onClick={() => {
-                routing("/signup");
-              }}
+              onClick={() => navigate("/signup")}
             >
               SIGN UP
             </h6>

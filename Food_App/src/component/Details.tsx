@@ -20,7 +20,6 @@ const Details = () => {
   const [count, setcount] = useState<number | undefined>(0);
   const [Selected, setSelected] = useState<string | undefined>("14");
   const [Fav, setFav] = useState<boolean | undefined>(false);
-
   const navigate = useNavigate();
   return (
     <>
@@ -29,9 +28,7 @@ const Details = () => {
         <div className="flex p-10 md:p-12 lg:p-16 items-start justify-start gap-4 md:gap-6 lg:gap-8 ">
           <div
             className="p-3 md:p-4 bg-[#ECF0F4] rounded-full cursor-pointer"
-            onClick={() => {
-              navigate(-1);
-            }}
+            onClick={() => navigate(-1)}
           >
             <MdKeyboardArrowLeft size={20} />
           </div>

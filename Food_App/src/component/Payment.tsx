@@ -1,8 +1,8 @@
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { FiPlus } from "react-icons/fi";
 import card_img from "../assets/Images/card_img.png";
-import PaymentOptions from "../components/ui/PaymentOptions";
-
+import PaymentOptions from "./PaymentOptions";
+import { useNavigate } from "react-router-dom";
 interface Payments {
   id: number;
   name: string;
@@ -10,11 +10,15 @@ interface Payments {
 }
 
 function Payment() {
+  const navigate = useNavigate();
   return (
     <div className="max-w-5xl mx-auto bg-white min-h-screen">
       {/* Header */}
       <div className="flex items-center gap-3 p-4">
-        <button className="p-2 bg-gray-100 rounded-full">
+        <button
+          className="p-2 bg-gray-100 rounded-full"
+          onClick={() => navigate(-1)}
+        >
           <MdKeyboardArrowLeft size={24} />
         </button>
 
