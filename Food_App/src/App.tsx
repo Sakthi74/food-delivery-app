@@ -13,14 +13,21 @@ import { LocationContext } from "./Context/LocationContext";
 import ForgotPassword from "./component/ForgotPassword";
 import Verification from "../src/component/Verification";
 import Allcategories from "./component/Allcategories";
+<<<<<<< HEAD
 import RestarauntView from "./component/RestarauntView";
 import Cart from "./component/Cart";
+=======
+import Allcategories1 from "./component/Allcategories1";
+import RestaurantCarousel from "./component/RestaurantCarousel";
+import Payment from "./component/Payment";
+>>>>>>> 2fc0652 (done payments and restaurantcarousel)
 
 function App() {
   return (
     <>
       {/* <Login /> */}
       {/* <Allcategories /> */}
+<<<<<<< HEAD
       {/* <Allcategories1 /> */}
       {/* <RestarauntView /> */}
       {/* <Details /> */}
@@ -38,6 +45,11 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/popularburgers" element={<PopularBurgers />} />
       </Routes>
+=======
+      {/* <Allcategories1/>  */}
+      <RestaurantCarousel />
+      {/* <Payment/> */}
+>>>>>>> 2fc0652 (done payments and restaurantcarousel)
     </>
   );
 }

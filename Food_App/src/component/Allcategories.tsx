@@ -95,7 +95,7 @@ function Allcategories() {
             {categories.map((category) => (
               <div
                 key={category.id}
-                className="min-w-[200px] sm:min-w-[220px] md:min-w-[240px] bg-white rounded-3xl shadow-lg p-4 flex-shrink-0 hover:shadow-xl transition"
+                className="min-w-[200px]  cursor-pointer sm:min-w-[220px] md:min-w-[240px] bg-white rounded-3xl shadow-lg p-4 flex-shrink-0 hover:shadow-xl transition"
               >
                 <img
                   src={category.image}
@@ -116,7 +116,51 @@ function Allcategories() {
           </div>
         </div>
 
+<<<<<<< HEAD
         <RestaurantData />
+=======
+        {/* Restaurants */}
+        <div className="px-4 py-10 md:px-8">
+          <h2 className="mb-6 text-2xl font-bold">Open Restaurants</h2>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {restaurants.map((restaurant) => (
+              <div
+                key={restaurant.id}
+                className="overflow-hidden cursor-pointer transition duration-300 rounded-3xl hover:shadow-2xl"
+              >
+                <img
+                  src={restaurant.image}
+                  alt={restaurant.name}
+                  className="object-cover w-full h-52"
+                />
+
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold">{restaurant.name}</h3>
+                  <p className="mt-4 text-gray-500">{restaurant.description}</p>
+
+                  <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-1">
+                      <FaRegStar className="text-yellow-500" />
+                      <span>{restaurant.rating}</span>
+                    </div>
+
+                    <div className="flex items-center gap-1">
+                      <FiTruck className="text-yellow-500" />
+                      <span>{restaurant.deliveryFee}</span>
+                    </div>
+
+                    <div className="flex items-center gap-1">
+                      <FiClock className="text-yellow-500" />
+                      <span>{restaurant.deliveryTime}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+>>>>>>> 2fc0652 (done payments and restaurantcarousel)
       </div>
 
       {popup === "block" && (
