@@ -7,7 +7,11 @@ interface Props {
 }
 const Itemfilter = ({ categories, selected, onSelect }: Props) => {
   return (
+<<<<<<< HEAD
     <div className="flex flex-wrap gap-3 overflow-x-auto ml-4">
+=======
+    <div className="flex gap-3 overflow-x-auto ml-6 p-2">
+>>>>>>> 75bd461 (till cart page)
       {categories.map((category) => (
         <button
           key={category}

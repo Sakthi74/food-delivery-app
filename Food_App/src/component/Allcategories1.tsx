@@ -150,12 +150,11 @@ function Allcategories1() {
                     <FaRegStar className="text-yellow-500" />
                     <span>{restaurant.rating}</span>
                   </div>
-
                   <div className="flex items-center gap-1">
                     <FiTruck />
                     <span>{restaurant.deliveryFee}</span>
                   </div>
-
+                  const [categories, setCatego
                   <div className="flex items-center gap-1">
                     <FiClock />
                     <span>{restaurant.deliveryTime}</span>
