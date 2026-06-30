@@ -32,7 +32,8 @@ function App() {
       {/* <PopularBurgers /> */}
       {/* <AccessLoaction /> */}
       {/* <OpeningPage /> */}
-      <FavoriteCarousel/>
+      {/* <FavoriteCarousel/> */}
+      <Login/>
     </>
   );
 }
