@@ -5,6 +5,11 @@ import fb from "../assets/Images/fb.png";
 import apple from "../assets/Images/apple.png";
 import OpeningPage from "./OpeningPage";
 
+import { FaStar } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+import Itemfilter from "./Itemfilter";
+
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(true);

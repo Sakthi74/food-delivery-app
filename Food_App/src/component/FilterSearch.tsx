@@ -1,26 +1,33 @@
 import React, { useState } from "react";
-import { FaStar } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import { FaStar } from "react-icons/fa";
 import Itemfilter from "./Itemfilter";
 
-function FilterSearch() {
+interface FilterSearchProps {
+  onClose: () => void;
+}
+
+function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
   const [selected, setSelected] = useState<string | undefined>("Delivery");
   const [rating, setRating] = useState(0);
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-xl">
+    <div className="bg-white rounded-2xl shadow-2xl w-full max-h-[90vh] overflow-y-auto">
       {/* Header */}
-      <div className="flex items-center justify-between p-5">
-        <p className="text-base font-semibold">Filter your search</p>
+      <div className="flex items-center justify-between p-5 border-b">
+        <h2 className="text-lg font-semibold">Filter your search</h2>
 
-        <button className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100">
+        <button
+          onClick={onClose}
+          className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
+        >
           <IoClose size={22} />
         </button>
       </div>
 
       {/* Offers */}
-      <div className="px-5">
-        <p className="text-xs font-medium text-gray-500 mb-3">OFFERS</p>
+      <div className="px-5 py-4">
+        <p className="text-xs font-semibold text-gray-500 mb-3">OFFERS</p>
 
         <Itemfilter
           className="border-[#EFEFEF]"
@@ -36,8 +43,10 @@ function FilterSearch() {
       </div>
 
       {/* Delivery Time */}
-      <div className="px-5 mt-6">
-        <p className="text-xs font-medium text-gray-500 mb-3">DELIVERY TIME</p>
+      <div className="px-5 py-4">
+        <p className="text-xs font-semibold text-gray-500 mb-3">
+          DELIVERY TIME
+        </p>
 
         <Itemfilter
           className="border-[#EFEFEF]"
@@ -48,29 +57,29 @@ function FilterSearch() {
       </div>
 
       {/* Pricing */}
-      <div className="px-5 mt-6">
-        <p className="text-xs font-medium text-gray-500 mb-4">PRICING</p>
+      <div className="px-5 py-4">
+        <p className="text-xs font-semibold text-gray-500 mb-4">PRICING</p>
 
-        <div className="flex gap-4 flex-wrap">
-          <button className="w-11 h-11 rounded-full border border-[#EFEFEF] flex items-center justify-center">
+        <div className="flex flex-wrap gap-3">
+          <button className="w-11 h-11 rounded-full border border-[#EFEFEF]">
             $
           </button>
 
-          <button className="w-11 h-11 rounded-full bg-[#FF7622] text-white flex items-center justify-center">
+          <button className="w-11 h-11 rounded-full bg-[#FF7622] text-white">
             $$
           </button>
 
-          <button className="w-11 h-11 rounded-full border border-[#EFEFEF] flex items-center justify-center">
+          <button className="w-11 h-11 rounded-full border border-[#EFEFEF]">
             $$$
           </button>
         </div>
       </div>
 
       {/* Rating */}
-      <div className="px-5 mt-6">
-        <p className="text-xs font-medium text-gray-500 mb-4">RATING</p>
+      <div className="px-5 py-4">
+        <p className="text-xs font-semibold text-gray-500 mb-4">RATING</p>
 
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-wrap gap-3">
           {[1, 2, 3, 4, 5].map((star) => (
             <button
               key={star}
@@ -87,7 +96,7 @@ function FilterSearch() {
         </div>
       </div>
 
-      {/* Filter Button */}
+      {/* Button */}
       <div className="p-5">
         <button className="w-full py-4 rounded-2xl bg-[#FF7622] text-white font-semibold hover:bg-orange-600 transition">
           FILTER

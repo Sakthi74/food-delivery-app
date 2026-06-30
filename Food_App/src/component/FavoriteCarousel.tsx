@@ -5,7 +5,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
-import CarouselApi from "embla-carousel";
+import type { CarouselApi } from "embla-carousel";
 
 import image1 from "../assets/Images/favoritecarousel/img1.png";
 import image2 from "../assets/Images/favoritecarousel/img2.png";
