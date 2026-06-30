@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { FiClock, FiSearch, FiTruck, FiShoppingBag } from "react-icons/fi";
+import { FiSearch, FiShoppingBag } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { FaRegStar } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import { TextAlignStart } from "lucide-react";
+import RestaurantData from "./RestrauntData";
+import { useContext } from "react";
+import { LocationContext } from "../Context/LocationContext";
+import { useNavigate } from "react-router-dom";
 
 interface Category {
   id: number;
@@ -12,21 +14,11 @@ interface Category {
   image: string;
 }
 
-interface Restaurant {
-  id: number;
-  name: string;
-  rating: number;
-  deliveryFee: string;
-  deliveryTime: string;
-  description: string;
-  image: string;
-  category: string;
-}
-
 function Allcategories() {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [popup, setpopup] = useState("none");
+  const { locationName } = useContext(LocationContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:3001/categories")
@@ -36,20 +28,14 @@ function Allcategories() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3001/restaurants")
-      .then((res) => res.json())
-      .then((data: Restaurant[]) => setRestaurants(data))
-      .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setpopup("block");
     }, 2000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="min-h-screen relative bg-gray-50">
+    <div className="min-h-screen max-w-screen relative bg-gray-50">
       {/* Main Container */}
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -62,15 +48,22 @@ function Allcategories() {
                 DELIVER TO
               </span>
 
-              <select className="text-sm font-medium bg-transparent outline-none">
-                <option>Halal Lab Office</option>
+              <select className="text-sm font-medium bg-transparent outline-none ">
+                <option className="">
+                  {locationName.length > 30
+                    ? locationName.slice(0, 30) + "..."
+                    : locationName}
+                </option>
                 <option>Home</option>
                 <option>Office</option>
               </select>
             </div>
           </div>
 
-          <FiShoppingBag className="text-3xl cursor-pointer" />
+          <FiShoppingBag
+            className="text-3xl cursor-pointer bg-black text-white rounded-full"
+            onClick={() => navigate("/cart")}
+          />
         </div>
 
         {/* Greeting */}
@@ -93,7 +86,10 @@ function Allcategories() {
 
         {/* Categories */}
         <div className="px-4 mt-10 md:px-8">
-          <h2 className="mb-5 text-2xl font-bold">All Categories</h2>
+          <div className="flex justify-between">
+            <h2 className="mb-5 text-2xl font-semibold">All Categories</h2>
+            <h1 onClick={() => navigate("/popularburgers")}>See All</h1>
+          </div>
 
           <div className="flex gap-5 pb-3 overflow-x-auto scrollbar-hide">
             {categories.map((category) => (
@@ -120,48 +116,7 @@ function Allcategories() {
           </div>
         </div>
 
-        {/* Restaurants */}
-        <div className="px-4 py-10 md:px-8">
-          <h2 className="mb-6 text-2xl font-bold">Open Restaurants</h2>
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {restaurants.map((restaurant) => (
-              <div
-                key={restaurant.id}
-                className="overflow-hidden transition duration-300 bg-white shadow-lg rounded-3xl hover:shadow-2xl"
-              >
-                <img
-                  src={restaurant.image}
-                  alt={restaurant.name}
-                  className="object-cover w-full h-52"
-                />
-
-                <div className="p-5">
-                  <h3 className="text-xl font-semibold">{restaurant.name}</h3>
-
-                  <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <FaRegStar className="text-yellow-500" />
-                      <span>{restaurant.rating}</span>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      <FiTruck />
-                      <span>{restaurant.deliveryFee}</span>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      <FiClock />
-                      <span>{restaurant.deliveryTime}</span>
-                    </div>
-                  </div>
-
-                  <p className="mt-4 text-gray-500">{restaurant.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <RestaurantData />
       </div>
 
       {popup === "block" && (

@@ -4,6 +4,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import BurgerComponent from "./BurgerComponent";
 import { FaPlus, FaRegStar } from "react-icons/fa";
 import { SlidersVertical } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 // You also need to define the restaurants data
 const restaurants = [
@@ -11,12 +12,16 @@ const restaurants = [
 ];
 
 export default function PopularBurgers() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
       <div className="px-4 py-6">
         <div className="flex items-center justify-between">
-          <div className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer">
+          <div
+            className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
+            onClick={() => navigate(-1)}
+          >
             <MdKeyboardArrowLeft size={20} />
           </div>
 

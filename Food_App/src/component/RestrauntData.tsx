@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { FiTruck, FiClock } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 interface Restaurant {
   id: number;
@@ -15,27 +16,38 @@ interface Restaurant {
 
 const RestaurantData = () => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3001/restaurants")
-      .then((res) => res.json())
-      .then((data: Restaurant[]) => setRestaurants(data))
-      .catch((err: Error) => console.log(err));
+    const fetchSelectedrest = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/restaurants");
+
+        const data: Restaurant[] = await response.json();
+
+        setRestaurants(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchSelectedrest();
   }, []);
 
   return (
-    <div>
-      <div className="px-4 py-10">
+    <div className="md:p-8 lg:p-8 p-0">
+      <div className="px-4 py-10 ">
         <h1 className="mb-6 text-2xl font-bold">Open Restaurants</h1>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {restaurants.map((rest) => (
             <div
               key={rest.id}
-              className="overflow-hidden transition-shadow duration-300 bg-white shadow-md rounded-3xl hover:shadow-lg"
+              onClick={() => navigate(`/restaurant/${rest.id}`)}
+              className="overflow-hidden bg-white transition duration-300 cursor-pointer hover:shadow-lg rounded-2xl"
             >
               <img
-                className="object-cover w-full h-64"
+                className="object-cover w-full h-64 rounded-2xl"
                 src={rest.image}
                 alt={rest.name}
               />
@@ -43,8 +55,9 @@ const RestaurantData = () => {
               <div className="p-5">
                 <h2 className="text-xl font-semibold">{rest.name}</h2>
 
-                <div className="flex flex-wrap gap-4 mt-4 text-sm text-gray-600">
-                  <div className="flex items-center gap-1">
+                <p className="mt-4 text-gray-500">{rest.description}</p>
+                <div className="flex flex-wrap gap-4 mt-4 text-sm text-orange-400 cursor-pointer">
+                  <div className="flex font-bold  items-center gap-1">
                     <FaRegStar />
                     <span>{rest.rating}</span>
                   </div>
@@ -59,8 +72,6 @@ const RestaurantData = () => {
                     <span>{rest.deliveryTime}</span>
                   </div>
                 </div>
-
-                <p className="mt-4 text-gray-500">{rest.description}</p>
               </div>
             </div>
           ))}
