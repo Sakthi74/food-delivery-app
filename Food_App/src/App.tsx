@@ -11,6 +11,7 @@ import Payment from "./component/Payment";
 import ContratsPage from "./component/ContratsPage";
 import AccessLoaction from "./component/AccessLoaction";
 import OpeningPage from "./component/OpeningPage";
+import FilterSearch from "./component/FilterSearch";
 
 function App() {
   return (
@@ -19,15 +20,16 @@ function App() {
       {/* <Allcategories1/>  */}
       {/* <RestaurantCarousel /> */}
       {/* <Payment/> */}
-      <ContratsPage/>
-      <PopularBurgers/>
+      <FilterSearch/>
+      {/* <ContratsPage/>
+      <PopularBurgers/> */}
       {/* <Login /> */}
       {/* <Allcategories /> */}
       {/* <Allcategories1/>  */}
       {/* <RestarauntView /> */}
       {/* <Details /> */}
       {/* <PopularBurgers /> */}
-      <AccessLoaction />
+      {/* <AccessLoaction /> */}
       {/* <OpeningPage /> */}
     </>
   );
