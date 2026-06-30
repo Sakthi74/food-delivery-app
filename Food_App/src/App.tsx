@@ -25,6 +25,7 @@ function App() {
       {/* <RestarauntView /> */}
       {/* <Details /> */}
       {/* <PopularBurgers /> */}
+      {/* <AccessLoaction /> */}
       {/* <OpeningPage /> */}
       {/* <Searching /> */}
       <Routes>

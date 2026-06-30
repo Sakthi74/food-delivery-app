@@ -7,7 +7,7 @@ interface Props {
 }
 const Itemfilter = ({ categories, selected, onSelect }: Props) => {
   return (
-    <div className="flex gap-3 overflow-x-auto ml-6 p-2">
+    <div className="flex flex-wrap gap-3 overflow-x-auto ml-4">
       {categories.map((category) => (
         <button
           key={category}
