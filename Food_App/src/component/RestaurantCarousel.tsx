@@ -20,29 +20,6 @@ interface Burger {
 }
 
 const RestaurantCarousel = () => {
-<<<<<<< HEAD
-  return (
-    <div>
-      <Carousel className="relative w-full overflow-hidden">
-        <CarouselPrevious className="z-2" />
-        <CarouselContent>
-          <CarouselItem>
-            <img className=" w-[900px] h-[400px]" src={carousel1} alt="" />
-          </CarouselItem>
-          <CarouselItem>
-            <img className=" w-72 h-[400px]" src={carousel2} alt="" />
-          </CarouselItem>
-          <CarouselItem>
-            <img className=" w-full h-[400px]" src={carousel3} alt="" />
-          </CarouselItem>
-          <CarouselItem>
-            <img className=" w-full h-[400px]" src={carousel4} alt="" />
-          </CarouselItem>
-        </CarouselContent>
-
-        <CarouselNext className="bg-black ml-24"/>
-      </Carousel>
-=======
   const [restaurants, setRestaurants] = useState<Category[]>([]);
   const [burgers, setBurger] = useState<Burger[]>([]);
 
@@ -153,7 +130,6 @@ const RestaurantCarousel = () => {
           ))}
         </div>
       </div>
->>>>>>> 2fc0652 (done payments and restaurantcarousel)
     </div>
   );
 };

@@ -16,6 +16,7 @@ interface Restaurant {
 
 const RestaurantData = () => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {

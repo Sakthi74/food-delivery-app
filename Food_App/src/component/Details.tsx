@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import pizza from "../assets/Images/pizza-removebg-preview.png";
+// import pizza from "../";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { HeartPlus } from "lucide-react";
 import { ChefHat } from "lucide-react";
@@ -41,7 +41,7 @@ const Details = () => {
         <div className="p-5 md:p-8 lg:p-10 w-full">
           <div className="bg-[#FFBF6D] rounded-3xl h-64 md:h-80 lg:h-96 relative">
             <img
-              src={pizza}
+              src="/Images/pizza-removebg-preview.png"
               alt="Pizza"
               className="relative bottom-8 h-56 md:h-72 lg:h-72 rotate-[20deg] animate-slidePizza"
             />

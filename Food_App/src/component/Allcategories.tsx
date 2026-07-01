@@ -88,7 +88,12 @@ function Allcategories() {
         <div className="px-4 mt-10 md:px-8">
           <div className="flex justify-between">
             <h2 className="mb-5 text-2xl font-semibold">All Categories</h2>
-            <h1 onClick={() => navigate("/popularburgers")}>See All</h1>
+            <h1
+              className="cursor-pointer hover:text-green-400"
+              onClick={() => navigate("/popularburgers")}
+            >
+              See All
+            </h1>
           </div>
 
           <div className="flex gap-5 pb-3 overflow-x-auto scrollbar-hide">
@@ -125,7 +130,7 @@ function Allcategories() {
             {/* Close Button */}
             <button
               onClick={() => setpopup("none")}
-              className="absolute top-4 right-4 rounded-full bg-amber-700 p-3 text-white"
+              className="absolute top-4 right-4 rounded-full bg-amber-700 p-3 text-white cursor-pointer hover:bg-red-800 "
             >
               <IoClose size={24} />
             </button>
@@ -143,7 +148,7 @@ function Allcategories() {
 
               <button
                 onClick={() => setpopup("none")}
-                className="mt-8 w-full rounded-xl border-2 border-white py-4 text-lg font-semibold text-white hover:bg-white hover:text-amber-500"
+                className="mt-8 w-full rounded-xl border-2 border-white py-4 text-lg font-semibold text-amber-500 hover:bg-amber-500 bg-white hover:text-white cursor-pointer"
               >
                 GOT IT
               </button>

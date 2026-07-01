@@ -23,7 +23,9 @@ interface Restaurant {
 const RestarauntView = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [selected, setSelected] = useState<string | undefined>("14");
+  const [selected, setSelected] = useState<string | undefined>("Burger");
+
+  const [filter, setfilter] = useState<string>("Burger");
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -106,7 +108,7 @@ const RestarauntView = () => {
         </p>
 
         {/* rating / delivery / time row */}
-        <div className="flex items-center gap-5 md:gap-6 mt-4 text-[#FF7622]">
+        <div className="flex items-center gap-5 p-3 md:gap-6 mt-4 text-[#FF7622]">
           <div className="flex items-center gap-2">
             <Star size={18} />
             <span className="font-semibold text-black md:text-lg">
@@ -142,9 +144,8 @@ const RestarauntView = () => {
         onSelect={setSelected}
       />
 
-      <div className="w-full">
-        <h1 className="text-black font-bold p-6">Burgers(10)</h1>
-        <BurgerComponent />
+      <div className="w-full ">
+        <BurgerComponent filter={selected} />
       </div>
     </>
   );

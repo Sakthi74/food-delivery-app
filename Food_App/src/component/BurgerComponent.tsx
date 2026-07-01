@@ -11,7 +11,11 @@ interface Burger {
   category: string;
 }
 
-const BurgerComponent = () => {
+interface Props {
+  filter: string;
+}
+
+const BurgerComponent = ({ filter }: Props) => {
   const [burgers, setBurger] = useState<Burger[]>([]);
   const navigate = useNavigate();
 
@@ -33,13 +37,41 @@ const BurgerComponent = () => {
     fetchBurgers();
   }, []);
 
+  const filteredItems =
+    filter === "All"
+      ? burgers
+      : burgers.filter((item) => item.category === filter);
+
+  //localstorage
+  function handleAddToCart(burger: Burger) {
+    //geting item
+    const getItem = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    // check it is existing
+
+    const IsExisting = getItem.find((item) => burger.id === item.id);
+    // if not existing then push
+    if (!IsExisting) {
+      getItem.push({ ...burger, quantity: 1 });
+    } else {
+      IsExisting.quantity++;
+    }
+
+    //set item
+    localStorage.setItem("cart", JSON.stringify(getItem));
+    //navigate
+    navigate("/cart");
+  }
   return (
     <div className="md:p-8 lg:p-8 p-0">
       <div className="px-4">
-        <h1 className="mb-6 text-2xl font-bold">Popular Burgers</h1>
+        <h1 className="text-2xl font-bold p-2">Popular {filter}</h1>
+        <h1 className="text-black font-bold p-2">
+          {filter} ({filteredItems.length})
+        </h1>
 
         <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4 md:grid-cols-3">
-          {burgers.map((burger) => (
+          {filteredItems.map((burger) => (
             <div
               key={burger.id}
               className="rounded-2xl bg-white p-3 shadow-md transition-shadow duration-300 hover:shadow-lg cursor-pointer"
@@ -63,34 +95,14 @@ const BurgerComponent = () => {
 
               <div className="mt-3 flex items-center justify-between">
                 <p className="text-sm font-bold text-[#121223] sm:text-base md:text-lg">
-                  ₹{burger.price}
+                  ${burger.price.toFixed(2)}
                 </p>
 
                 <button
                   className="rounded-full bg-[#F58D1D] p-2 text-white transition-colors hover:bg-orange-600 cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation();
-                    //geting item
-                    const cart = JSON.parse(
-                      localStorage.getItem("cart") || "[]"
-                    );
-                    // check it is existing
-                    const existing = cart.find(
-                      (item: Burger) => item.id === burger.id
-                    );
-
-                    // if not existing then push
-                    if (!existing) {
-                      cart.push({
-                        ...burger,
-                        quantity: 1,
-                      });
-                    }
-
-                    //set item
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    //navigate
-                    navigate("/cart");
+                    handleAddToCart(burger);
                   }}
                 >
                   <FaPlus size={14} />

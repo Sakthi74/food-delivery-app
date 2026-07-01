@@ -30,10 +30,14 @@ const Cart = () => {
     setCartData(cart);
   }, []);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-
-  // }, 2000);,[])
+  //handle spinner
+  function handlepayment() {
+    setspinneropen(true);
+    setTimeout(() => {
+      setspinneropen(false);
+      navigate("/paymentpage");
+    }, 2000);
+  }
 
   // delete function
   function del(id: number): void {
@@ -52,13 +56,26 @@ const Cart = () => {
   }
 
   function decrease(id: number) {
-    const updated = cartData.map((item) =>
-      item.id === id
-        ? { ...item, quantity: Math.max(1, item.quantity - 1) }
-        : item
-    );
-    setCartData(updated);
-    localStorage.setItem("cart", JSON.stringify(updated));
+    const update = cartData.map((item) => {
+      if (item.id === id) {
+        if (item.quantity > 1) {
+          return {
+            ...item,
+            quantity: item.quantity - 1,
+          };
+        } else {
+          return {
+            ...item,
+            quantity: 1,
+          };
+        }
+      }
+
+      return item;
+    });
+
+    setCartData(update);
+    localStorage.setItem("cart", JSON.stringify(update));
   }
 
   function routing(path: string) {
@@ -140,7 +157,7 @@ const Cart = () => {
 
               {/* Price */}
               <p className="mt-3 text-lg sm:text-xl font-bold">
-                ₹{item.price * item.quantity}
+                ${item.price * item.quantity}
               </p>
 
               {/* Restaurant */}
@@ -209,7 +226,7 @@ const Cart = () => {
                   TOTAL:
                 </span>
                 <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-                  ₹
+                  $
                   {cartData.reduce(
                     (sum, item) => sum + item.price * item.quantity,
                     0
@@ -226,11 +243,16 @@ const Cart = () => {
             {/* place order button */}
             <button
               className="w-full mt-6 sm:mt-7 md:mt-8 bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold tracking-wide rounded-2xl py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg"
-              onClick={() => routing("/paymentpage")}
+              onClick={() => handlepayment()}
             >
               PLACE ORDER
             </button>
           </div>
+          {spinneropen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+              <Spinner className="w-12 h-12 text-white" />
+            </div>
+          )}
         </div>
       )}
     </>
