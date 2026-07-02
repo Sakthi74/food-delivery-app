@@ -13,7 +13,6 @@ export default function PopularBurgers() {
   const navigate = useNavigate();
 
   return (
-    // ✅ relative here makes z-index work on children
     <div className="min-h-screen relative bg-white">
       {/* Navbar */}
       <div className="px-4 py-6">
@@ -26,7 +25,7 @@ export default function PopularBurgers() {
           </div>
 
           <select
-            className="px-4 py-4 border rounded-full cursor-pointer hover:bg-orange-400 hover:text-white outline-none font-bold"
+            className="px-4 py-4 border rounded-full cursor-pointer hover:bg-orange-400  hover:text-white outline-none font-bold"
             value={filter}
             onChange={(e) => setfilter(e.target.value)}
           >

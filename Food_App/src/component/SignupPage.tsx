@@ -68,7 +68,7 @@ const SignupPage = () => {
             </button>
           </div>
           <button className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors">
-            SEND CODE
+            Sign Up
           </button>
 
           {/* Button */}

@@ -19,6 +19,10 @@ import FavoriteCarousel from "./component/FavoriteCarousel";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./component/Sidebar";
+import Profileinfo from "./component/Profileinfo";
+import EditProfile from "./component/EditProfile";
+import AddressPage from "./component/AddressPage";
+import AddAddress from "./component/AddAddress";
 
 function App() {
   return (
@@ -31,7 +35,7 @@ function App() {
       {/* <PopularBurgers /> */}
       {/* <OpeningPage /> */}
       {/* <Searching /> */}
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/location" element={<AccessLocation />} />
         <Route path="/Signup" element={<SignupPage />} />
@@ -43,9 +47,11 @@ function App() {
         <Route path="/popularburgers" element={<PopularBurgers />} />
         <Route path="/paymentpage" element={<Payment />} />
         <Route path="/slidingpage" element={<FavoriteCarousel />} />
-      </Routes> */}
-
-      <Sidebar />
+        <Route path="/profileinfo" element={<Profileinfo />} />
+        <Route path="/edit" element={<EditProfile />} />
+        <Route path="/Address" element={<AddressPage />} />
+        <Route path="/newAddress" element={<AddAddress />} />
+      </Routes>
     </>
   );
 }

@@ -6,6 +6,7 @@ import RestaurantData from "./RestrauntData";
 import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 interface Category {
   id: number;
@@ -17,6 +18,7 @@ interface Category {
 function Allcategories() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [popup, setpopup] = useState("none");
+  const [sidebarpopup, setsidebar] = useState<boolean>(false);
   const { locationName } = useContext(LocationContext);
   const navigate = useNavigate();
 
@@ -35,13 +37,16 @@ function Allcategories() {
   }, []);
 
   return (
-    <div className="min-h-screen max-w-screen relative bg-gray-50">
+    <div className="min-h-screen max-w-screen relative absolute bg-gray-50">
       {/* Main Container */}
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-5 md:px-8">
           <div className="flex items-center gap-4">
-            <RxHamburgerMenu className="text-3xl cursor-pointer" />
+            <RxHamburgerMenu
+              className="text-3xl cursor-pointer"
+              onClick={() => setsidebar(true)}
+            />
 
             <div className="flex flex-col">
               <span className="text-xs font-semibold text-orange-500">
@@ -123,7 +128,6 @@ function Allcategories() {
 
         <RestaurantData />
       </div>
-
       {popup === "block" && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
           <div className="relative w-full max-w-2xl rounded-3xl bg-amber-500 p-6 md:p-10">
@@ -156,6 +160,9 @@ function Allcategories() {
           </div>
         </div>
       )}
+      <div>
+        <Sidebar sidebarpopup={sidebarpopup} setSidebar={setsidebar} />
+      </div>
     </div>
   );
 }
