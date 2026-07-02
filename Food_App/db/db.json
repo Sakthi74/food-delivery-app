@@ -287,5 +287,52 @@
       "image": "../src/assets/Images/payment/PayPal.jpg",
       "isSelected": false
     }
+  ],
+
+  "MyOrderOngoing": [
+    {
+      "id": 1,
+      "restaurantName": "Pizza Hut",
+      "restaurantImage": "../src/assets/Images/rest1.jpg",
+      "orderId": "#162432",
+      "price": 35.25,
+      "items": 3,
+      "category": "Food",
+      "buttons": {
+        "primary": "Track Order",
+        "secondary": "Cancel",
+        "status":"completed"
+      }
+    },
+    {
+      "id": 2,
+      "restaurantName": "McDonald",
+      "restaurantImage": "../src/assets/Images/rest2.jpg",
+      "orderId": "#242432",
+      "price": 40.15,
+      "items": 12,
+      "category": "Drink",
+      "buttons": {
+        "primary": "Track Order",
+        "secondary": "Cancel",
+        "status": "completed"
+      }
+    },
+    {
+      "id": 3,
+      "restaurantName": "Starbucks",
+      "restaurantImage": "../src/assets/Images/rest3.jpg",
+      "orderId": "#240112",
+      "price": 10.2,
+      "items": 1,
+      "category": "Drink",
+      "buttons": {
+        "primary": "Track Order",
+        "secondary": "Cancel",
+        "status": "cancelled"
+      },
+      "rate":"Rate",
+      "re-order":"Re-order"
+    }
   ]
 }

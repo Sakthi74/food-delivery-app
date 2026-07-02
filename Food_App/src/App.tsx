@@ -13,6 +13,10 @@ import AccessLoaction from "./component/AccessLoaction";
 import OpeningPage from "./component/OpeningPage";
 import FilterSearch from "./component/FilterSearch";
 import FavoriteCarousel from "./component/FavoriteCarousel";
+import Addcard from "./component/Addcard";
+import PaymentOptions from "./components/ui/PaymentOptions";
+import MyOrdersOpening from "./component/MyOrdersOpening";
+import MyOrdersHistory from "./component/MyOrdersHistory";
 
 function App() {
   return (
@@ -20,10 +24,12 @@ function App() {
       {/* <Allcategories /> */}
       {/* <Allcategories1/>  */}
       {/* <RestaurantCarousel /> */}
-      {/* <Payment/> */}
+      {/* <Payment /> */}
+      {/* <MyOrdersOpening /> */}
+      {/* <MyOrdersHistory/> */}
       {/* <FilterSearch/> */}
-      {/* <ContratsPage/>
-      <PopularBurgers/> */}
+      {/* <ContratsPage/>*/}
+      {/* <PopularBurgers /> */}
       {/* <Login /> */}
       {/* <Allcategories /> */}
       {/* <Allcategories1/>  */}
@@ -33,7 +39,10 @@ function App() {
       {/* <AccessLoaction /> */}
       {/* <OpeningPage /> */}
       {/* <FavoriteCarousel/> */}
-      <Login/>
+      {/* <Login/> */}
+{/* <PaymentOptions/> */}
+      {/* <Addcard /> */}
+
     </>
   );
 }
