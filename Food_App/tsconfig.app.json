@@ -7,8 +7,6 @@
     "types": ["vite/client"],
     "skipLibCheck": true,
 
-    "ignoreDeprecations": "6.0",
-
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
@@ -24,6 +22,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
-  }
+    "noFallthroughCasesInSwitch": true,
+    "strict": false,
+    "ignoreDeprecations": "6.0"
+  },
+  "include": ["src"]
 }

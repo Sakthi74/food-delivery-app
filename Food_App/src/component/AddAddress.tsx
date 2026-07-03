@@ -4,15 +4,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useContext, useState } from "react";
 import { profileContext } from "../Context/ProfileContext";
 import Itemfilter from "./Itemfilter";
-
-interface Address {
-  id: number;
-  address: String;
-  street: String;
-  postCode: String;
-  apartment: String;
-  label: String;
-}
+import type { Address } from "../Context/ProfileContext";
 
 const AddAddress = () => {
   const [selected, setSelected] = useState<string | null>(null);
@@ -24,7 +16,13 @@ const AddAddress = () => {
     apartment: "",
     label: "Home",
   });
-  const { addresses, setAddresses } = useContext(profileContext);
+  const context = useContext(profileContext);
+
+  if (!context) {
+    throw new Error("ProfileContext not found");
+  }
+
+  const { addresses, setAddresses } = context;
   const navigate = useNavigate();
 
   function addBySubmit() {

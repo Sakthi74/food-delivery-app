@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Star, StarHalf } from 'lucide-react';
+import { Star, StarHalf } from "lucide-react";
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 const MAX_STARS = 5;
 
@@ -14,7 +14,7 @@ interface RatingProps {
 }
 
 const Rating = ({ rate, className, showScore, description }: RatingProps) => {
-  if (!rate) return;
+  if (!rate) return null;
 
   const renderStars = () => {
     const fullStars = Math.floor(rate);
@@ -28,7 +28,7 @@ const Rating = ({ rate, className, showScore, description }: RatingProps) => {
         <Star
           key={`rating-star-full-${i}`}
           className="fill-foreground stroke-foreground"
-        />,
+        />
       );
     }
 
@@ -37,7 +37,7 @@ const Rating = ({ rate, className, showScore, description }: RatingProps) => {
         <div key="rating-half-star" className="relative">
           <StarHalf className="absolute top-0 right-0 fill-foreground stroke-foreground" />
           <StarHalf className="absolute top-0 left-0 -scale-x-100 fill-foreground/15 stroke-foreground/15" />
-        </div>,
+        </div>
       );
     }
 
@@ -46,7 +46,7 @@ const Rating = ({ rate, className, showScore, description }: RatingProps) => {
         <Star
           key={`rating-star-empty-${i}`}
           className="fill-foreground/15 stroke-foreground/15"
-        />,
+        />
       );
     }
 
@@ -58,8 +58,8 @@ const Rating = ({ rate, className, showScore, description }: RatingProps) => {
     return (
       <div
         className={cn(
-          'flex items-center gap-2 [&_svg]:size-5 [&>div]:size-5',
-          className,
+          "flex items-center gap-2 [&_svg]:size-5 [&>div]:size-5",
+          className
         )}
       >
         {renderStars()}
@@ -71,7 +71,7 @@ const Rating = ({ rate, className, showScore, description }: RatingProps) => {
   // If description is provided, use vertical layout
   if (description) {
     return (
-      <div className={cn('flex flex-col gap-1', className)}>
+      <div className={cn("flex flex-col gap-1", className)}>
         <div className="flex items-center gap-2 [&_svg]:size-5 [&>div]:size-5">
           {renderStars()}
           {showScore && (
@@ -87,8 +87,8 @@ const Rating = ({ rate, className, showScore, description }: RatingProps) => {
   return (
     <div
       className={cn(
-        'flex items-center gap-1 [&_svg]:size-5 [&>div]:size-5',
-        className,
+        "flex items-center gap-1 [&_svg]:size-5 [&>div]:size-5",
+        className
       )}
     >
       {renderStars()}

@@ -8,13 +8,13 @@ export interface UserProfile {
   address: string;
 }
 
-interface Address {
+export interface Address {
   id: number;
   address: string;
   street: string;
   postCode: string;
   apartment: string;
-  label: "Home" | "Work" | "Other";
+  label: "HOME" | "OFFICE" | "OTHER";
 }
 
 interface ProfileContextType {

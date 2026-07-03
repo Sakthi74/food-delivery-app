@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { profileContext } from "../Context/ProfileContext";
@@ -17,7 +17,7 @@ const EditProfile = () => {
   }
   const { user, setUser } = context;
 
-  function saveUserProfile(profile: UserProfile) {
+  function saveUserProfile() {
     localStorage.setItem("user", JSON.stringify(user));
     alert("Profile saved successfully!");
   }

@@ -1,14 +1,18 @@
 import { User, Mail, Phone } from "lucide-react";
 import { useContext } from "react";
 import { profileContext } from "../Context/ProfileContext";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { NotebookPen, Settings } from "lucide-react";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const Profileinfo = () => {
   const navigate = useNavigate();
-  const { user } = useContext(profileContext);
+  const context = useContext(profileContext);
 
+  if (!context) {
+    throw new Error("ProfileContext must be used inside ProfileDataProvider");
+  }
+
+  const { user } = context;
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-4 w-full">

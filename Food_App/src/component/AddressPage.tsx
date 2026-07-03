@@ -6,8 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 const AddressPage = () => {
   const navigate = useNavigate();
-  const { addresses, setAddresses } = useContext(profileContext);
+  const context = useContext(profileContext);
 
+  if (!context) {
+    throw new Error("ProfileContext must be used inside ProfileDataProvider");
+  }
+
+  const { addresses, setAddresses } = context;
   // popup state
   const [editId, setEditId] = useState<number | null>(null);
   const [houseNumber, setHouseNumber] = useState("");
