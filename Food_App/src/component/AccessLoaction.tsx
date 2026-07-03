@@ -1,10 +1,10 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
 import locationlogo from "../assets/Images/locationlogo.jpg";
 import "../css/LocationAnimation.css";
 import { MapPin } from "lucide-react";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+
 import { useNavigate } from "react-router-dom";
 
 interface LocationDetails {
@@ -33,10 +33,6 @@ const AccessLoaction = () => {
   };
 
   const navigate = useNavigate();
-
-  function routing(path: string) {
-    navigate(path);
-  }
 
   console.log(location);
   return (

@@ -1,15 +1,10 @@
-import React from "react";
-
 import Login from "./component/Login";
 import Details from "./component/Details";
 import PopularBurgers from "./component/PopularBurgers";
 import AccessLocation from "./component/AccessLoaction";
-import OpeningPage from "./component/OpeningPage";
-import Searching from "./component/Searching";
 
 import SignupPage from "./component/SignupPage";
-import { LocationContext } from "./Context/LocationContext";
-import ForgotPassword from "./component/ForgotPassword";
+
 import Verification from "../src/component/Verification";
 import Allcategories from "./component/Allcategories";
 import RestarauntView from "./component/RestarauntView";
@@ -17,8 +12,8 @@ import Cart from "./component/Cart";
 import Payment from "./component/Payment";
 import FavoriteCarousel from "./component/FavoriteCarousel";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Sidebar from "./component/Sidebar";
+import { Routes, Route } from "react-router-dom";
+
 import Profileinfo from "./component/Profileinfo";
 import EditProfile from "./component/EditProfile";
 import AddressPage from "./component/AddressPage";
@@ -30,14 +25,6 @@ import MyOrdersHistory from "./component/MyOrdersHistory";
 function App() {
   return (
     <>
-      {/* <Login /> */}
-      {/* <Allcategories /> */}
-      {/* <Allcategories1 /> */}
-      {/* <RestarauntView /> */}
-      {/* <Details /> */}
-      {/* <PopularBurgers /> */}
-      {/* <OpeningPage /> */}
-      {/* <Searching /> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/Login" element={<Login />} />
