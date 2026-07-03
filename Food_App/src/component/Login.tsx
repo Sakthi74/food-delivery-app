@@ -17,7 +17,7 @@ const Login = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4000); //show splash for  2 seconds
+    }, 2500); //show splash for  2 seconds
     return () => clearTimeout(timer);
   }, []);
 
@@ -84,7 +84,12 @@ const Login = () => {
           {/* SPAN + INPUT */}
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-2 w-full md:w-[400px] lg:w-[700px]">
-              <span className="text-black font-thin text-sm p-1">EMAIL</span>
+              <span className="text-black font-thin text-sm p-1">
+                EMAIL{" "}
+                <strong>
+                  <sup className="text-red-500">*</sup>
+                </strong>
+              </span>
               <input
                 type="email"
                 ref={emailRef}
@@ -95,7 +100,9 @@ const Login = () => {
 
             {/* PASSWORD */}
             <div className="relative  w-full md:w-[400px] lg:w-[700px]">
-              <span className="text-black font-thin text-sm p-1">PASSWORD</span>
+              <span className="text-black font-thin text-sm p-1">
+                PASSWORD <sup className="text-red-500">*</sup>
+              </span>
               <input
                 type={showPassword ? "text" : "password"}
                 ref={passwordRef}

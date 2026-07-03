@@ -1,7 +1,9 @@
 import { createContext, useState } from "react";
 export const LocationContext = createContext<any>(null);
 export const LocationProvider = ({ children }: any) => {
-  const [locationName, setLocationName] = useState("");
+  const [locationName, setLocationName] = useState(() => {
+    return localStorage.getItem("location") || "";
+  });
 
   return (
     <LocationContext.Provider

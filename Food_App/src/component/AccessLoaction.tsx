@@ -26,7 +26,7 @@ const AccessLoaction = () => {
       );
 
       const data = await response.json();
-
+      localStorage.setItem("location", data.display_name);
       setLocationName(data.display_name);
       navigate("/search");
     });

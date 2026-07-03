@@ -1,8 +1,9 @@
-import { React, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiClock, FiSearch, FiTruck } from "react-icons/fi";
 import { FiShoppingBag } from "react-icons/fi";
 import { FaRegStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 interface Category {
   id: number;
@@ -23,6 +24,7 @@ interface Restaurant {
 const Searching = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:3001/categories")

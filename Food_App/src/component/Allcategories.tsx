@@ -18,6 +18,7 @@ interface Category {
 function Allcategories() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [popup, setpopup] = useState("none");
+  const [search, setSearch] = useState("");
   const [sidebarpopup, setsidebar] = useState<boolean>(false);
   const { locationName } = useContext(LocationContext);
   const navigate = useNavigate();
@@ -36,10 +37,14 @@ function Allcategories() {
     return () => clearTimeout(timer);
   }, []);
 
+  const filtered = categories.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="min-h-screen max-w-screen relative absolute bg-gray-50">
       {/* Main Container */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-5 md:px-8">
           <div className="flex items-center gap-4">
@@ -84,6 +89,8 @@ function Allcategories() {
 
           <input
             type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search dishes, restaurants"
             className="w-full h-12 pl-12 pr-4 bg-white border rounded-2xl shadow-sm outline-none focus:ring-2 focus:ring-orange-400 md:h-14"
           />
@@ -102,7 +109,7 @@ function Allcategories() {
           </div>
 
           <div className="flex gap-5 pb-3 overflow-x-auto scrollbar-hide">
-            {categories.map((category) => (
+            {filtered.map((category) => (
               <div
                 key={category.id}
                 className="min-w-[200px]  cursor-pointer sm:min-w-[220px] md:min-w-[240px] bg-white rounded-3xl shadow-lg p-4 flex-shrink-0 hover:shadow-xl transition"

@@ -5,6 +5,7 @@ import { X, ChevronRight } from "lucide-react";
 import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
 import { Spinner } from "@/components/ui/spinner";
+import Payment from "./Payment";
 
 const Cart = () => {
   interface CartItem {
@@ -19,6 +20,7 @@ const Cart = () => {
 
   const [cartData, setCartData] = useState<CartItem[]>([]);
   const [open, setopen] = useState<boolean>(false);
+  const [breakdownOpen, setbreakdownOpen] = useState<boolean>(false);
   const [spinneropen, setspinneropen] = useState<boolean>(false);
 
   const { locationName } = useContext(LocationContext);
@@ -29,6 +31,12 @@ const Cart = () => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     setCartData(cart);
   }, []);
+
+  const total = cartData.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+  localStorage.setItem("totalamt", JSON.stringify(total));
 
   //handle spinner
   function handlepayment() {
@@ -120,7 +128,7 @@ const Cart = () => {
 
           {/* done button */}
           <button
-            className="text-green-400 text-sm sm:text-base md:text-lg font-bold underline underline-offset-2"
+            className="text-green-400 cursor-pointer text-sm sm:text-base md:text-lg font-bold underline underline-offset-2"
             onClick={() => setopen(true)}
           >
             DONE
@@ -130,7 +138,7 @@ const Cart = () => {
         {cartData.map((item) => (
           <div
             key={item.id}
-            className="flex md:w-[550px] w-[100%] lg:w-[550px]  text-white bg-[#1A1A1A] h-fit  rounded-3xl p-4"
+            className="flex md:w-[550px] w-[100%] lg:w-[40%] lg:ml-[520px] justify-center items-center text-white bg-[#1A1A1A] h-fit  rounded-3xl p-4"
           >
             {/* Image */}
             <img
@@ -207,7 +215,10 @@ const Cart = () => {
               <span className="text-xs sm:text-sm md:text-base font-semibold text-gray-400 tracking-wide">
                 DELIVERY ADDRESS
               </span>
-              <button className="text-xs sm:text-sm md:text-base font-semibold text-orange-500 underline underline-offset-2">
+              <button
+                className="text-xs sm:text-sm md:text-base font-semibold text-orange-500 underline underline-offset-2 cursor-pointer"
+                onClick={() => navigate("/Address")}
+              >
                 EDIT
               </button>
             </div>
@@ -226,20 +237,84 @@ const Cart = () => {
                   TOTAL:
                 </span>
                 <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-                  $
-                  {cartData.reduce(
-                    (sum, item) => sum + item.price * item.quantity,
-                    0
-                  )}
+                  ${total}
                 </span>
               </div>
 
-              <button className="flex items-center gap-1 text-sm sm:text-base md:text-lg font-semibold text-orange-500">
+              <button
+                className="flex items-center gap-1 text-sm sm:text-base cursor-pointer md:text-lg font-semibold text-orange-500"
+                onClick={() => setbreakdownOpen(!breakdownOpen)}
+              >
                 Breakdown
                 <ChevronRight size={18} />
               </button>
             </div>
+            {breakdownOpen && (
+              <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200">
+                <table className="w-full text-sm">
+                  {/* Single header for all rows */}
+                  <thead className="bg-orange-500 text-white">
+                    <tr>
+                      <th className="px-4 py-3 text-left font-semibold">ID</th>
+                      <th className="px-4 py-3 text-left font-semibold">
+                        Item Name
+                      </th>
+                      <th className="px-4 py-3 text-right font-semibold">
+                        Price
+                      </th>
+                      <th className="px-4 py-3 text-right font-semibold">
+                        Qty
+                      </th>
+                      <th className="px-4 py-3 text-right font-semibold">
+                        Total
+                      </th>
+                    </tr>
+                  </thead>
 
+                  <tbody>
+                    {cartData.map((item, index) => (
+                      <tr
+                        key={item.id}
+                        className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                      >
+                        <td className="px-4 py-3 text-gray-500">{item.id}</td>
+                        <td className="px-4 py-3 font-medium text-gray-800">
+                          {item.name}
+                        </td>
+                        <td className="px-4 py-3 text-right text-gray-600">
+                          ₹{item.price}
+                        </td>
+                        <td className="px-4 py-3 text-right text-gray-600">
+                          {item.quantity}
+                        </td>
+                        <td className="px-4 py-3 text-right font-bold text-orange-500">
+                          ${item.price * item.quantity}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+
+                  {/* Grand total row */}
+                  <tfoot className="border-t border-gray-200 bg-gray-50">
+                    <tr>
+                      <td
+                        colSpan={4}
+                        className="px-4 py-3 font-semibold text-gray-700 text-right"
+                      >
+                        Grand Total :
+                      </td>
+                      <td className="px-4 py-3 text-right font-bold text-red-400">
+                        <strong className=" p-1"> $</strong>
+                        {cartData.reduce(
+                          (sum, item) => sum + item.price * item.quantity,
+                          0
+                        )}
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            )}
             {/* place order button */}
             <button
               className="w-full mt-6 sm:mt-7 md:mt-8 bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold tracking-wide rounded-2xl py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg"

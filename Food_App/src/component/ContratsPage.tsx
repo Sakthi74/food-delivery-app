@@ -1,7 +1,9 @@
 import React from "react";
 import congrats from "../assets/Images/congtrats.png";
+import { useNavigate } from "react-router-dom";
 
 function ContratsPage() {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-center items-center px-4 py-6">
       <div className="w-full max-w-xl text-center">
@@ -27,7 +29,7 @@ function ContratsPage() {
         </p>
 
         {/* Button */}
-        <button className="mt-8 w-full sm:w-auto px-10 sm:px-16 py-3 bg-[#FF7622] text-white rounded-xl font-semibold hover:bg-orange-600 transition">
+        <button className="mt-8 w-full sm:w-auto px-10 sm:px-16 py-3 bg-[#FF7622] text-white rounded-xl font-semibold hover:bg-orange-600 transition" onClick={()=>navigate("/trackorder")}>
           TRACK ORDER
         </button>
       </div>

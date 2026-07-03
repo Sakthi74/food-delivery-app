@@ -23,6 +23,9 @@ import Profileinfo from "./component/Profileinfo";
 import EditProfile from "./component/EditProfile";
 import AddressPage from "./component/AddressPage";
 import AddAddress from "./component/AddAddress";
+import ContratsPage from "./component/ContratsPage";
+import MyOrdersOpening from "./component/MyOrdersOpening";
+import MyOrdersHistory from "./component/MyOrdersHistory";
 
 function App() {
   return (
@@ -37,6 +40,7 @@ function App() {
       {/* <Searching /> */}
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/location" element={<AccessLocation />} />
         <Route path="/Signup" element={<SignupPage />} />
         <Route path="/verify" element={<Verification />} />
@@ -51,6 +55,9 @@ function App() {
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/Address" element={<AddressPage />} />
         <Route path="/newAddress" element={<AddAddress />} />
+        <Route path="/congrats" element={<ContratsPage />} />
+        <Route path="/trackorder" element={<MyOrdersOpening />} />
+        <Route path="/history" element={<MyOrdersHistory />} />
       </Routes>
     </>
   );

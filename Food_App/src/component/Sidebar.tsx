@@ -302,7 +302,10 @@ const Sidebar = ({
           {/* sub div1 */}
           <div className="flex items-center justify-between ">
             {/* icon and h1 div */}
-            <div className="flex items-center gap-2">
+            <div
+              className="flex items-center gap-2"
+              onClick={() => navigate("/Login")}
+            >
               <div>
                 {" "}
                 <LogOut className="text-[#fc7d87]" />

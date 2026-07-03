@@ -58,11 +58,11 @@ const AddAddress = () => {
           {/* SPAN + INPUT */}
           <div className="flex flex-col w-full md:w-[400px] lg:w-[900px]   gap-2">
             <span className="text-black font-thin text-sm p-1">
-              ADDRESS<sup className="text-red-500">*</sup>
+              House/Office number<sup className="text-red-500">*</sup>
             </span>
             <input
               type="text"
-              placeholder="example@gmail.com"
+              placeholder="House/Office number"
               required
               value={newAddress.address}
               onChange={(e) =>
@@ -70,6 +70,24 @@ const AddAddress = () => {
               }
               className="w-full  border bg-[#f0f5fa]  border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-[#ff7622]"
             />
+            <div className="relative  gap-2 w-full md:w-[400px] lg:w-[900px]">
+              <span className="text-black font-thin text-sm p-1">
+                HOUSE/APARTMENT/OFFICE NAME{" "}
+                <strong className="text-red-500">*</strong>
+              </span>
+              <input
+                placeholder="eg : Los Polos Hermanos"
+                className="w-full h-fit  border bg-[#f0f5fa]  border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-[#ff7622]"
+                required
+                value={newAddress.apartment}
+                onChange={(e) =>
+                  setNewAddress({
+                    ...newAddress,
+                    apartment: e.target.value,
+                  })
+                }
+              />
+            </div>
           </div>
           <div className="flex gap-4 w-full md:w-[400px] lg:w-[900px]">
             {/* Street */}
@@ -78,8 +96,8 @@ const AddAddress = () => {
                 STREET<sup className="text-red-500">*</sup>
               </span>
               <input
-                type="email"
-                placeholder="example@gmail.com"
+                type="text"
+                placeholder="eg : Court House street"
                 required
                 value={newAddress.street}
                 onChange={(e) =>
@@ -108,23 +126,6 @@ const AddAddress = () => {
                 className="w-full border bg-[#f0f5fa] border-gray-300 rounded-lg px-4 py-6 pr-12 focus:outline-none focus:border-[#ff7622]"
               />
             </div>
-          </div>
-          <div className="relative  gap-2 w-full md:w-[400px] lg:w-[900px]">
-            <span className="text-black font-thin text-sm p-1">
-              APARTMENT <strong className="text-red-500">*</strong>
-            </span>
-            <input
-              placeholder="Enter apartment details"
-              className="w-full h-fit  border bg-[#f0f5fa]  border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-[#ff7622]"
-              required
-              value={newAddress.apartment}
-              onChange={(e) =>
-                setNewAddress({
-                  ...newAddress,
-                  apartment: e.target.value,
-                })
-              }
-            />
           </div>
 
           <div className="p-3 cursor-pointer  justify-center items-center">
