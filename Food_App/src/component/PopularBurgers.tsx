@@ -55,7 +55,6 @@ export default function PopularBurgers() {
 
       <BurgerComponent filter={filter} />
 
-      {/* ✅ Moved to BOTTOM of JSX so it renders on top of everything */}
       {showFilter && (
         <div
           className="fixed inset-0 z-[999px] flex items-end justify-center bg-black/40"

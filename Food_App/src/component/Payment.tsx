@@ -43,8 +43,26 @@ function Payment() {
           </p>
         </div>
 
+        {cardLast4 && (
+          <div className="p-[10px] my-[30px] bg-[#F4F5F7]">
+            <h1 className="text-xl font-bold">Mater Card</h1>
+            <div className="flex justify-between ">
+              <div className="flex ">
+                <img src={mastercard} className="h-[50px] w-[100px]" alt="" />
+                <p className="ml-[20px] text-3xl">************ {cardLast4}</p>
+              </div>
+              <div>
+                <MdKeyboardArrowDown className="text-3xl" />{" "}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Add Button */}
-        <button className="mt-6 w-full border-2 cursor-pointer border-orange-400 text-orange-500 rounded-lg py-4 flex justify-center items-center gap-2 hover:bg-orange-50 transition">
+        <button
+          onClick={AddCard}
+          className="mt-6 w-full border-2 cursor-pointer border-orange-400 text-orange-500 rounded-lg py-4 flex justify-center items-center gap-2 hover:bg-orange-50 transition"
+        >
           <FiPlus size={20} />
           ADD NEW
         </button>
@@ -62,6 +80,101 @@ function Payment() {
         <button className="w-full cursor-pointer bg-orange-500 text-white py-4 rounded-xl font-semibold hover:bg-orange-600 transition">
           Pay & Confirm
         </button>
+      </div>
+
+      <div className={`absolute ${popup ? "block" : "hidden"} top-0 w-full `}>
+        {" "}
+        <div className="">
+          {/* Header */}
+          <div className="flex bg-white p-[10px]">
+            <div className="bg-[#ECF0F4] p-[10px] rounded-3xl ml-[15px]">
+              <IoClose onClick={() => setPopup(false)} />
+            </div>
+
+            <div className="ml-[15px] mt-[5px] font-medium">Add Card</div>
+          </div>
+
+          {/* Form */}
+          <div className="min-h-screen bg-white flex justify-center items-center p-4">
+            <div className="w-full max-w-sm">
+              {/* Card Holder Name */}
+              <div className="mb-5">
+                <label className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider">
+                  Card Holder Name <strong className="text-red-500">*</strong>
+                </label>
+
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="ENTER HOLDER NAME"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="mt-2 w-full bg-gray-100 rounded-lg p-4 outline-none text-gray-700"
+                />
+              </div>
+
+              {/* Card Number */}
+              <div className="mb-5">
+                <label className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider">
+                  Card Number
+                </label>
+                <strong className="text-red-500">*</strong>
+
+                <input
+                  type="text"
+                  name="cardNumber"
+                  placeholder="____  ____  ____  ____"
+                  value={formData.cardNumber}
+                  onChange={handleChange}
+                  className="mt-2 w-full bg-gray-100 rounded-lg p-4 outline-none text-gray-700 tracking-widest"
+                />
+              </div>
+
+              {/* Expiry & CVC */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                <div>
+                  <label className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider">
+                    Expire Date
+                  </label>
+                  <strong className="text-red-500">*</strong>
+
+                  <input
+                    type="text"
+                    name="expiry"
+                    placeholder="MM/YYYY"
+                    value={formData.expiry}
+                    onChange={handleChange}
+                    className="mt-2 w-full bg-gray-100 rounded-lg p-4 outline-none text-gray-700"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider">
+                    CVC
+                  </label>
+
+                  <input
+                    type="password"
+                    name="cvc"
+                    placeholder="***"
+                    value={formData.cvc}
+                    onChange={handleChange}
+                    className="mt-2 w-full bg-gray-100 rounded-lg p-4 outline-none text-gray-700"
+                  />
+                </div>
+              </div>
+
+              {/* Button */}
+              <button
+                onClick={() => setPopup(false)}
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 rounded-xl transition"
+              >
+                ADD & MAKE PAYMENT
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
