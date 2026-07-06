@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { FiClock, FiSearch, FiTruck, FiShoppingBag } from "react-icons/fi";
+import { FiSearch, FiShoppingBag } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { FaRegStar } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import RestaurantData from "./RestrauntData";
+import { useContext } from "react";
+import { LocationContext } from "../Context/LocationContext";
+import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 interface Category {
   id: number;
@@ -11,65 +15,67 @@ interface Category {
   image: string;
 }
 
-interface Restaurant {
-  id: number;
-  name: string;
-  rating: number;
-  deliveryFee: string;
-  deliveryTime: string;
-  description: string;
-  image: string;
-  category: string;
-}
-
 function Allcategories() {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [popup, setpopup] = useState("none");
+  const [search, setSearch] = useState("");
+  const [sidebarpopup, setsidebar] = useState<boolean>(false);
+  const { locationName } = useContext(LocationContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3001/categories")
+    fetch(
+      "https://raw.githubusercontent.com/Sakthi74/food-app-api/master/db.json"
+    )
       .then((res) => res.json())
-      .then((data: Category[]) => setCategories(data))
+      .then((data: Category[]) => setCategories(data.categories))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3001/restaurants")
-      .then((res) => res.json())
-      .then((data: Restaurant[]) => setRestaurants(data))
-      .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setpopup("block");
     }, 2000);
+    return () => clearTimeout(timer);
   }, []);
 
+  const filtered = categories.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div className="min-h-screen relative bg-gray-50">
+    <div className="min-h-screen max-w-screen relative absolute bg-gray-50">
       {/* Main Container */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-5 md:px-8">
           <div className="flex items-center gap-4">
-            <RxHamburgerMenu className="text-3xl cursor-pointer" />
+            <RxHamburgerMenu
+              className="text-3xl cursor-pointer"
+              onClick={() => setsidebar(true)}
+            />
 
             <div className="flex flex-col">
               <span className="text-xs font-semibold text-orange-500">
                 DELIVER TO
               </span>
 
-              <select className="text-sm font-medium bg-transparent outline-none">
-                <option>Halal Lab Office</option>
+              <select className="text-sm font-medium bg-transparent outline-none ">
+                <option className="">
+                  {locationName.length > 30
+                    ? locationName.slice(0, 30) + "..."
+                    : locationName}
+                </option>
                 <option>Home</option>
                 <option>Office</option>
               </select>
             </div>
           </div>
 
-          <FiShoppingBag className="text-3xl cursor-pointer" />
+          <FiShoppingBag
+            className="text-3xl cursor-pointer bg-black text-white rounded-full"
+            onClick={() => navigate("/cart")}
+          />
         </div>
 
         {/* Greeting */}
@@ -85,6 +91,8 @@ function Allcategories() {
 
           <input
             type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search dishes, restaurants"
             className="w-full h-12 pl-12 pr-4 bg-white border rounded-2xl shadow-sm outline-none focus:ring-2 focus:ring-orange-400 md:h-14"
           />
@@ -92,10 +100,18 @@ function Allcategories() {
 
         {/* Categories */}
         <div className="px-4 mt-10 md:px-8">
-          <h2 className="mb-5 text-2xl font-bold">All Categories</h2>
+          <div className="flex justify-between">
+            <h2 className="mb-5 text-2xl font-semibold">All Categories</h2>
+            <h1
+              className="cursor-pointer hover:text-green-400"
+              onClick={() => navigate("/popularburgers")}
+            >
+              See All
+            </h1>
+          </div>
 
           <div className="flex gap-5 pb-3 overflow-x-auto scrollbar-hide">
-            {categories.map((category) => (
+            {filtered.map((category) => (
               <div
                 key={category.id}
                 className="min-w-[200px]  cursor-pointer sm:min-w-[220px] md:min-w-[240px] bg-white rounded-3xl shadow-lg p-4 flex-shrink-0 hover:shadow-xl transition"
@@ -119,56 +135,15 @@ function Allcategories() {
           </div>
         </div>
 
-        {/* Restaurants */}
-        <div className="px-4 py-10 md:px-8">
-          <h2 className="mb-6 text-2xl font-bold">Open Restaurants</h2>
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {restaurants.map((restaurant) => (
-              <div
-                key={restaurant.id}
-                className="overflow-hidden cursor-pointer transition duration-300 rounded-3xl hover:shadow-2xl"
-              >
-                <img
-                  src={restaurant.image}
-                  alt={restaurant.name}
-                  className="object-cover w-full h-52"
-                />
-
-                <div className="p-5">
-                  <h3 className="text-xl font-semibold">{restaurant.name}</h3>
-                  <p className="mt-4 text-gray-500">{restaurant.description}</p>
-
-                  <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <FaRegStar className="text-yellow-500" />
-                      <span className="font-bold">{restaurant.rating}</span>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      <FiTruck className="text-yellow-500" />
-                      <span>{restaurant.deliveryFee}</span>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      <FiClock className="text-yellow-500" />
-                      <span>{restaurant.deliveryTime}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <RestaurantData />
       </div>
-
       {popup === "block" && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
           <div className="relative w-full max-w-2xl rounded-3xl bg-amber-500 p-6 md:p-10">
             {/* Close Button */}
             <button
               onClick={() => setpopup("none")}
-              className="absolute top-4 right-4 rounded-full bg-amber-700 p-3 text-white"
+              className="absolute top-4 right-4 rounded-full bg-amber-700 p-3 text-white cursor-pointer hover:bg-red-800 "
             >
               <IoClose size={24} />
             </button>
@@ -186,7 +161,7 @@ function Allcategories() {
 
               <button
                 onClick={() => setpopup("none")}
-                className="mt-8 w-full rounded-xl border-2 border-white py-4 text-lg font-semibold text-white hover:bg-white hover:text-amber-500"
+                className="mt-8 w-full rounded-xl border-2 border-white py-4 text-lg font-semibold text-amber-500 hover:bg-amber-500 bg-white hover:text-white cursor-pointer"
               >
                 GOT IT
               </button>
@@ -194,6 +169,9 @@ function Allcategories() {
           </div>
         </div>
       )}
+      <div>
+        <Sidebar sidebarpopup={sidebarpopup} setSidebar={setsidebar} />
+      </div>
     </div>
   );
 }

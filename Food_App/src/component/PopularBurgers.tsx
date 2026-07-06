@@ -1,53 +1,69 @@
-import React, { useState } from "react";
-import { FiSearch } from "react-icons/fi";
+import React, { useEffect, useState } from "react";
+import { FiSearch, FiFilter, FiTruck, FiClock } from "react-icons/fi";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { SlidersVertical } from "lucide-react";
 import BurgerComponent from "./BurgerComponent";
+import { FaPlus, FaRegStar } from "react-icons/fa";
+import { SlidersVertical } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import FilterSearch from "./FilterSearch";
 
 export default function PopularBurgers() {
-  const [showFilter, setShowFilter] = useState(false);
+  const [filter, setfilter] = useState<string>("All");
+  const [showFilter, setShowFilter] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen relative bg-white">
       {/* Navbar */}
       <div className="px-4 py-6">
         <div className="flex items-center justify-between">
-          {/* Back Button */}
-          <div className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer">
+          <div
+            className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
+            onClick={() => navigate(-1)}
+          >
             <MdKeyboardArrowLeft size={20} />
           </div>
 
-          {/* Category */}
-          <select className="px-4 py-3 border rounded-full font-bold outline-none hover:bg-[#FF7622] hover:text-white transition">
+          <select
+            className="px-4 py-4 border rounded-full cursor-pointer hover:bg-orange-400  hover:text-white outline-none font-bold"
+            value={filter}
+            onChange={(e) => setfilter(e.target.value)}
+          >
+            <option>All</option>
             <option>Burger</option>
             <option>Pizza</option>
             <option>Sandwich</option>
           </select>
 
-          {/* Search & Filter */}
           <div className="flex gap-3">
-            <div className="p-3 bg-[#121223] text-white rounded-full cursor-pointer">
+            <div
+              className="p-4 text-white rounded-full bg-[#121223] cursor-pointer"
+              onClick={() => setShowFilter(true)} // ✅ simplified
+            >
               <FiSearch size={18} />
             </div>
 
             <div
-              onClick={() => setShowFilter(true)}
               className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
+              onClick={() => setShowFilter(true)}
             >
-              <SlidersVertical size={20} />
+              <SlidersVertical />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Burger Section */}
-      <BurgerComponent />
+      <BurgerComponent filter={filter} />
 
-      {/* Filter Popup */}
       {showFilter && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
-          <div className="w-full max-w-md">
+        <div
+          className="fixed inset-0 z-[999px] flex items-end justify-center bg-black/40"
+          onClick={() => setShowFilter(false)}
+        >
+          <div
+            className="w-full max-w-md bg-white rounded-t-3xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <FilterSearch onClose={() => setShowFilter(false)} />
           </div>
         </div>

@@ -5,7 +5,7 @@
       "name": "Burger Bistro",
       "restaurant": "Rose Garden",
       "price": 40,
-      "image": "../src/assets/Images/bur_img1.jpg",
+      "image": "/Images/bur_img1.jpg",
       "category": "Burger"
     },
     {
@@ -13,7 +13,7 @@
       "name": "Smokin' Burger",
       "restaurant": "Cafenio Restaurant",
       "price": 60,
-      "image": "../src/assets/Images/bur_img2.jpg",
+      "image": "/Images/bur_img2.jpg",
       "category": "Burger"
     },
     {
@@ -21,7 +21,7 @@
       "name": "Buffalo Burgers",
       "restaurant": "Kaji Firm Kitchen",
       "price": 75,
-      "image": "../src/assets/Images/bur_img3.jpg",
+      "image": "/Images/bur_img3.jpg",
       "category": "Burger"
     },
     {
@@ -29,7 +29,7 @@
       "name": "Bullseye Burgers",
       "restaurant": "Kabob Restaurant",
       "price": 94,
-      "image": "../src/assets/Images/bur_img4.jpg",
+      "image": "/Images/bur_img4.jpg",
       "category": "Burger"
     },
     {
@@ -37,7 +37,7 @@
       "name": "Cheese Delight Burger",
       "restaurant": "Food Corner",
       "price": 55,
-      "image": "../src/assets/Images/bur_img5.jpg",
+      "image": "/Images/bur_img5.jpg",
       "category": "Burger"
     },
     {
@@ -45,7 +45,7 @@
       "name": "Double Patty Burger",
       "restaurant": "Burger House",
       "price": 85,
-      "image": "../src/assets/Images/bur_img6.jpg",
+      "image": "/Images/bur_img6.jpg",
       "category": "Burger"
     },
     {
@@ -53,7 +53,7 @@
       "name": "Spicy Chicken Burger",
       "restaurant": "Hot Bites",
       "price": 70,
-      "image": "../src/assets/Images/bur_img7.jpg",
+      "image": "/Images/bur_img7.jpg",
       "category": "Burger"
     },
     {
@@ -61,7 +61,7 @@
       "name": "BBQ Bacon Burger",
       "restaurant": "Grill Master",
       "price": 110,
-      "image": "../src/assets/Images/bur_img8.jpg",
+      "image": "/Images/bur_img8.jpg",
       "category": "Burger"
     },
     {
@@ -69,7 +69,7 @@
       "name": "Classic Beef Burger",
       "restaurant": "Meat Lovers",
       "price": 95,
-      "image": "../src/assets/Images/bur_img1.jpg",
+      "image": "/Images/bur_img1.jpg",
       "category": "Burger"
     },
     {
@@ -77,7 +77,7 @@
       "name": "Veggie Supreme Burger",
       "restaurant": "Green Plate",
       "price": 50,
-      "image": "../src/assets/Images/bur_img2.jpg",
+      "image": "/Images/bur_img2.jpg",
       "category": "Burger"
     },
     {
@@ -85,7 +85,7 @@
       "name": "Mushroom Swiss Burger",
       "restaurant": "Urban Kitchen",
       "price": 90,
-      "image": "../src/assets/Images/bur_img3.jpg",
+      "image": "/Images/bur_img3.jpg",
       "category": "Burger"
     },
     {
@@ -93,11 +93,122 @@
       "name": "Crunchy Zinger Burger",
       "restaurant": "Fast Feast",
       "price": 80,
-      "image": "../src/assets/Images/bur_img5.jpg",
+      "image": "/Images/bur_img5.jpg",
       "category": "Burger"
+    },
+    {
+      "id": 13,
+      "name": "Margherita Pizza",
+      "restaurant": "Pizza Palace",
+      "price": 120,
+      "image": "/Images/allcatecories/Pizza.jpg",
+      "category": "Pizza"
+    },
+    {
+      "id": 14,
+      "name": "Pepperoni Pizza",
+      "restaurant": "Pizza Hub",
+      "price": 150,
+      "image": "/Images/pizza1.jpg",
+      "category": "Pizza"
+    },
+    {
+      "id": 15,
+      "name": "Veggie Supreme Pizza",
+      "restaurant": "Cheese Corner",
+      "price": 140,
+      "image": "/Images/pizza3.jpg",
+      "category": "Pizza"
+    },
+    {
+      "id": 16,
+      "name": "BBQ Chicken Pizza",
+      "restaurant": "Pizza Mania",
+      "price": 180,
+      "image": "/Images/pizza2.jpg",
+      "category": "Pizza"
+    },
+    {
+      "id": 17,
+      "name": "Farmhouse Pizza",
+      "restaurant": "Italian Oven",
+      "price": 160,
+      "image": "/Images/pizza4.jpg",
+      "category": "Pizza"
+    },
+    {
+      "id": 18,
+      "name": "Cheese Burst Pizza",
+      "restaurant": "Pizza World",
+      "price": 190,
+      "image": "/Images/pizza6.jpg",
+      "category": "Pizza"
+    },
+    {
+      "id": 19,
+      "name": "Mexican Fiesta Pizza",
+      "restaurant": "Hot Slice",
+      "price": 175,
+      "image": "/Images/pizza5.jpg",
+      "category": "Pizza"
+    },
+    {
+      "id": 20,
+      "name": "Grilled Chicken Sandwich",
+      "restaurant": "Sandwich Spot",
+      "price": 90,
+      "image": "/Images/sanwich2.jpg",
+      "category": "Sandwich"
+    },
+    {
+      "id": 21,
+      "name": "Veg Club Sandwich",
+      "restaurant": "Fresh Bites",
+      "price": 80,
+      "image": "/Images/sanwich1.jpg",
+      "category": "Sandwich"
+    },
+    {
+      "id": 22,
+      "name": "Cheese Corn Sandwich",
+      "restaurant": "Snack Hub",
+      "price": 85,
+      "image": "/Images/sanwich3.jpg",
+      "category": "Sandwich"
+    },
+    {
+      "id": 23,
+      "name": "Paneer Tikka Sandwich",
+      "restaurant": "Grill House",
+      "price": 95,
+      "image": "/Images/sanwich4.jpg",
+      "category": "Sandwich"
+    },
+    {
+      "id": 24,
+      "name": "Egg Mayo Sandwich",
+      "restaurant": "Toast Cafe",
+      "price": 75,
+      "image": "/Images/sanwich5.jpg",
+      "category": "Sandwich"
+    },
+    {
+      "id": 25,
+      "name": "Spicy Chicken Sandwich",
+      "restaurant": "Fast Feast",
+      "price": 110,
+      "image": "/Images/sanwich6.jpg",
+      "category": "Sandwich"
+    },
+    {
+      "id": 26,
+      "name": "Double Cheese Sandwich",
+      "restaurant": "Cheesy Delights",
+      "price": 100,
+      "image": "/Images/sanwich6.jpg",
+      "category": "Sandwich"
     }
   ],
-
   "restaurants": [
     {
       "id": 1,
@@ -106,7 +217,7 @@
       "deliveryFee": "Free",
       "deliveryTime": "20 min",
       "description": "Delicious spicy dishes made with fresh ingredients and authentic flavors.",
-      "image": "../src/assets/Images/rest1.jpg",
+      "image": "/Images/rest1.jpg",
       "category": "Restaurant"
     },
     {
@@ -116,7 +227,7 @@
       "deliveryFee": "Free",
       "deliveryTime": "18 min",
       "description": "A perfect place for family dining with a variety of cuisines.",
-      "image": "../src/assets/Images/rest2.jpg",
+      "image": "/Images/rest2.jpg",
       "category": "Restaurant"
     },
     {
@@ -126,7 +237,7 @@
       "deliveryFee": "$2",
       "deliveryTime": "25 min",
       "description": "Fresh seafood dishes prepared by experienced chefs.",
-      "image": "../src/assets/Images/rest3.jpg",
+      "image": "/Images/rest3.jpg",
       "category": "Restaurant"
     },
     {
@@ -136,7 +247,7 @@
       "deliveryFee": "Free",
       "deliveryTime": "15 min",
       "description": "Juicy burgers with premium ingredients and homemade sauces.",
-      "image": "../src/assets/Images/rest9.jpg",
+      "image": "/Images/rest9.jpg",
       "category": "Burger"
     },
     {
@@ -146,7 +257,7 @@
       "deliveryFee": "$3",
       "deliveryTime": "30 min",
       "description": "Authentic Italian pizzas baked in a traditional stone oven.",
-      "image": "../src/assets/Images/rest5.jpg",
+      "image": "/Images/rest5.jpg",
       "category": "Pizza"
     },
     {
@@ -156,7 +267,7 @@
       "deliveryFee": "Free",
       "deliveryTime": "22 min",
       "description": "Nutritious bowls packed with fresh vegetables and proteins.",
-      "image": "../src/assets/Images/rest6.jpg",
+      "image": "/Images/rest6.jpg",
       "category": "Healthy"
     },
     {
@@ -166,7 +277,7 @@
       "deliveryFee": "$2",
       "deliveryTime": "28 min",
       "description": "Smoky grilled meats and barbecue specialties.",
-      "image": "../src/assets/Images/rest7.jpg",
+      "image": "/Images/rest7.jpg",
       "category": "BBQ"
     },
     {
@@ -176,7 +287,7 @@
       "deliveryFee": "$4",
       "deliveryTime": "35 min",
       "description": "Fresh sushi and Japanese delicacies crafted daily.",
-      "image": "../src/assets/Images/rest7.jpg",
+      "image": "/Images/rest7.jpg",
       "category": "Japanese"
     },
     {
@@ -186,7 +297,7 @@
       "deliveryFee": "Free",
       "deliveryTime": "24 min",
       "description": "Traditional Indian curries with rich spices and flavors.",
-      "image": "../src/assets/Images/rest8.jpg",
+      "image": "/Images/rest8.jpg",
       "category": "Indian"
     },
     {
@@ -196,7 +307,7 @@
       "deliveryFee": "$1",
       "deliveryTime": "12 min",
       "description": "Cakes, pastries, and desserts made fresh every day.",
-      "image": "../src/assets/Images/rest9.jpg",
+      "image": "/Images/rest9.jpg",
       "category": "Dessert"
     }
   ],
@@ -205,86 +316,86 @@
       "id": 1,
       "name": "Pizza",
       "startingPrice": 70,
-      "image": "../src/assets/Images/allcatecories/Pizza.jpg"
+      "image": "/Images/allcatecories/Pizza.jpg"
     },
     {
       "id": 2,
       "name": "Burger",
       "startingPrice": 50,
-      "image": "../src/assets/Images/allcatecories/download (6).jpg"
+      "image": "/Images/allcatecories/download (6).jpg"
     },
     {
       "id": 3,
       "name": "Sandwich",
       "startingPrice": 45,
-      "image": "../src/assets/Images/allcatecories/Sandwich.jpg"
+      "image": "/Images/allcatecories/Sandwich.jpg"
     },
     {
       "id": 4,
       "name": "Pasta",
       "startingPrice": 80,
-      "image": "../src/assets/Images/allcatecories/download (7).jpg"
+      "image": "/Images/allcatecories/download (7).jpg"
     },
     {
       "id": 5,
       "name": "Fried Chicken",
       "startingPrice": 90,
-      "image": "../src/assets/Images/allcatecories/Fried Chicken.jpg"
+      "image": "/Images/allcatecories/Fried Chicken.jpg"
     },
     {
       "id": 6,
       "name": "Biryani",
       "startingPrice": 120,
-      "image": "../src/assets/Images/allcatecories/Biryani.jpg"
+      "image": "/Images/allcatecories/Biryani.jpg"
     },
     {
       "id": 7,
       "name": "Sushi",
       "startingPrice": 150,
-      "image": "../src/assets/Images/allcatecories/Sushi.jpg"
+      "image": "/Images/allcatecories/Sushi.jpg"
     },
     {
       "id": 8,
       "name": "Salad",
       "startingPrice": 60,
-      "image": "../src/assets/Images/allcatecories/Salad.jpg"
+      "image": "/Images/allcatecories/Salad.jpg"
     },
     {
       "id": 9,
       "name": "Tacos",
       "startingPrice": 75,
-      "image": "../src/assets/Images/allcatecories/Taco.jpg"
+      "image": "/Images/allcatecories/Taco.jpg"
     },
     {
       "id": 10,
       "name": "Desserts",
       "startingPrice": 40,
-      "image": "../src/assets/Images/allcatecories/Pudding.jpg"
+      "image": "/Images/allcatecories/Pudding.jpg"
     }
   ],
   "paymentMethods": [
     {
       "id": 1,
       "name": "Cash",
-      "image": "../src/assets/Images/payment/cash.png",
+      "image": "/Images/payment/cash.png",
       "isSelected": false
     },
     {
       "id": 2,
       "name": "Visa",
-      "image": "../src/assets/Images/payment/Visa.jpg",
+      "image": "/Images/payment/Visa.jpg",
       "isSelected": false
     },
     {
       "id": 3,
       "name": "Mastercard",
-      "image": "../src/assets/Images/payment/mastercard.png",
+      "image": "/Images/payment/mastercard.png",
       "isSelected": true
     },
     {
       "id": 4,
       "name": "PayPal",
-      "image": "../src/assets/Images/payment/PayPal.jpg",
+      "image": "/Images/payment/PayPal.jpg",
       "isSelected": false
     }
   ],
@@ -293,7 +404,7 @@
     {
       "id": 1,
       "restaurantName": "Pizza Hut",
-      "restaurantImage": "../src/assets/Images/rest1.jpg",
+      "restaurantImage": "/Images/rest1.jpg",
       "orderId": "#162432",
       "price": 35.25,
       "items": 3,
@@ -301,13 +412,13 @@
       "buttons": {
         "primary": "Track Order",
         "secondary": "Cancel",
-        "status":"completed"
+        "status": "completed"
       }
     },
     {
       "id": 2,
       "restaurantName": "McDonald",
-      "restaurantImage": "../src/assets/Images/rest2.jpg",
+      "restaurantImage": "/Images/rest2.jpg",
       "orderId": "#242432",
       "price": 40.15,
       "items": 12,
@@ -321,7 +432,7 @@
     {
       "id": 3,
       "restaurantName": "Starbucks",
-      "restaurantImage": "../src/assets/Images/rest3.jpg",
+      "restaurantImage": "/Images/rest3.jpg",
       "orderId": "#240112",
       "price": 10.2,
       "items": 1,
@@ -331,8 +442,8 @@
         "secondary": "Cancel",
         "status": "cancelled"
       },
-      "rate":"Rate",
-      "re-order":"Re-order"
+      "rate": "Rate",
+      "re-order": "Re-order"
     }
   ]
 }

@@ -17,7 +17,12 @@ const SignupPage = () => {
         <div className="-mt-10 bg-white rounded-t-3xl px-6 py-8 relative z-10 flex flex-col justify-center items-center">
           {/* SPAN + INPUT */}
           <div className="flex flex-col w-full md:w-[400px] lg:w-[700px]   gap-2">
-            <span className="text-black font-thin text-sm p-1">NAME</span>
+            <span className="text-black font-thin text-sm p-1">
+              NAME{" "}
+              <strong>
+                <sup className="text-red-500">*</sup>
+              </strong>
+            </span>
             <input
               type="text"
               placeholder="example@gmail.com"
@@ -25,7 +30,12 @@ const SignupPage = () => {
             />
           </div>
           <div className="flex flex-col gap-2 w-full md:w-[400px] lg:w-[700px]">
-            <span className="text-black font-thin text-sm p-1">EMAIL</span>
+            <span className="text-black font-thin text-sm p-1">
+              EMAIL{" "}
+              <strong>
+                <sup className="text-red-500">*</sup>
+              </strong>
+            </span>
             <input
               type="email"
               placeholder="example@gmail.com"
@@ -35,7 +45,12 @@ const SignupPage = () => {
 
           {/* PASSWORD */}
           <div className="relative  w-full md:w-[400px] lg:w-[700px]">
-            <span className="text-black font-thin text-sm p-1">PASSWORD</span>
+            <span className="text-black font-thin text-sm p-1">
+              PASSWORD{" "}
+              <strong>
+                <sup className="text-red-500">*</sup>
+              </strong>
+            </span>
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Enter password"
@@ -53,7 +68,11 @@ const SignupPage = () => {
           {/* RE ENTER PASSWORD */}
           <div className="relative  gap-2 w-full md:w-[400px] lg:w-[700px]">
             <span className="text-black font-thin text-sm p-1">
-              Re-Type Password
+              Re-Type Password{" "}
+              <strong>
+                {" "}
+                <sup className="text-red-500">*</sup>
+              </strong>
             </span>
             <input
               type={reshowPassword ? "text" : "password"}
@@ -68,7 +87,7 @@ const SignupPage = () => {
             </button>
           </div>
           <button className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors">
-            SEND CODE
+            Sign Up
           </button>
 
           {/* Button */}

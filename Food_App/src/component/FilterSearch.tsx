@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Itemfilter from "./Itemfilter";
 
 interface FilterSearchProps {
@@ -9,6 +9,7 @@ interface FilterSearchProps {
 
 function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
   const [selected, setSelected] = useState<string | undefined>("Delivery");
+  const [selectedDollar, setSelectDollar] = useState<string | undefined>("$");
   const [rating, setRating] = useState(0);
 
   return (
@@ -61,15 +62,24 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
         <p className="text-xs font-semibold text-gray-500 mb-4">PRICING</p>
 
         <div className="flex flex-wrap gap-3">
-          <button className="w-11 h-11 rounded-full border border-[#EFEFEF]">
+          <button
+            className={`${selectedDollar === "$" ? "border-2 bg-[#FF7622] w-11 h-11 rounded-full  text-white " : "border-2 bg-[#ffff] w-11 h-11 rounded-full  text-gray-500"}`}
+            onClick={() => setSelectDollar("$")}
+          >
             $
           </button>
 
-          <button className="w-11 h-11 rounded-full bg-[#FF7622] text-white">
+          <button
+            className={`${selectedDollar === "$$" ? "border-2 bg-[#FF7622] w-11 h-11 rounded-full  text-white " : "border-2 bg-[#ffff] w-11 h-11 rounded-full  text-gray-500"}`}
+            onClick={() => setSelectDollar("$$")}
+          >
             $$
           </button>
 
-          <button className="w-11 h-11 rounded-full border border-[#EFEFEF]">
+          <button
+            className={`${selectedDollar === "$$$" ? "border-2 bg-[#FF7622] w-11 h-11 rounded-full  text-white " : "border-2 bg-[#ffff] w-11 h-11 rounded-full  text-gray-500"}`}
+            onClick={() => setSelectDollar("$$$")}
+          >
             $$$
           </button>
         </div>
@@ -80,7 +90,7 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
         <p className="text-xs font-semibold text-gray-500 mb-4">RATING</p>
 
         <div className="flex flex-wrap gap-3">
-          {[1, 2, 3, 4, 5].map((star) => (
+          {[1, 1.5, 2, 3, 4, 5].map((star) => (
             <button
               key={star}
               onClick={() => setRating(star)}

@@ -4,74 +4,70 @@ import xIcon from "../assets/Images/x-icon.png";
 import fb from "../assets/Images/fb.png";
 import apple from "../assets/Images/apple.png";
 import OpeningPage from "./OpeningPage";
-
-import { FaStar } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
-import Itemfilter from "./Itemfilter";
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4000); //show splash for  2 seconds
+    }, 2500); //show splash for  2 seconds
     return () => clearTimeout(timer);
   }, []);
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+  if (loading) {
+    return <OpeningPage />;
+  }
 
-      if (!emailRef.current || !passwordRef.current) {
-        return;
-      }
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-      const email = emailRef.current.value.trim();
-      const password = passwordRef.current.value.trim();
+    if (!emailRef.current || !passwordRef.current) {
+      return;
+    }
 
-      // Email Validation
-      if (email === "") {
-        alert("Email is required");
-        emailRef.current.focus();
-        return;
-      }
+    const email = emailRef.current.value.trim();
+    const password = passwordRef.current.value.trim();
 
-      if (!email.includes("@")) {
-        alert("Please enter a valid email");
-        emailRef.current.focus();
-        return;
-      }
+    // Email Validation
+    if (email === "") {
+      alert("Email is required");
+      emailRef.current.focus();
+      return;
+    }
 
-      // Password Validation
-      if (password === "") {
-        alert("Password is required");
-        passwordRef.current.focus();
-        return;
-      }
+    if (!email.includes("@")) {
+      alert("Please enter a valid email");
+      emailRef.current.focus();
+      return;
+    }
 
-      if (password.length < 6) {
-        alert("Password must be at least 6 characters");
-        passwordRef.current.focus();
-        return;
-      }
+    // Password Validation
+    if (password === "") {
+      alert("Password is required");
+      passwordRef.current.focus();
+      return;
+    }
 
-        if (loading) {
-          return <OpeningPage />;
-        }
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters");
+      passwordRef.current.focus();
+      return;
+    }
 
-      // alert("Login Successful!");
+    // alert("Login Successful!");
+    navigate("/slidingpage");
 
-      // Clear input fields
-      emailRef.current.value = "";
-      passwordRef.current.value = "";
-    };
-
+    // Clear input fields
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
+  };
 
   return (
     <>
@@ -88,7 +84,12 @@ const Login = () => {
           {/* SPAN + INPUT */}
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-2 w-full md:w-[400px] lg:w-[700px]">
-              <span className="text-black font-thin text-sm p-1">EMAIL</span>
+              <span className="text-black font-thin text-sm p-1">
+                EMAIL{" "}
+                <strong>
+                  <sup className="text-red-500">*</sup>
+                </strong>
+              </span>
               <input
                 type="email"
                 ref={emailRef}
@@ -99,7 +100,9 @@ const Login = () => {
 
             {/* PASSWORD */}
             <div className="relative  w-full md:w-[400px] lg:w-[700px]">
-              <span className="text-black font-thin text-sm p-1">PASSWORD</span>
+              <span className="text-black font-thin text-sm p-1">
+                PASSWORD <sup className="text-red-500">*</sup>
+              </span>
               <input
                 type={showPassword ? "text" : "password"}
                 ref={passwordRef}
@@ -124,7 +127,10 @@ const Login = () => {
                   Remember me
                 </h6>
               </div>
-              <h6 className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer">
+              <h6
+                className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer"
+                onClick={() => navigate("/verify")}
+              >
                 Forgot Password
               </h6>
             </div>
@@ -138,7 +144,10 @@ const Login = () => {
               Don't have an account?
             </h6>
 
-            <h6 className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer">
+            <h6
+              className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer"
+              onClick={() => navigate("/signup")}
+            >
               SIGN UP
             </h6>
           </div>

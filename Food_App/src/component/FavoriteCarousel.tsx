@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-
-import type { CarouselApi } from "embla-carousel";
+import { type CarouselApi } from "@/components/ui/carousel";
 
 import image1 from "../assets/Images/favoritecarousel/img1.png";
 import image2 from "../assets/Images/favoritecarousel/img2.png";
@@ -40,6 +40,7 @@ const slides = [
 function FavoriteCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!api) return;
@@ -79,7 +80,6 @@ function FavoriteCarousel() {
         </Carousel>
 
         {/* Pagination Dots */}
-
         <div className="flex justify-center gap-2 mt-8">
           {slides.map((_, index) => (
             <button
@@ -94,12 +94,26 @@ function FavoriteCarousel() {
           ))}
         </div>
       </div>
+
       <div className="mt-[10px]">
         <div className="text-center mt-[10px]">
-          <button className="px-[125px] py-[10px] rounded-2xl bg-[#FF7622]">NEXT</button>
+          {/* ✅ NEXT scrolls carousel, on last slide navigates to /location */}
+          <button
+            className="px-[125px] py-[10px] rounded-2xl bg-[#FF7622] text-white font-bold"
+            onClick={() => {
+              if (current === slides.length - 1) {
+                navigate("/location");
+              } else {
+                api?.scrollNext();
+              }
+            }}
+          >
+            {current === slides.length - 1 ? "GET STARTED" : "NEXT"}
+          </button>
         </div>
+
         <div className="text-center mt-[10px]">
-          <button>skip</button>
+          <button onClick={() => navigate("/location")}>skip</button>
         </div>
       </div>
     </div>

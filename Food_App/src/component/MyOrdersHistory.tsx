@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 function MyOrdersHistory() {
   const [ongoing, setOngoing] = useState<any[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchOngoingOrders = async () => {
@@ -25,11 +27,14 @@ function MyOrdersHistory() {
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto bg-white min-h-screen">
+    <div className="max-w-screen flex flex-col  mx-auto bg-white min-h-screen">
       {/* Header */}
       <div className="flex items-center justify-between p-4 sm:p-6">
         <div className="flex items-center gap-3">
-          <button className="p-2 bg-gray-100 rounded-full">
+          <button
+            className="p-2 bg-gray-100 cursor-pointer rounded-full"
+            onClick={() => navigate("/trackorder")}
+          >
             <MdKeyboardArrowLeft size={24} />
           </button>
 
@@ -43,7 +48,10 @@ function MyOrdersHistory() {
 
       {/* Tabs */}
       <div className="flex">
-        <button className="w-1/2 py-3 text-gray-500 border-b border-gray-300 font-medium">
+        <button
+          className="w-1/2 py-3 text-gray-500 border-b border-gray-300 font-medium"
+          onClick={() => navigate("/trackorder")}
+        >
           Ongoing
         </button>
 

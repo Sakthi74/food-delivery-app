@@ -12,7 +12,7 @@ const Itemfilter = ({ categories, selected, onSelect }: Props) => {
         <button
           key={category}
           onClick={() => onSelect(category)}
-          className={`px-6 py-2 rounded-full ${
+          className={`px-6 py-1 md:py-3 lg:py-3 rounded-full ${
             selected === category
               ? "bg-orange-500 text-white"
               : "bg-white border"

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import pizza from "../assets/Images/pizza-removebg-preview.png";
+// import pizza from "../";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { HeartPlus } from "lucide-react";
 import { ChefHat } from "lucide-react";
@@ -14,17 +14,22 @@ import { Broccoli } from "lucide-react";
 import { EggOff } from "lucide-react";
 import { HeartMinus } from "lucide-react";
 import "../css/PizzaAnimation.css";
+import { useNavigate } from "react-router-dom";
 
 const Details = () => {
   const [count, setcount] = useState<number | undefined>(0);
   const [Selected, setSelected] = useState<string | undefined>("14");
   const [Fav, setFav] = useState<boolean | undefined>(false);
+  const navigate = useNavigate();
   return (
     <>
       <div className="relative flex  flex-col justify-start items-start">
         {/* backa arrow and detail div */}
         <div className="flex p-10 md:p-12 lg:p-16 items-start justify-start gap-4 md:gap-6 lg:gap-8 ">
-          <div className="p-3 md:p-4 bg-[#ECF0F4] rounded-full cursor-pointer">
+          <div
+            className="p-3 md:p-4 bg-[#ECF0F4] rounded-full cursor-pointer"
+            onClick={() => navigate(-1)}
+          >
             <MdKeyboardArrowLeft size={20} />
           </div>
 
@@ -36,7 +41,7 @@ const Details = () => {
         <div className="p-5 md:p-8 lg:p-10 w-full">
           <div className="bg-[#FFBF6D] rounded-3xl h-64 md:h-80 lg:h-96 relative">
             <img
-              src={pizza}
+              src="/Images/pizza-removebg-preview.png"
               alt="Pizza"
               className="relative bottom-8 h-56 md:h-72 lg:h-72 rotate-[20deg] animate-slidePizza"
             />

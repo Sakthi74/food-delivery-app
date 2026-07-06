@@ -9,6 +9,8 @@ import mastercard from "../assets/Images/payment/mastercard.png";
 import { IoClose } from "react-icons/io5";
 import { Carousel } from "@/components/ui/carousel";
 import Carousels from "@/components/ui/Carousels";
+import { useNavigate } from "react-router-dom";
+import { Spinner } from "@/components/ui/spinner";
 
 interface Payments {
   id: number;
@@ -36,16 +38,19 @@ interface FormData {
 
 const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
   const [popup, setPopup] = useState(false);
+  const [spinner, setSpinner] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: initialFormData?.name ?? "",
     cardNumber: initialFormData?.cardNumber ?? "",
     expiry: initialFormData?.expiry ?? "",
     cvc: initialFormData?.cvc ?? "",
-  } );
+  });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  const navigate = useNavigate();
 
   function AddCard() {
     setPopup(true);
@@ -57,12 +62,24 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
     });
   }
 
+  function paymentConfirm() {
+    setPopup(false);
+    setSpinner(true);
+
+    setTimeout(() => {
+      setSpinner(false);
+      navigate("/congrats");
+    }, 3000);
+  }
+
+  const billAmt = JSON.parse(localStorage.getItem("totalamt") || "0");
+
   const cardLast4 = formData.cardNumber?.slice(-4) ?? "";
 
   return (
     <div className="max-w-5xl relative mx-auto bg-white min-h-screen">
       {/* Header */}
-      <div className="flex items-center gap-3 p-4">
+      <div className="flex items-center gap-3 p-4" onClick={() => navigate(-1)}>
         <button className="p-2 bg-gray-100 rounded-full">
           <MdKeyboardArrowLeft size={24} />
         </button>
@@ -118,12 +135,15 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
       <div className="px-4 md:px-6 flex items-center">
         <span className="text-gray-400 text-sm">TOTAL :</span>
 
-        <span className="text-2xl font-semibold ml-3">$96</span>
+        <span className="text-2xl font-semibold ml-3">${billAmt}</span>
       </div>
 
       {/* Pay Button */}
       <div className="p-4 md:p-6">
-        <button className="w-full cursor-pointer bg-orange-500 text-white py-4 rounded-xl font-semibold hover:bg-orange-600 transition">
+        <button
+          className="w-full cursor-pointer bg-orange-500 text-white py-4 rounded-xl font-semibold hover:bg-orange-600 transition"
+          onClick={paymentConfirm}
+        >
           Pay & Confirm
         </button>
       </div>
@@ -212,16 +232,18 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
               </div>
 
               {/* Button */}
-              <button
-                onClick={() => setPopup(false)}
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 rounded-xl transition"
-              >
+              <button className="w-full cursor-pointer bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 rounded-xl transition" onClick={()=>setPopup(false)}>
                 ADD & MAKE PAYMENT
               </button>
             </div>
           </div>
         </div>
       </div>
+      {spinner && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <Spinner className="w-12 h-12 text-white" />
+        </div>
+      )}
     </div>
   );
 };
