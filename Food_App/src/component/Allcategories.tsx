@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
-<<<<<<< HEAD
+
 import RestaurantData from "./RestrauntData";
 
 import { LocationContext } from "../Context/LocationContext";
