@@ -36,14 +36,25 @@ const RestarauntView = () => {
       try {
         setLoading(true);
 
-        const response = await fetch(`http://localhost:3001/restaurants/${id}`);
+        const response = await fetch(
+          "https://raw.githubusercontent.com/Sakthi74/food-app-api/master/db.json"
+        );
 
         if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await response.json();
+
+        const restaurant = data.restaurants.find(
+          (item: Restaurant) => item.id === Number(id)
+        );
+
+        if (!restaurant) {
           throw new Error("Restaurant not found");
         }
 
-        const data: Restaurant = await response.json();
-        setRestaurant(data);
+        setRestaurant(restaurant);
       } catch (error) {
         console.error(error);
         setRestaurant(null);
@@ -54,7 +65,6 @@ const RestarauntView = () => {
 
     fetchRestaurant();
   }, [id]);
-
   if (loading) {
     return <div className="p-10 text-center">Loading restaurant...</div>;
   }

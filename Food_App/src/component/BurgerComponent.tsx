@@ -26,9 +26,11 @@ const BurgerComponent = ({ filter }: Props) => {
   useEffect(() => {
     const fetchBurgers = async () => {
       try {
-        const response = await fetch("http://localhost:3001/popularBurgers");
+        const response = await fetch(
+          "https://raw.githubusercontent.com/Sakthi74/food-app-api/master/db.json"
+        );
         const data: Burger[] = await response.json();
-        setBurger(data);
+        setBurger(data.popularBurgers);
       } catch (error) {
         console.log(error);
       }

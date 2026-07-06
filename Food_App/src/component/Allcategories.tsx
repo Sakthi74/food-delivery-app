@@ -24,9 +24,11 @@ function Allcategories() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3001/categories")
+    fetch(
+      "https://raw.githubusercontent.com/Sakthi74/food-app-api/master/db.json"
+    )
       .then((res) => res.json())
-      .then((data: Category[]) => setCategories(data))
+      .then((data: Category[]) => setCategories(data.categories))
       .catch((err) => console.log(err));
   }, []);
 

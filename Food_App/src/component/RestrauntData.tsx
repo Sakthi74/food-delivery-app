@@ -22,11 +22,13 @@ const RestaurantData = () => {
   useEffect(() => {
     const fetchSelectedrest = async () => {
       try {
-        const response = await fetch("http://localhost:3001/restaurants");
+        const response = await fetch(
+          "https://raw.githubusercontent.com/Sakthi74/food-app-api/master/db.json"
+        );
 
         const data: Restaurant[] = await response.json();
 
-        setRestaurants(data);
+        setRestaurants(data.restaurants);
       } catch (error) {
         console.log(error);
       }
