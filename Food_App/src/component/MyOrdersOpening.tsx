@@ -23,7 +23,7 @@ function MyOrdersOpening() {
   }, []);
 
   return (
-    <div className="max-w-screen flex flex-col justify-center mx-auto bg-white min-h-screen">
+    <div className="max-w-screen flex flex-col justify-center mx-auto bg-white">
       {/* Header */}
       <div className="flex justify-between items-center p-4 w-full sm:p-6">
         <div className="flex items-center gap-3">
