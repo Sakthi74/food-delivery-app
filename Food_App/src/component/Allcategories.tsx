@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
-// @ts-ignore: module may not be available in some environments
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
+import { TextAlignStart } from "lucide-react";
 
 import RestaurantData from "./RestrauntData";
-
 import { LocationContext } from "../Context/LocationContext";
 import { profileContext } from "../Context/ProfileContext";
-import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { TextAlignStart } from "lucide-react";
 
 interface Category {
   id: number;
@@ -20,11 +16,6 @@ interface Category {
   image: string;
 }
 
-interface categoryContextType {
-  categories: Category[];
-}
-
-// const categoryContext = createContext<categoryContextType>({ categories });
 function Allcategories() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [popup, setpopup] = useState("none");
@@ -32,18 +23,25 @@ function Allcategories() {
   const [sidebarpopup, setsidebar] = useState<boolean>(false);
   const { locationName } = useContext(LocationContext);
   const navigate = useNavigate();
+
   const context = useContext(profileContext);
+  if (!context) {
+    throw new Error("profileContext must be used inside ProfileDataProvider");
+  }
   const { user } = context;
 
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/Sakthi74/food-app-api/master/db.json"
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then((data: { categories: Category[] }) =>
         setCategories(data.categories)
       )
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, []);
 
   useEffect(() => {
@@ -57,7 +55,7 @@ function Allcategories() {
     item.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const cartSize = JSON.parse(localStorage.getItem("cartlen") || "[]");
+  const cartSize = JSON.parse(localStorage.getItem("cartlen") || "0");
   console.log("all cat :" + cartSize);
 
   return (
