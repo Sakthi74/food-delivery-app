@@ -13,7 +13,7 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
   const [rating, setRating] = useState(0);
 
   return (
-    <div className="bg-white rounded-2xl shadow-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="bg-white w-full max-h-[90vh] overflow-y-auto">
       {/* Header */}
       <div className="flex items-center justify-between p-5 border-b">
         <h2 className="text-lg font-semibold">Filter your search</h2>

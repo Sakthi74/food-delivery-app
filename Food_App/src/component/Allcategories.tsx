@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+// @ts-ignore: module may not be available in some environments
+import { useNavigate } from "react-router-dom";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
@@ -6,10 +8,8 @@ import { IoClose } from "react-icons/io5";
 import RestaurantData from "./RestrauntData";
 import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
-import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
-=======
->>>>>>> 706a510 (my master changes)
+import { TextAlignStart } from "lucide-react";
 
 interface Category {
   id: number;
@@ -31,7 +31,9 @@ function Allcategories() {
       "https://raw.githubusercontent.com/Sakthi74/food-app-api/master/db.json"
     )
       .then((res) => res.json())
-      .then((data: Category[]) => setCategories(data.categories))
+      .then((data: { categories: Category[] }) =>
+        setCategories(data.categories)
+      )
       .catch((err) => console.log(err));
   }, []);
 
@@ -53,7 +55,7 @@ function Allcategories() {
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-5 md:px-8">
           <div className="flex items-center gap-4">
-            <RxHamburgerMenu
+            <TextAlignStart
               className="text-3xl cursor-pointer"
               onClick={() => setsidebar(true)}
             />
@@ -97,7 +99,7 @@ function Allcategories() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search dishes, restaurants"
-            className="w-full h-12 pl-12 pr-4 bg-white border rounded-2xl shadow-sm outline-none focus:ring-2 focus:ring-orange-400 md:h-14"
+            className="w-full border-[#F6F6F6] h-16 pl-12 pr-4 bg-[#F6F6F6] border rounded-2xl outline-none focus:ring-2 focus:ring-orange-400 md:h-14"
           />
         </div>
 
