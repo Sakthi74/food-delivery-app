@@ -5,7 +5,6 @@ import { X, ChevronRight } from "lucide-react";
 import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
 import { Spinner } from "@/components/ui/spinner";
-import Payment from "./Payment";
 
 const Cart = () => {
   interface CartItem {
@@ -48,10 +47,10 @@ const Cart = () => {
   }
 
   // delete function
-  function del(id: number): void {
-    const x = cartData.filter((item) => item.id !== id);
-    setCartData(x);
-    localStorage.setItem("cart", JSON.stringify(x));
+  function deleteCartItem(id: number): void {
+    const filteredData = cartData.filter((item) => item.id !== id);
+    setCartData(filteredData);
+    localStorage.setItem("cart", JSON.stringify(filteredData));
   }
 
   // updating count
@@ -86,9 +85,11 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(update));
   }
 
-  function routing(path: string) {
-    navigate(path);
-  }
+  const cartLength = cartData.length;
+  useEffect(() => {
+    localStorage.setItem("cartlen", JSON.stringify(cartLength));
+  }, [cartData]);
+  console.log(cartLength);
 
   // when cart is empty
   if (cartData.length === 0) {
@@ -157,7 +158,7 @@ const Cart = () => {
 
                 <div
                   className="p-2 text-white bg-orange-600 rounded-full cursor-pointer hover:bg-orange-200 hover:text-red-500"
-                  onClick={() => del(item.id)}
+                  onClick={() => deleteCartItem(item.id)}
                 >
                   <X size={18} />
                 </div>

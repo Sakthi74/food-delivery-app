@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, createContext } from "react";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 import RestaurantData from "./RestrauntData";
-import { useContext } from "react";
+
 import { LocationContext } from "../Context/LocationContext";
+import { profileContext } from "../Context/ProfileContext";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
@@ -15,6 +16,11 @@ interface Category {
   image: string;
 }
 
+interface categoryContextType {
+  categories: Category[];
+}
+
+// const categoryContext = createContext<categoryContextType>({ categories });
 function Allcategories() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [popup, setpopup] = useState("none");
@@ -22,6 +28,8 @@ function Allcategories() {
   const [sidebarpopup, setsidebar] = useState<boolean>(false);
   const { locationName } = useContext(LocationContext);
   const navigate = useNavigate();
+  const context = useContext(profileContext);
+  const { user } = context;
 
   useEffect(() => {
     fetch(
@@ -43,8 +51,11 @@ function Allcategories() {
     item.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  const cartSize = JSON.parse(localStorage.getItem("cartlen") || "[]");
+  console.log("all cat :" + cartSize);
+
   return (
-    <div className="min-h-screen max-w-screen relative absolute bg-gray-50">
+    <div className="min-h-screen max-w-screen relative  bg-gray-50">
       {/* Main Container */}
       <div className="max-w-full mx-auto">
         {/* Header */}
@@ -71,17 +82,18 @@ function Allcategories() {
               </select>
             </div>
           </div>
-
-          <FiShoppingBag
-            className="text-3xl cursor-pointer bg-black text-white rounded-full"
-            onClick={() => navigate("/cart")}
-          />
+          <div className="text-3xl p-1 md:p-3 lg:p-3 cursor-pointer bg-black text-white rounded-full relative">
+            <h1 className="absolute bg-orange-400 p-1 w-6 h-6 text-sm left-5 bottom-5 md:bottom-7 md:left-2 lg:left-8  lg:bottom-7 flex items-center justify-center rounded-full text-black font">
+              {cartSize}
+            </h1>
+            <FiShoppingBag onClick={() => navigate("/cart")} size={20} />
+          </div>
         </div>
 
         {/* Greeting */}
         <div className="px-4 md:px-8">
           <h1 className="text-2xl font-bold md:text-4xl">
-            Hey Halal, Good Afternoon!
+            Hey {user.fullName}, Good Afternoon!
           </h1>
         </div>
 

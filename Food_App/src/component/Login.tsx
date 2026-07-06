@@ -73,7 +73,7 @@ const Login = () => {
     <>
       <div className="min-h-screen bg-white ">
         {/* Top Section */}
-        <div className="bg-[#111111] h-96 flex flex-col justify-center items-center px-6 rounded-b-3xl text-center">
+        <div className="bg-[#111111] h-72 flex flex-col justify-center items-center px-6 rounded-b-3xl text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white">Log In</h1>
           <p className="text-white/70 mt-3">
             Please enter in to tour existing account
@@ -83,8 +83,8 @@ const Login = () => {
         <div className="-mt-10 bg-white rounded-t-3xl px-6 py-8 relative z-10 flex flex-col justify-center items-center">
           {/* SPAN + INPUT */}
           <form onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-2 w-full md:w-[400px] lg:w-[700px]">
-              <span className="text-black font-thin text-sm p-1">
+            <div className="flex flex-col gap-2 w-full md:w-[400px] lg:w-[700px] p-2">
+              <span className="text-black font-thin text-sm p-2">
                 EMAIL{" "}
                 <strong>
                   <sup className="text-red-500">*</sup>
@@ -99,9 +99,13 @@ const Login = () => {
             </div>
 
             {/* PASSWORD */}
-            <div className="relative  w-full md:w-[400px] lg:w-[700px]">
-              <span className="text-black font-thin text-sm p-1">
-                PASSWORD <sup className="text-red-500">*</sup>
+            {/* PASSWORD */}
+            <div className="relative flex flex-col gap-2 w-full md:w-[400px] lg:w-[700px] p-1">
+              <span className="text-black font-thin text-sm p-2">
+                PASSWORD{" "}
+                <strong>
+                  <sup className="text-red-500">*</sup>
+                </strong>
               </span>
               <input
                 type={showPassword ? "text" : "password"}
@@ -112,14 +116,14 @@ const Login = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"
+                className="absolute right-4 bottom-5 -translate-y-1/2 cursor-pointer"
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
 
             {/* remember me part */}
-            <div className="flex justify-between w-full md:w-[400px] lg:w-[700px] ">
+            <div className="flex justify-between w-full md:w-[400px] lg:w-[700px] pt-7 ">
               {/* input checkbox+h6 */}
               <div className="flex ">
                 <input type="checkbox" className="cursor-pointer" />
@@ -139,7 +143,7 @@ const Login = () => {
               Log In
             </button>
           </form>
-          <div className="flex ">
+          <div className="flex p-7 ">
             <h6 className="text-gray-900 font-thin text-md p-1">
               Don't have an account?
             </h6>
@@ -152,7 +156,7 @@ const Login = () => {
             </h6>
           </div>
           {/* icons part */}
-          <p>Or</p>
+          <p className="text-gray-500">Or</p>
           <div className="w-full  flex  justify-center items-center gap-12 p-3">
             {/* images part */}
 
