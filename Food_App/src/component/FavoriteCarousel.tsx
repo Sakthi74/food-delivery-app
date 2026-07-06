@@ -53,20 +53,20 @@ function FavoriteCarousel() {
   }, [api]);
 
   return (
-    <div>
+    <div className="mt-[0px]">
       <div className="w-full max-w-sm mx-auto">
         <Carousel setApi={setApi}>
           <CarouselContent>
             {slides.map((slide, index) => (
               <CarouselItem key={index}>
-                <div className="flex flex-col items-center px-6">
+                <div className="flex text-[15px] flex-col items-center px-6">
                   <img
                     src={slide.image}
                     alt={slide.title}
-                    className="h-64 object-contain"
+                    className="h-[500px] object-contain"
                   />
 
-                  <h2 className="mt-8 text-2xl font-bold text-center">
+                  <h2 className="mt-10 text-xl font-bold text-center">
                     {slide.title}
                   </h2>
 
@@ -95,11 +95,11 @@ function FavoriteCarousel() {
         </div>
       </div>
 
-      <div className="mt-[10px]">
+      <div className="my-[30px] text-[15px]">
         <div className="text-center mt-[10px]">
           {/* ✅ NEXT scrolls carousel, on last slide navigates to /location */}
           <button
-            className="px-[125px] py-[10px] rounded-2xl bg-[#FF7622] text-white font-bold"
+            className="w-[350px] py-[20px] rounded-xl bg-[#FF7622] text-white font-bold"
             onClick={() => {
               if (current === slides.length - 1) {
                 navigate("/location");

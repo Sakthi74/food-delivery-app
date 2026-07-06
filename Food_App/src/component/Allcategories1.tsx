@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FiClock, FiSearch, FiShoppingBag, FiTruck } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegStar } from "react-icons/fa";
-import AccessLoaction from "./AccessLoaction";
-import useNavigate from "react-router-dom";
+import { TextAlignStart } from "lucide-react";
 
 interface Category {
   id: number;
@@ -27,8 +26,6 @@ function Allcategories1() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     fetch("http://localhost:3001/categories")
       .then((res) => res.json())
@@ -42,17 +39,13 @@ function Allcategories1() {
       .then((data: Restaurant[]) => setRestaurants(data))
       .catch((err) => console.log(err));
   }, []);
-  //navigating function
-  function routing(path: string) {
-    navigate(path);
-  }
 
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-5 sm:px-6 lg:px-10">
         <div className="flex items-center gap-4">
-          <RxHamburgerMenu className="text-2xl cursor-pointer sm:text-3xl" />
+          <TextAlignStart className="text-2xl cursor-pointer sm:text-3xl" />
 
           <div>
             <p className="text-xs font-bold text-orange-500">DELIVER TO</p>
@@ -90,12 +83,7 @@ function Allcategories1() {
       <div className="flex items-center justify-between px-4 mt-10 sm:px-6 lg:px-10">
         <h2 className="text-2xl font-bold">All Categories</h2>
 
-        <button
-          className="font-semibold text-orange-500"
-          onClick={() => routing("/popularburgers")}
-        >
-          See All
-        </button>
+        <button className="font-semibold text-orange-500">See All</button>
       </div>
 
       {/* Categories */}
@@ -150,11 +138,12 @@ function Allcategories1() {
                     <FaRegStar className="text-yellow-500" />
                     <span>{restaurant.rating}</span>
                   </div>
+
                   <div className="flex items-center gap-1">
                     <FiTruck />
                     <span>{restaurant.deliveryFee}</span>
                   </div>
-                  const [categories, setCatego
+
                   <div className="flex items-center gap-1">
                     <FiClock />
                     <span>{restaurant.deliveryTime}</span>

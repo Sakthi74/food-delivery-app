@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { FiTruck, FiClock } from "react-icons/fi";
@@ -40,7 +41,19 @@ const RestaurantData = () => {
   return (
     <div className="md:p-8 lg:p-8 p-0">
       <div className="px-4 py-10 ">
-        <h1 className="mb-6 text-2xl font-bold">Open Restaurants</h1>
+        <div className="flex justify-between">
+          <div>
+            {" "}
+            <h1 className="mb-6 text-2xl font-bold">Open Restaurants</h1>
+          </div>
+          <div className="flex">
+            <div> See All</div>{" "}
+            <div>
+              {" "}
+              <ChevronRight />{" "}
+            </div>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {restaurants.map((rest) => (
