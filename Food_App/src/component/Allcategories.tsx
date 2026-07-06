@@ -3,7 +3,6 @@ import { FiClock, FiSearch, FiTruck, FiShoppingBag } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegStar } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import { TextAlignStart } from "lucide-react";
 
 interface Category {
   id: number;

@@ -28,7 +28,7 @@ function App() {
       {/* <MyOrdersOpening /> */}
       {/* <MyOrdersHistory/> */}
       {/* <FilterSearch/> */}
-      {/* <ContratsPage/>*/}
+      {/* <ContratsPage/> */}
       {/* <PopularBurgers /> */}
       {/* <Login /> */}
       {/* <Allcategories /> */}
@@ -40,9 +40,8 @@ function App() {
       {/* <OpeningPage /> */}
       {/* <FavoriteCarousel/> */}
       {/* <Login/> */}
-{/* <PaymentOptions/> */}
+      {/* <PaymentOptions/> */}
       {/* <Addcard /> */}
-
     </>
   );
 }
