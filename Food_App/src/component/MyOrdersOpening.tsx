@@ -29,7 +29,7 @@ function MyOrdersOpening() {
         <div className="flex items-center gap-3">
           <button
             className="p-2 bg-gray-100 rounded-full"
-            onClick={() => navigate("/cart")}
+            onClick={() => navigate("/congrats")}
           >
             <MdKeyboardArrowLeft size={24} />
           </button>

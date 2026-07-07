@@ -19,9 +19,7 @@ const BurgerComponent = ({ filter }: Props) => {
   const [burgers, setBurger] = useState<Burger[]>([]);
   const navigate = useNavigate();
 
-  function routing(path: string) {
-    navigate(path);
-  }
+
 
   useEffect(() => {
     const fetchBurgers = async () => {
@@ -43,9 +41,12 @@ const BurgerComponent = ({ filter }: Props) => {
     filter === "All"
       ? burgers
       : burgers.filter((item) => item.category === filter);
-
-  //localstorage
-  function handleAddToCart(burger: Burger) {
+  
+  const handleRouting = (path: string) => {
+    navigate(path);
+  };
+  
+  const handleAddToCart = (burger: Burger) => {
     //geting item
     const getItem = JSON.parse(localStorage.getItem("cart") || "[]");
 
@@ -63,7 +64,10 @@ const BurgerComponent = ({ filter }: Props) => {
     localStorage.setItem("cart", JSON.stringify(getItem));
     //navigate
     navigate("/cart");
-  }
+  };
+
+  //localstorage
+
   return (
     <div className="md:p-8 lg:p-8 p-0">
       <div className="px-4">
@@ -78,7 +82,7 @@ const BurgerComponent = ({ filter }: Props) => {
               key={burger.id}
               className="rounded-2xl bg-white p-3 shadow-md transition-shadow duration-300 hover:shadow-lg cursor-pointer"
               onClick={() => {
-                routing(`/details`);
+                handleRouting(`/details`);
               }}
             >
               <img

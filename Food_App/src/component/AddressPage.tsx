@@ -17,25 +17,25 @@ const AddressPage = () => {
   const [editId, setEditId] = useState<number | null>(null);
   const [houseNumber, setHouseNumber] = useState("");
 
-  function deleteAddress(id: number) {
+  const handleDeleteAddress = () => {
     const unwanted = addresses.filter((item) => item.id !== id);
     setAddresses(unwanted);
     localStorage.setItem("addresses", JSON.stringify(unwanted));
-  }
+  };
 
-  function openEdit(id: number, currentValue: string) {
+  const handleOpenEdit = (id: number, currentValue: string) => {
     setEditId(id);
     setHouseNumber(currentValue);
-  }
+  };
 
-  function saveHouseNumber() {
+  const handleSaveHouseNumber = () => {
     const updated = addresses.map((item) =>
       item.id === editId ? { ...item, apartment: houseNumber } : item
     );
     setAddresses(updated);
     localStorage.setItem("addresses", JSON.stringify(updated));
     setEditId(null);
-  }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 w-full">
@@ -85,14 +85,14 @@ const AddressPage = () => {
               <div className="flex gap-3">
                 <button
                   className="text-orange-400 hover:text-orange-600"
-                  onClick={() => openEdit(item.id, item.apartment)}
+                  onClick={() => handleOpenEdit(item.id, item.apartment)}
                 >
                   <SquarePen size={18} />
                 </button>
 
                 <button
                   className="text-orange-400 hover:text-red-500"
-                  onClick={() => deleteAddress(item.id)}
+                  onClick={() => handleDeleteAddress(item.id)}
                 >
                   <Trash2 size={18} />
                 </button>
@@ -134,7 +134,7 @@ const AddressPage = () => {
 
             <button
               className="rounded-xl bg-[#ff7622] py-3 text-white font-bold hover:bg-[#ff8650]"
-              onClick={saveHouseNumber}
+              onClick={handleSaveHouseNumber}
             >
               Save
             </button>

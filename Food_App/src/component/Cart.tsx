@@ -39,31 +39,35 @@ const Cart = () => {
   localStorage.setItem("totalamt", JSON.stringify(total));
 
   //handle spinner
-  function handlepayment() {
-    setspinneropen(true);
-    setTimeout(() => {
-      setspinneropen(false);
-      navigate("/paymentpage");
-    }, 2000);
+
+  const handlepayment = () => {
+        setspinneropen(true);
+        setTimeout(() => {
+          setspinneropen(false);
+          navigate("/paymentpage");
+        }, 2000);
   }
 
-  // delete function
-  function del(id: number): void {
+// handleDeleteete function
+
+  const handleDelete = (id: number): void => {
     const x = cartData.filter((item) => item.id !== id);
     setCartData(x);
     localStorage.setItem("cart", JSON.stringify(x));
-  }
+  };
+
 
   // updating count
-  function increase(id: number) {
+
+  const handleIncrease = (id: number) => {
     const updated = cartData.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
     setCartData(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
-  }
+  };
 
-  function decrease(id: number) {
+  const handleDecrease = (id: number) => {
     const update = cartData.map((item) => {
       if (item.id === id) {
         if (item.quantity > 1) {
@@ -84,11 +88,14 @@ const Cart = () => {
 
     setCartData(update);
     localStorage.setItem("cart", JSON.stringify(update));
-  }
+  };
 
-  function routing(path: string) {
+
+  const handleRouting = (path: string) => {
     navigate(path);
-  }
+  };
+
+
 
   // when cart is empty
   if (cartData.length === 0) {
@@ -149,7 +156,7 @@ const Cart = () => {
 
             {/* Details */}
             <div className="flex-1 ml-5">
-              {/* Name + Delete */}
+              {/* Name + handleDeleteete */}
               <div className="flex justify-between">
                 <h2 className="text-base sm:text-lg md:text-xl font-bold">
                   {item.name}
@@ -157,7 +164,7 @@ const Cart = () => {
 
                 <div
                   className="p-2 text-white bg-orange-600 rounded-full cursor-pointer hover:bg-orange-200 hover:text-red-500"
-                  onClick={() => del(item.id)}
+                  onClick={() => handleDelete(item.id)}
                 >
                   <X size={18} />
                 </div>
@@ -178,7 +185,7 @@ const Cart = () => {
                 <div className="flex overflow-hidden bg-black rounded-3xl">
                   <button
                     className="bg-[#41414F] px-4 sm:px-5 py-2 rounded-full text-white"
-                    onClick={() => decrease(item.id)}
+                    onClick={() => handleDecrease(item.id)}
                   >
                     -
                   </button>
@@ -189,7 +196,7 @@ const Cart = () => {
 
                   <button
                     className="bg-[#41414F] px-4 sm:px-5 py-2 rounded-full text-white"
-                    onClick={() => increase(item.id)}
+                    onClick={() => handleIncrease(item.id)}
                   >
                     +
                   </button>
@@ -210,10 +217,10 @@ const Cart = () => {
             className="w-full sm:max-w-[420px] md:max-w-[480px] lg:max-w-[560px] bg-white rounded-t-3xl shadow-xl p-6 sm:p-7 md:p-8 pb-8 sm:pb-9 md:pb-10"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* delivery address row */}
+            {/* handleDeleteivery address row */}
             <div className="flex items-center justify-between">
               <span className="text-xs sm:text-sm md:text-base font-semibold text-gray-400 tracking-wide">
-                DELIVERY ADDRESS
+                handleDeleteIVERY ADDRESS
               </span>
               <button
                 className="text-xs sm:text-sm md:text-base font-semibold text-orange-500 underline underline-offset-2 cursor-pointer"

@@ -14,6 +14,8 @@ interface LocationDetails {
 const AccessLoaction = () => {
   const { setLocationName } = useContext(LocationContext);
   const [location, setLocation] = useState<LocationDetails | null>(null);
+  const navigate = useNavigate();
+
 
   const handleLocation = () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -32,7 +34,6 @@ const AccessLoaction = () => {
     });
   };
 
-  const navigate = useNavigate();
 
   console.log(location);
   return (

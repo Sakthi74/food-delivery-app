@@ -25,14 +25,18 @@ const AddAddress = () => {
   const { addresses, setAddresses } = context;
   const navigate = useNavigate();
 
-  function addBySubmit() {
-    const updatedAddress = [...addresses, newAddress];
-    setAddresses(updatedAddress);
-    localStorage.setItem("addresses", JSON.stringify(updatedAddress));
 
-    console.log(updatedAddress);
-    alert("address created");
+  const handleAddBySubmit = () => {
+        const updatedAddress = [...addresses, newAddress];
+        setAddresses(updatedAddress);
+        localStorage.setItem("addresses", JSON.stringify(updatedAddress));
+
+        console.log(updatedAddress);
+        alert("address created");
+    
   }
+
+
 
   return (
     <>
@@ -138,7 +142,7 @@ const AddAddress = () => {
           </div>
           <button
             className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors"
-            onClick={() => addBySubmit()}
+            onClick={() => handleAddBySubmit()}
           >
             SAVE
           </button>

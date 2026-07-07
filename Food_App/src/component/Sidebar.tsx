@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import profilesaul from "../assets/Images/profilesaul.jpg";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
@@ -25,13 +25,17 @@ const Sidebar = ({
   setSidebar: (popup: boolean) => void;
 }) => {
   const context = useContext(profileContext);
+
+  const navigate = useNavigate();
+
+
+
   if (!context) {
     throw new Error("ProfileContext must be used inside ProfileDataProvider");
   }
 
   const { user } = context;
 
-  const navigate = useNavigate();
   return (
     <>
       <div

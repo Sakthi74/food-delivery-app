@@ -12,17 +12,20 @@ export interface UserProfile {
 
 const EditProfile = () => {
   const context = useContext(profileContext);
+  const navigate = useNavigate();
+
   if (!context) {
     throw new Error("ProfileContext must be used inside ProfileDataProvider");
   }
   const { user, setUser } = context;
 
-  function saveUserProfile() {
-    localStorage.setItem("user", JSON.stringify(user));
-    alert("Profile saved successfully!");
+  const handleSaveUserProfile = () => {
+        localStorage.setItem("user", JSON.stringify(user));
+        alert("Profile saved successfully!");
+    
   }
 
-  const navigate = useNavigate();
+
 
   return (
     <div className="min-h-screen bg-white ">
@@ -105,7 +108,7 @@ const EditProfile = () => {
         </div>
         <button
           className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors"
-          onClick={() => saveUserProfile()}
+          onClick={() => handleSaveUserProfile()}
         >
           SAVE
         </button>

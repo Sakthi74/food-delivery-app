@@ -45,32 +45,37 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
     expiry: initialFormData?.expiry ?? "",
     cvc: initialFormData?.cvc ?? "",
   });
+  const navigate = useNavigate();
+
+
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const navigate = useNavigate();
-
-  function AddCard() {
-    setPopup(true);
-    setFormData({
-      name: initialFormData?.name ?? "",
-      cardNumber: initialFormData?.cardNumber ?? "",
-      expiry: initialFormData?.expiry ?? "",
-      cvc: initialFormData?.cvc ?? "",
-    });
+  const handleAddCard = () => {
+        setPopup(true);
+        setFormData({
+          name: initialFormData?.name ?? "",
+          cardNumber: initialFormData?.cardNumber ?? "",
+          expiry: initialFormData?.expiry ?? "",
+          cvc: initialFormData?.cvc ?? "",
+        });
+    
   }
 
-  function paymentConfirm() {
-    setPopup(false);
-    setSpinner(true);
+  const handlePaymentConfirm = () => {
 
-    setTimeout(() => {
-      setSpinner(false);
-      navigate("/congrats");
-    }, 3000);
-  }
+        setPopup(false);
+        setSpinner(true);
+
+        setTimeout(() => {
+          setSpinner(false);
+          navigate("/congrats");
+        }, 3000);
+  
+}
+
 
   const billAmt = JSON.parse(localStorage.getItem("totalamt") || "0");
 
@@ -82,7 +87,7 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
       <div className={`${popup ? "hidden" : "block"} top-0 w-full`}>
         <div
           className="flex items-center gap-3 p-4"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/cart")}
         >
           <button className="p-2 bg-gray-100 rounded-full">
             <MdKeyboardArrowLeft size={24} />
@@ -127,7 +132,7 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
 
           {/* Add Button */}
           <button
-            onClick={AddCard}
+            onClick={handleAddCard}
             className="mt-6 w-full border-2 cursor-pointer border-orange-400 text-orange-500 rounded-lg py-4 flex justify-center items-center gap-2 hover:bg-orange-50 transition"
           >
             <FiPlus size={20} />
@@ -146,7 +151,7 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
         <div className="p-4 md:p-6">
           <button
             className="w-full cursor-pointer bg-orange-500 text-white py-4 rounded-xl font-semibold hover:bg-orange-600 transition"
-            onClick={paymentConfirm}
+            onClick={handlePaymentConfirm}
           >
             Pay & Confirm
           </button>

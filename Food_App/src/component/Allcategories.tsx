@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 // @ts-ignore: module may not be available in some environments
 import { useNavigate } from "react-router-dom";
-import { FiSearch, FiShoppingBag } from "react-icons/fi";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { IoClose } from "react-icons/io5";
-<<<<<<< HEAD
 import RestaurantData from "./RestrauntData";
 import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
 import Sidebar from "./Sidebar";
-import { TextAlignStart } from "lucide-react";
+import { Search, TextAlignStart, ShoppingBag, X } from "lucide-react";
 
 interface Category {
   id: number;
@@ -77,10 +73,12 @@ function Allcategories() {
             </div>
           </div>
 
-          <FiShoppingBag
-            className="text-3xl cursor-pointer bg-black text-white rounded-full"
-            onClick={() => navigate("/cart")}
-          />
+          <div className="bg-black p-[10px] rounded-4xl">
+            <ShoppingBag
+              className="text-3xl cursor-pointer bg-black text-white rounded-full"
+              onClick={() => navigate("/cart")}
+            />
+          </div>
         </div>
 
         {/* Greeting */}
@@ -92,7 +90,7 @@ function Allcategories() {
 
         {/* Search */}
         <div className="relative px-4 mt-6 md:px-8">
-          <FiSearch className="absolute text-xl text-gray-400 left-8 top-1/2 -translate-y-1/2" />
+          <Search className="absolute text-xl text-gray-400 left-8 top-1/2 -translate-y-1/2" />
 
           <input
             type="text"
@@ -144,13 +142,13 @@ function Allcategories() {
       </div>
       {popup === "block" && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-          <div className="relative w-full max-w-2xl rounded-3xl bg-amber-500 p-6 md:p-10">
+          <div className="relative top-[-70px] w-full max-w-2xl rounded-3xl bg-[radial-gradient(circle_at_top_left,_#FFD54A_0%,_#FDB813_35%,_#F79400_70%,_#F57C00_100%)] p-6 md:p-10">
             {/* Close Button */}
             <button
               onClick={() => setpopup("none")}
-              className="absolute top-4 right-4 rounded-full bg-amber-700 p-3 text-white cursor-pointer hover:bg-red-800 "
+              className="absolute top-[-20px] right-[0px] right-4 rounded-full bg-[#FFE49C] p-3 text-[orange] cursor-pointer hover:bg-red-800 "
             >
-              <IoClose size={24} />
+              <X size={24} />
             </button>
 
             <div className="text-center">
@@ -166,7 +164,7 @@ function Allcategories() {
 
               <button
                 onClick={() => setpopup("none")}
-                className="mt-8 w-full rounded-xl border-2 border-white py-4 text-lg font-semibold text-amber-500 hover:bg-amber-500 bg-white hover:text-white cursor-pointer"
+                className="mt-8 w-full rounded-xl border-2 border-white py-4 text-lg font-semibold text-[white] hover:bg-amber-500 hover:text-white cursor-pointer"
               >
                 GOT IT
               </button>
