@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { ChangeEvent } from "react";
 import { IoClose } from "react-icons/io5";
 import Payment from "./Payment";
@@ -26,9 +26,8 @@ function Addcard() {
       [e.target.name]: e.target.value,
     }));
 
-    console.log(formData)
+    console.log(formData);
   };
-
 
   return (
     <div>
@@ -118,7 +117,6 @@ function Addcard() {
           </div>
         </div>
       </div>
-      
       <PaymentAny formData={formData} />
     </div>
   );
