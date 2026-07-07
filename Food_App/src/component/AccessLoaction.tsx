@@ -17,8 +17,6 @@ const AccessLoaction = () => {
   const [location, setLocation] = useState<LocationDetails | null>(null);
   const navigate = useNavigate();
 
-  const navigate = useNavigate();
-
   const handleLocation = () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const lat = position.coords.latitude;

@@ -3,7 +3,6 @@ import { FiSearch, FiShoppingBag, FiX } from "react-icons/fi";
 import { ChevronLeft } from "lucide-react";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { Clock, Menu, Search, ShoppingBag, Star, Truck } from "lucide-react";
 
 interface Restaurant {
   id: number;

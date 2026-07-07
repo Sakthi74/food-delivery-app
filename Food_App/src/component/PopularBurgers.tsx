@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { FiSearch, FiFilter, FiTruck, FiClock } from "react-icons/fi";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 import BurgerComponent from "./BurgerComponent";
-import { ChevronLeft, Search, SlidersVertical } from "lucide-react";
+import { FaPlus, FaRegStar } from "react-icons/fa";
+import { SlidersVertical } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import FilterSearch from "./FilterSearch";
 
@@ -19,7 +22,7 @@ export default function PopularBurgers() {
               className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
               onClick={() => navigate(-1)}
             >
-              <ChevronLeft size={20} />
+              <MdKeyboardArrowLeft size={20} />
             </div>
 
             <select
@@ -38,7 +41,7 @@ export default function PopularBurgers() {
                 className="p-4 text-white rounded-full bg-[#121223] cursor-pointer"
                 onClick={() => navigate("/search-bar")}
               >
-                <Search size={18} />
+                <FiSearch size={18} />
               </div>
 
               <div

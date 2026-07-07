@@ -1,10 +1,6 @@
 import { Clock, Star, Truck } from "lucide-react";
 import { useState, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
-
-import { useState, useEffect } from "react";
-
 import { useNavigate, useLocation } from "react-router-dom";
 
 interface Restaurant {

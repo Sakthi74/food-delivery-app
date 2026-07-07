@@ -89,11 +89,17 @@ function Allcategories() {
               </select>
             </div>
           </div>
-
-          <ShoppingBag
-            className="text-3xl cursor-pointer bg-black text-white rounded-full"
+          <div
+            className="relative p-3 bg-black text-white rounded-full cursor-pointer"
             onClick={() => navigate("/cart")}
-          />
+          >
+            <ShoppingBag size={18} />
+            {cartSize > 0 && (
+              <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                {cartSize}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Greeting */}
