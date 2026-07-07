@@ -54,7 +54,7 @@ const AccessLoaction = () => {
           ACCESS LOCATION
           <MapPin className="inline-block" />
         </button>
-        <p className="font-thin text-gray-600 p-3">
+        <p className="font-thin text-gray-600 p-3 w-82 text-center md:w-[400px] lg:w-[700px]">
           DFOOD Will Access Your Location While Using The App.
         </p>
       </div>

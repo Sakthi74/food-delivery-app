@@ -46,7 +46,7 @@ const Sidebar = ({
     left-0
     flex
     flex-col
-    justify-center
+    justify-start
     items-center
     gap-3
     h-screen
@@ -55,7 +55,8 @@ const Sidebar = ({
     lg:w-[460px]
     bg-white
     z-[100]
-   
+    overflow-y-auto
+    py-6
     shadow-2xl
     transition-transform
     duration-400
@@ -80,10 +81,10 @@ const Sidebar = ({
         </div>
 
         {/* image and name div */}
-        <div className="flex items-center gap-4 p-2">
+        <div className="flex items-center justify-center gap-4 w-screen">
           <img
             src={profilesaul}
-            className="w-24 h-24 rounded-full object-cover"
+            className="w-20 h-20 rounded-full object-cover"
             alt=""
           />
           {/* name and bio */}

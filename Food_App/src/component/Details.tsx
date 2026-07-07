@@ -1,18 +1,18 @@
-import React from "react";
 import { useState } from "react";
 // import pizza from "../";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { HeartPlus } from "lucide-react";
-import { ChefHat } from "lucide-react";
-import { Star } from "lucide-react";
-import { Truck } from "lucide-react";
-import { Clock } from "lucide-react";
-import { Ham } from "lucide-react";
-
-import { Carrot } from "lucide-react";
-import { Broccoli } from "lucide-react";
-import { EggOff } from "lucide-react";
-import { HeartMinus } from "lucide-react";
+import {
+  ChevronLeft,
+  HeartPlus,
+  ChefHat,
+  Star,
+  Truck,
+  Ham,
+  Carrot,
+  Clock,
+  Broccoli,
+  EggOff,
+  HeartMinus,
+} from "lucide-react";
 import "../css/PizzaAnimation.css";
 import { useNavigate } from "react-router-dom";
 
@@ -30,7 +30,7 @@ const Details = () => {
             className="p-3 md:p-4 bg-[#ECF0F4] rounded-full cursor-pointer"
             onClick={() => navigate(-1)}
           >
-            <MdKeyboardArrowLeft size={20} />
+            <ChevronLeft size={20} />
           </div>
 
           <h1 className="text-gray-900 font-semibold text-md md:text-lg lg:text-xl p-1">
@@ -39,25 +39,25 @@ const Details = () => {
         </div>
         {/* Top div orange pizza image */}
         <div className="p-5 md:p-8 lg:p-10 w-full">
-          <div className="bg-[#FFBF6D] rounded-3xl h-64 md:h-80 lg:h-96 relative">
+          <div className="bg-[#FFBF6D] rounded-4xl h-64 md:h-80 lg:h-96 relative">
             <img
               src="/Images/pizza-removebg-preview.png"
               alt="Pizza"
-              className="relative bottom-8 h-56 md:h-72 lg:h-72 rotate-[20deg] animate-slidePizza"
+              className="relative bottom-8 h-56 md:h-72 lg:h-72 rotate-[20deg] lg:ml-[680px] animate-slidePizza"
             />
-            <h1 className="relative font-bold text-base md:text-lg text-white  shadow-2xl  text-center lg:text-xl left-1 top-1">
+            {/* <h1 className="relative font-bold text-base md:text-lg text-white  shadow-2xl  text-center lg:text-xl left-1 top-1 sm:hidden md:block lg:block">
               Pizza Calzone European
-            </h1>
+            </h1> */}
             <div
               className={
                 Fav
-                  ? "bg-[#FFC684] p-2 md:p-3 cursor-pointer w-fit text-white  bg-red-500  rounded-2xl  relative ml-72 md:ml-[600px] lg:ml-[700px] bottom-9 "
-                  : "bg-[#FFC684] p-2 md:p-3 cursor-pointer w-fit text-white   rounded-2xl ml-72 md:ml-[600px] lg:ml-[700px]  relative  bottom-9"
+                  ? " p-2 md:p-3 cursor-pointer w-fit text-white ml-12  bg-red-500  rounded-2xl  relative ml-72 md:ml-[600px] lg:ml-[700px] bottom-12 left-4 lg:left-96 md:left-96 "
+                  : "bg-[#FFC684] p-2 md:p-3 cursor-pointer w-fit text-white    rounded-2xl ml-72 md:ml-[600px] lg:ml-[700px]  relative  bottom-12 left-4 lg:left-96 md:left-96 "
               }
               onClick={() => setFav(!Fav)}
             >
               {Fav ? (
-                <HeartMinus className="" />
+                <HeartMinus className=" " />
               ) : (
                 <HeartPlus className="text-white" />
               )}
@@ -167,28 +167,33 @@ const Details = () => {
         </div>
 
         {/* counter div */}
-        <div className="flex bg-[#F0F5FA] w-full justify-between items-center px-6 md:px-10 lg:px-12 py-4 md:py-6">
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">
-            ${count * 16}
-          </h1>
-          <div className="flex bg-black rounded-3xl overflow-hidden">
-            <button
-              className="text-white bg-[#41414F] px-4 md:px-6 py-2 md:py-3"
-              onClick={() => setcount(Math.max(0, count - 1))}
-              disabled={count === 0}
-            >
-              -
-            </button>
-            <h1 className="text-white px-6 md:px-8 py-2 md:py-3 font-semibold">
-              {count}
+        <div className="flex bg-[#F0F5FA] w-full justify-between items-center px-6 md:px-10 lg:px-12 py-4 md:py-6 rounded-t-4xl flex-col">
+          <div className="flex justify-between w-screen">
+            <h1 className="text-xl md:text-2xl p-2 ml-6 lg:text-3xl font-bold">
+              ${count * 16}
             </h1>
-            <button
-              className="text-white bg-[#41414F] px-4 md:px-6 py-2 md:py-3"
-              onClick={() => setcount(count + 1)}
-            >
-              +
-            </button>
+            <div className="flex bg-black rounded-3xl mr-6  overflow-hidden">
+              <button
+                className="text-white bg-[#41414F] px-4 md:px-6 py-2 cursor-pointer md:py-3"
+                onClick={() => setcount(Math.max(0, count - 1))}
+                disabled={count === 0}
+              >
+                -
+              </button>
+              <h1 className="text-white px-6 md:px-8 py-2 md:py-3 font-semibold">
+                {count}
+              </h1>
+              <button
+                className="text-white bg-[#41414F] cursor-pointer px-4 md:px-6 py-2 md:py-3"
+                onClick={() => setcount(count + 1)}
+              >
+                +
+              </button>
+            </div>
           </div>
+          <button className="lg:w-[700px] md:[400px] w-full mt-6 sm:mt-7 md:mt-8 bg-orange-500 hover:bg-orange-600 transition-colors text-white cursor-pointer font-bold tracking-wide rounded-2xl py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg">
+            PLACE ORDER
+          </button>
         </div>
       </div>
     </>

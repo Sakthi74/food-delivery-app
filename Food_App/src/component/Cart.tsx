@@ -5,7 +5,6 @@ import { X, ChevronRight } from "lucide-react";
 import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
 import { Spinner } from "@/components/ui/spinner";
-import Payment from "./Payment";
 
 const Cart = () => {
   interface CartItem {

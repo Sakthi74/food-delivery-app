@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-// @ts-ignore: module may not be available in some environments
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FiSearch, FiShoppingBag } from "react-icons/fi";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoClose } from "react-icons/io5";
+<<<<<<< HEAD
 import RestaurantData from "./RestrauntData";
-import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
+import { profileContext } from "../Context/ProfileContext";
 import Sidebar from "./Sidebar";
-import { Search, TextAlignStart, ShoppingBag, X } from "lucide-react";
+import { TextAlignStart } from "lucide-react";
 
 interface Category {
   id: number;
@@ -22,15 +25,24 @@ function Allcategories() {
   const { locationName } = useContext(LocationContext);
   const navigate = useNavigate();
 
+  const context = useContext(profileContext);
+  if (!context) {
+    throw new Error("profileContext must be used inside ProfileDataProvider");
+  }
+  const { user } = context;
+
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/Sakthi74/food-app-api/master/db.json"
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then((data: { categories: Category[] }) =>
         setCategories(data.categories)
       )
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, []);
 
   useEffect(() => {
@@ -44,8 +56,11 @@ function Allcategories() {
     item.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  const cartSize = JSON.parse(localStorage.getItem("cartlen") || "0");
+  console.log("all cat :" + cartSize);
+
   return (
-    <div className="min-h-screen max-w-screen relative absolute bg-gray-50">
+    <div className="min-h-screen max-w-screen relative  bg-gray-50">
       {/* Main Container */}
       <div className="max-w-full mx-auto">
         {/* Header */}
@@ -73,18 +88,16 @@ function Allcategories() {
             </div>
           </div>
 
-          <div className="bg-black p-[10px] rounded-4xl">
-            <ShoppingBag
-              className="text-3xl cursor-pointer bg-black text-white rounded-full"
-              onClick={() => navigate("/cart")}
-            />
-          </div>
+          <FiShoppingBag
+            className="text-3xl cursor-pointer bg-black text-white rounded-full"
+            onClick={() => navigate("/cart")}
+          />
         </div>
 
         {/* Greeting */}
         <div className="px-4 md:px-8">
           <h1 className="text-2xl font-bold md:text-4xl">
-            Hey Halal, Good Afternoon!
+            Hey {user.fullName}, Good Afternoon!
           </h1>
         </div>
 

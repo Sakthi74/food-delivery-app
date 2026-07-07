@@ -63,7 +63,7 @@ const RestaurantData = () => {
               className="overflow-hidden bg-white transition duration-300 cursor-pointer hover:shadow-lg rounded-2xl"
             >
               <img
-                className="object-cover w-full h-64 rounded-2xl"
+                className="object-cover w-full h-48 rounded-2xl"
                 src={rest.image}
                 alt={rest.name}
               />
@@ -75,17 +75,17 @@ const RestaurantData = () => {
                 <div className="flex flex-wrap gap-4 mt-4 text-sm text-orange-400 cursor-pointer">
                   <div className="flex font-bold  items-center gap-1">
                     <FaRegStar />
-                    <span>{rest.rating}</span>
+                    <span className="font-bold text-black">{rest.rating}</span>
                   </div>
 
                   <div className="flex items-center gap-1">
                     <FiTruck />
-                    <span>{rest.deliveryFee}</span>
+                    <span className="text-black">{rest.deliveryFee}</span>
                   </div>
 
                   <div className="flex items-center gap-1">
                     <FiClock />
-                    <span>{rest.deliveryTime}</span>
+                    <span className="text-black">{rest.deliveryTime}</span>
                   </div>
                 </div>
               </div>
