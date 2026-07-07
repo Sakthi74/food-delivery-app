@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import profilesaul from "../assets/Images/profilesaul.jpg";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
-import { profileContext } from "../Context/ProfileContext";
+import { useProfile } from "../Context/ProfileContext";
 import {
   ShoppingBag,
   User,
@@ -16,7 +15,7 @@ import {
   Ellipsis,
   Map,
   ChevronRight,
-  ChevronLeft
+  ChevronLeft,
 } from "lucide-react";
 
 const Sidebar = ({
@@ -26,17 +25,7 @@ const Sidebar = ({
   sidebarpopup: boolean;
   setSidebar: (popup: boolean) => void;
 }) => {
-  const context = useContext(profileContext);
-
-  const navigate = useNavigate();
-
-
-
-  if (!context) {
-    throw new Error("ProfileContext must be used inside ProfileDataProvider");
-  }
-
-  const { user } = context;
+  const { user } = useProfile();
 
   return (
     <>
@@ -103,7 +92,7 @@ const Sidebar = ({
           {/* sub div1 */}
           <div
             className="flex items-center justify-between "
-            onClick={() => navigate("/profileinfo")}
+            onClick={() => navigate("/profile-info")}
           >
             {/* icon and h1 div */}
             <div className="flex items-center gap-2">
@@ -127,7 +116,7 @@ const Sidebar = ({
           {/* sub div2 */}
           <div
             className="flex items-center justify-between "
-            onClick={() => navigate("/Address")}
+            onClick={() => navigate("/address")}
           >
             {/* icon and h1 div */}
             <div className="flex items-center gap-2 ">
@@ -309,12 +298,8 @@ const Sidebar = ({
           {/* sub div1 */}
           <div className="flex items-center justify-between ">
             {/* icon and h1 div */}
-            <div
-              className="flex items-center gap-2"
-              onClick={() => navigate("/Login")}
-            >
+            <div className="flex items-center gap-2">
               <div>
-                {" "}
                 <LogOut className="text-[#fc7d87]" />
               </div>
               <h1 className="font-medium  p-2">Log Out</h1>
@@ -323,7 +308,10 @@ const Sidebar = ({
             <div>
               <div
                 className="p-3 md:p-4 cursor-pointer text-black"
-                //onClick={() => navigate(-1)}
+                onClick={() => {
+                  localStorage.removeItem("isLoggedIn");
+                  navigate("/log-in");
+                }}
               >
                 <ChevronRight size={20} />
               </div>

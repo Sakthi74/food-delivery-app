@@ -1,11 +1,39 @@
 import { useState } from "react";
 import { ChevronLeft, Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 const SignupPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [reshowPassword, setShowrePassword] = useState(false);
+  const [details, setDetails] = useState({ password: "", confirmpassword: "" });
   const navigate = useNavigate();
+
+  //tostify function
+  const notifi = () => {
+    toast.success(`Successfully Signed Up`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
+
+  const handleSignup = () => {
+    if (details.password === details.confirmpassword) {
+      navigate("/log-in");
+      notifi();
+    } else {
+      toast.error("Password and Confirm Password fields must be same");
+    }
+  };
+
   return (
     <>
       <div className="min-h-screen bg-white ">
@@ -67,12 +95,19 @@ const SignupPage = () => {
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Enter password"
+              value={details.password}
+              onChange={(e) =>
+                setDetails((prev) => ({
+                  ...prev,
+                  password: e.target.value,
+                }))
+              }
               className="w-full border bg-[#f0f5fa] border-gray-300 rounded-lg px-4 py-6 pr-12 focus:outline-none focus:border-[#ff7622]"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"
+              className="absolute right-4 top-1/2 translate-y-1/2 cursor-pointer"
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
@@ -90,7 +125,14 @@ const SignupPage = () => {
             <input
               type={reshowPassword ? "text" : "password"}
               placeholder="example@gmail.com"
+              value={details.confirmpassword}
               className="w-full  border bg-[#f0f5fa]  border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-[#ff7622]"
+              onChange={(e) =>
+                setDetails((prev) => ({
+                  ...prev,
+                  confirmpassword: e.target.value,
+                }))
+              }
             />
             <button
               className="absolute right-4 top-1/2 translate-y-1/2 cursor-pointer "
@@ -99,7 +141,10 @@ const SignupPage = () => {
               {reshowPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           </div>
-          <button className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors">
+          <button
+            className="mt-8 w-full cursor-pointer md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650] transition-colors"
+            onClick={handleSignup}
+          >
             Sign Up
           </button>
 

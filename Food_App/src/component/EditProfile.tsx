@@ -1,7 +1,10 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { profileContext } from "../Context/ProfileContext";
+
 import { ChevronLeft } from "lucide-react";
+
+import { useProfile } from "../Context/ProfileContext";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 export interface UserProfile {
   fullName: string;
@@ -11,21 +14,28 @@ export interface UserProfile {
 }
 
 const EditProfile = () => {
-  const context = useContext(profileContext);
   const navigate = useNavigate();
 
-  if (!context) {
-    throw new Error("ProfileContext must be used inside ProfileDataProvider");
-  }
-  const { user, setUser } = context;
-
   const handleSaveUserProfile = () => {
-        localStorage.setItem("user", JSON.stringify(user));
-        alert("Profile saved successfully!");
-    
-  }
+    localStorage.setItem("user", JSON.stringify(user));
+    notifi();
+  };
 
+  const { user, setUser } = useProfile();
 
+  const notifi = () => {
+    toast.success(`Profile Updated Successfully`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
 
   return (
     <div className="min-h-screen bg-white ">

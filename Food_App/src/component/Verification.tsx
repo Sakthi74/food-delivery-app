@@ -5,7 +5,7 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import sidedesign from "../assets/Images/sidedesign.png";
+
 import Countdown from "react-countdown";
 
 // react-countdown's exported type can sometimes be incompatible with the

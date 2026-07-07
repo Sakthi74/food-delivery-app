@@ -32,7 +32,7 @@ function MyOrdersHistory() {
         <div className="flex items-center gap-3">
           <button
             className="p-2 bg-gray-100 cursor-pointer rounded-full"
-            onClick={() => navigate("/trackorder")}
+            onClick={() => navigate("/track-order")}
           >
             <ChevronLeft size={24} />
           </button>

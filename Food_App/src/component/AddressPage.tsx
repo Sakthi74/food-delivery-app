@@ -1,4 +1,11 @@
-import { House, Briefcase, Trash2, SquarePen, X, ChevronLeft } from "lucide-react";
+import {
+  House,
+  Briefcase,
+  Trash2,
+  SquarePen,
+  X,
+  ChevronLeft,
+} from "lucide-react";
 import { useContext, useState } from "react";
 import { profileContext } from "../Context/ProfileContext";
 import { useNavigate } from "react-router-dom";
@@ -56,10 +63,7 @@ const AddressPage = () => {
           <p className="text-center text-gray-500">No addresses added.</p>
         ) : (
           addresses.map((item) => (
-            <div
-              key={item.id}
-              className="flex items-center gap-4 border-b pb-4 mb-4 last:border-b-0 last:mb-0"
-            >
+            <div key={item.id} className="flex items-center gap-4  pb-4  ">
               {/* Icon */}
               <div className="bg-white p-3 rounded-full shrink-0">
                 {item.label === "HOME" ? (
@@ -90,7 +94,7 @@ const AddressPage = () => {
                 </button>
 
                 <button
-                  className="text-orange-400 hover:text-red-500"
+                  className="text-orange-400 hover:text-red-500 cursor-pointer"
                   onClick={() => handleDeleteAddress(item.id)}
                 >
                   <Trash2 size={18} />
@@ -103,8 +107,8 @@ const AddressPage = () => {
 
       {/* Add Address */}
       <button
-        className="mt-8 w-2/3 md:w-[400px] lg:w-[700px] rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650]"
-        onClick={() => navigate("/newAddress")}
+        className="mt-8 w-2/3 md:w-[400px] lg:w-[700px] cursor-pointer rounded-xl bg-[#ff7622] py-4 text-white font-bold hover:bg-[#ff8650]"
+        onClick={() => navigate("/new-address")}
       >
         Add New Address
       </button>

@@ -36,7 +36,7 @@ export default function PopularBurgers() {
             <div className="flex gap-3">
               <div
                 className="p-4 text-white rounded-full bg-[#121223] cursor-pointer"
-                onClick={() => setShowFilter(true)} // ✅ simplified
+                onClick={() => navigate("/search-bar")}
               >
                 <Search size={18} />
               </div>

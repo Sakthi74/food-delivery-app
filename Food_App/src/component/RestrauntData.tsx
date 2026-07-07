@@ -1,7 +1,11 @@
-import { ChevronRight, Clock, Star, Truck } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import { Clock, Star, Truck } from "lucide-react";
+import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
+
+import { useState, useEffect } from "react";
+
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface Restaurant {
   id: number;
@@ -18,6 +22,7 @@ const RestaurantData = () => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchSelectedrest = async () => {
@@ -40,26 +45,16 @@ const RestaurantData = () => {
   return (
     <div className="md:p-8 lg:p-8 p-0">
       <div className="px-4 py-10 ">
-        <div className="flex justify-between">
-          <div>
-            {" "}
-            <h1 className="mb-6 text-2xl font-bold">Open Restaurants</h1>
-          </div>
-          <div className="flex">
-            <div> See All</div>{" "}
-            <div>
-              {" "}
-              <ChevronRight />{" "}
-            </div>
-          </div>
-        </div>
+        {location.pathname === "/restrauntdata-page" ? (
+          <h1 className="text-2xl font-bold mt-8">Open Restaurants</h1>
+        ) : null}
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {restaurants.map((rest) => (
             <div
               key={rest.id}
               onClick={() => navigate(`/restaurant/${rest.id}`)}
-              className="overflow-hidden bg-white transition duration-300 cursor-pointer hover:shadow-lg rounded-2xl"
+              className="overflow-hidden bg-white transition duration-300 cursor-pointer rounded-2xl"
             >
               <img
                 className="object-cover w-full h-48 rounded-2xl"
