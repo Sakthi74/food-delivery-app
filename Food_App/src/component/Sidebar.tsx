@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import profilesaul from "../assets/Images/profilesaul.jpg";
-import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+
 import { useProfile } from "../Context/ProfileContext";
 import {
   ShoppingBag,
