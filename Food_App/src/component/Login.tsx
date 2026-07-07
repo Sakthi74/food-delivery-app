@@ -5,6 +5,8 @@ import fb from "../assets/Images/fb.png";
 import apple from "../assets/Images/apple.png";
 import OpeningPage from "./OpeningPage";
 import { useNavigate } from "react-router-dom";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -37,36 +39,58 @@ const Login = () => {
 
     // Email Validation
     if (email === "") {
-      alert("Email is required");
+      toast.error("Email is required");
       emailRef.current.focus();
       return;
     }
 
     if (!email.includes("@")) {
-      alert("Please enter a valid email");
+      toast.error("Please enter a valid email");
       emailRef.current.focus();
       return;
     }
 
     // Password Validation
     if (password === "") {
-      alert("Password is required");
+      toast.error("PASSWORD is required");
       passwordRef.current.focus();
       return;
     }
 
     if (password.length < 6) {
-      alert("Password must be at least 6 characters");
+      toast.error("Password must be at least 6 characters");
       passwordRef.current.focus();
       return;
     }
 
     // alert("Login Successful!");
-    navigate("/slidingpage");
+    notifi();
+    console.log("Before timeout");
 
+    localStorage.setItem("isLoggedIn", "true");
+    setTimeout(() => {
+      console.log("Inside timeout");
+      navigate("/slidingpage");
+    }, 3000);
+
+    console.log("After timeout");
     // Clear input fields
     emailRef.current.value = "";
     passwordRef.current.value = "";
+  };
+
+  const notifi = () => {
+    toast.success("LOGIN SUCCESSFUL!  ", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
   };
 
   return (
@@ -150,7 +174,7 @@ const Login = () => {
 
             <h6
               className="text-[#ff7622] font-semibold text-sm p-1 cursor-pointer"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/sign-up")}
             >
               SIGN UP
             </h6>

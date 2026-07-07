@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { MdKeyboardArrowLeft } from "react-icons/md";
+
 import { useNavigate } from "react-router-dom";
-import { X, ChevronRight } from "lucide-react";
-import { useContext } from "react";
-import { LocationContext } from "../Context/LocationContext";
+import { X, ChevronRight, ChevronLeft } from "lucide-react";
+
+import { useAddress } from "../Context/LocationContext";
 import { Spinner } from "@/components/ui/spinner";
 
 const Cart = () => {
@@ -22,9 +22,14 @@ const Cart = () => {
   const [breakdownOpen, setbreakdownOpen] = useState<boolean>(false);
   const [spinneropen, setspinneropen] = useState<boolean>(false);
 
-  const { locationName } = useContext(LocationContext);
+  const { locationName } = useAddress();
 
   const navigate = useNavigate();
+  const cartLength = cartData.length;
+  useEffect(() => {
+    localStorage.setItem("cartlen", JSON.stringify(cartLength));
+  }, [cartData]);
+  console.log(cartLength);
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -42,6 +47,7 @@ const Cart = () => {
     setspinneropen(true);
     setTimeout(() => {
       setspinneropen(false);
+
       navigate("/paymentpage");
     }, 2000);
   }
@@ -85,12 +91,6 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(update));
   }
 
-  const cartLength = cartData.length;
-  useEffect(() => {
-    localStorage.setItem("cartlen", JSON.stringify(cartLength));
-  }, [cartData]);
-  console.log(cartLength);
-
   // when cart is empty
   if (cartData.length === 0) {
     return (
@@ -99,7 +99,7 @@ const Cart = () => {
           <h1 className="text-3xl font-bold text-white">Cart is Empty 🛒</h1>
 
           <button
-            className="px-5 py-2 mt-5 text-white bg-orange-500 rounded-xl"
+            className="px-5 py-2 mt-5 text-white bg-orange-500 rounded-xl cursor-pointer"
             onClick={() => navigate(-1)}
           >
             Go Back
@@ -115,12 +115,12 @@ const Cart = () => {
       <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-black min-h-screen     w-screen mx-auto">
         <div className="flex items-center justify-between">
           {/* back arrow + title */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ">
             <button
-              className="p-2 sm:p-2.5 bg-[#2A2A45] rounded-full text-white"
+              className="p-2 sm:p-2.5 bg-[#2A2A45] rounded-full cursor-pointer text-white"
               onClick={() => navigate(-1)}
             >
-              <MdKeyboardArrowLeft size={20} />
+              <ChevronLeft size={20} />
             </button>
             <h1 className="text-white text-sm sm:text-base md:text-lg font-medium">
               Cart

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 interface Burger {
   id: number;
@@ -61,9 +63,26 @@ const BurgerComponent = ({ filter }: Props) => {
 
     //set item
     localStorage.setItem("cart", JSON.stringify(getItem));
+
+    notifi(burger.name);
     //navigate
     navigate("/cart");
   }
+  //tostify function
+  const notifi = (bName: string) => {
+    toast.success(`${bName} Is Added To Cart`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+
+      transition: Bounce,
+    });
+  };
   return (
     <div className="md:p-8 lg:p-8 p-0">
       <div className="px-4">

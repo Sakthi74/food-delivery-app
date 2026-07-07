@@ -15,7 +15,7 @@ export default function PopularBurgers() {
   return (
     <div className="min-h-screen relative bg-white">
       {/* Navbar */}
-      <div style={{ display: showFilter ? "none" : "block"}}>
+      <div style={{ display: showFilter ? "none" : "block" }}>
         <div className="px-4 py-6">
           <div className="flex items-center justify-between">
             <div
@@ -39,7 +39,7 @@ export default function PopularBurgers() {
             <div className="flex gap-3">
               <div
                 className="p-4 text-white rounded-full bg-[#121223] cursor-pointer"
-                onClick={() => setShowFilter(true)} // ✅ simplified
+                onClick={() => navigate("/search-bar")}
               >
                 <FiSearch size={18} />
               </div>

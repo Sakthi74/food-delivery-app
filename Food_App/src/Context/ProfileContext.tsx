@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useContext } from "react";
 
 export interface UserProfile {
   fullName: string;
@@ -29,15 +29,20 @@ interface Props {
   children: ReactNode;
 }
 
-export const profileContext = createContext<ProfileContextType | undefined>(
-  undefined
-); //reads the data in ProfileContextType using createcontext hook
-export const ProfileDataProvider = ({ children }: Props) => {
+const profileContext = createContext<ProfileContextType | undefined>(undefined); //reads the data in ProfileContextType using createcontext hook
+
+//provider component starts
+const ProfileDataProvider = ({ children }: Props) => {
+  //state 1
   const [addresses, setAddresses] = useState<Address[]>(() => {
+    //localstorage getItem
     const saveAddresses = localStorage.getItem("addresses");
     return saveAddresses ? JSON.parse(saveAddresses) : [];
   });
+
+  // state 2
   const [user, setUser] = useState<UserProfile>(() => {
+    //localstorage getItem
     const saved = localStorage.getItem("user");
 
     return saved
@@ -58,3 +63,15 @@ export const ProfileDataProvider = ({ children }: Props) => {
     </profileContext.Provider>
   );
 };
+
+const useProfile = () => {
+  const context = useContext(profileContext);
+
+  if (!context) {
+    throw new Error("useProfile must be used inside ProfileDataProvider");
+  }
+
+  return context;
+};
+
+export { profileContext, ProfileDataProvider, useProfile };

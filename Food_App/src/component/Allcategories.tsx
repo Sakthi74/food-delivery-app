@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
-import { TextAlignStart } from "lucide-react";
+import { TextAlignStart, ChevronRight } from "lucide-react";
 
 import RestaurantData from "./RestrauntData";
-import { LocationContext } from "../Context/LocationContext";
-import { profileContext } from "../Context/ProfileContext";
+import { useAddress } from "../Context/LocationContext";
+import { useProfile } from "../Context/ProfileContext";
 import Sidebar from "./Sidebar";
 
 interface Category {
@@ -21,14 +21,13 @@ function Allcategories() {
   const [popup, setpopup] = useState("none");
   const [search, setSearch] = useState("");
   const [sidebarpopup, setsidebar] = useState<boolean>(false);
-  const { locationName } = useContext(LocationContext);
+
+  //NAVIGATION
   const navigate = useNavigate();
 
-  const context = useContext(profileContext);
-  if (!context) {
-    throw new Error("profileContext must be used inside ProfileDataProvider");
-  }
-  const { user } = context;
+  //CONTEXT VARIABLES
+  const { locationName } = useAddress();
+  const { user } = useProfile();
 
   useEffect(() => {
     fetch(
@@ -87,7 +86,7 @@ function Allcategories() {
             </div>
           </div>
           <div className="text-3xl p-1 md:p-3 lg:p-3 cursor-pointer bg-black text-white rounded-full relative">
-            <h1 className="absolute bg-orange-400 p-1 w-6 h-6 text-sm left-5 bottom-5 md:bottom-7 md:left-2 lg:left-8  lg:bottom-7 flex items-center justify-center rounded-full text-black font">
+            <h1 className="absolute bg-orange-400 p-1 w-6 h-6 text-sm left-5 bottom-5 md:bottom-7 md:left-2 lg:left-8  lg:bottom-7 flex items-center justify-center rounded-full text-black font-extrabold">
               {cartSize}
             </h1>
             <FiShoppingBag onClick={() => navigate("/cart")} size={20} />
@@ -96,7 +95,7 @@ function Allcategories() {
 
         {/* Greeting */}
         <div className="px-4 md:px-8">
-          <h1 className="text-2xl font-bold md:text-4xl">
+          <h1 className="text-xl font-bold md:text-4xl lg:text-4xl">
             Hey {user.fullName}, Good Afternoon!
           </h1>
         </div>
@@ -110,20 +109,27 @@ function Allcategories() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search dishes, restaurants"
-            className="w-full border-[#F6F6F6] h-16 pl-12 pr-4 bg-[#F6F6F6] border rounded-2xl outline-none focus:ring-2 focus:ring-orange-400 md:h-14"
+            className="w-full h-14 pl-11 pr-11 bg-[#F5F6F8] rounded-2xl outline-none text-gray-800 placeholder:text-gray-400"
           />
         </div>
 
         {/* Categories */}
         <div className="px-4 mt-10 md:px-8">
           <div className="flex justify-between">
-            <h2 className="mb-5 text-2xl font-semibold">All Categories</h2>
-            <h1
-              className="cursor-pointer hover:text-green-400"
-              onClick={() => navigate("/popularburgers")}
-            >
-              See All
-            </h1>
+            <h2 className="mb-5 text-xl font-bold md:text-4xl lg:text-4xl font-semibold">
+              All Categories
+            </h2>
+            <div className="flex">
+              <h1
+                className="cursor-pointer hover:text-orange-700"
+                onClick={() => navigate("/popularburgers")}
+              >
+                See All
+              </h1>
+              <div>
+                <ChevronRight className="hover:text-orange-700 cursor-pointer" />
+              </div>
+            </div>
           </div>
 
           <div className="flex gap-5 pb-3 overflow-x-auto scrollbar-hide">
@@ -150,7 +156,23 @@ function Allcategories() {
             ))}
           </div>
         </div>
-
+        <div className="flex justify-between px-4 pt-7">
+          {" "}
+          <h1 className=" text-xl font-bold md:text-4xl lg:text-4xl font-bold">
+            ALL Restaurants
+          </h1>
+          <div className="flex hover:text-orange-700">
+            <div
+              onClick={() => navigate("/restrauntdata-page")}
+              className="cursor-pointer "
+            >
+              See All
+            </div>
+            <div>
+              <ChevronRight />
+            </div>
+          </div>
+        </div>
         <RestaurantData />
       </div>
       {popup === "block" && (

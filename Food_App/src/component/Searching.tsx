@@ -1,154 +1,193 @@
 import { useEffect, useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { FiClock, FiSearch, FiTruck } from "react-icons/fi";
-import { FiShoppingBag } from "react-icons/fi";
-import { FaRegStar } from "react-icons/fa";
+import { FiSearch, FiShoppingBag, FiX } from "react-icons/fi";
+import { ChevronLeft } from "lucide-react";
+import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
-interface Category {
-  id: number;
-  name: string;
-  startingPrice: number;
-  image: string;
-}
 
 interface Restaurant {
   id: number;
   name: string;
   rating: number;
-  deliveryFee: string;
-  deliveryTime: string;
-  description: string;
   image: string;
 }
-const Searching = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
+
+interface PopularItem {
+  id: number;
+  name: string;
+  image: string;
+  category: string;
+}
+
+interface FilterSearchProps {
+  onClose: () => void;
+}
+
+const RECENT_KEYWORDS = ["Burger", "Sandwich", "Pizza", "Sandwich"];
+
+const Searching = ({ onClose }: FilterSearchProps) => {
+  const [search, setSearch] = useState("Pizza");
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [popularItems, setPopularItems] = useState<PopularItem[]>([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:3001/categories")
-      .then((res) => res.json())
-      .then((data: Category[]) => setCategories(data))
-      .catch((err) => console.log(err));
-  }, []);
+  const cartSize = JSON.parse(localStorage.getItem("cartlen") || "0");
 
   useEffect(() => {
-    fetch("http://localhost:3001/restaurants")
-      .then((res) => res.json())
-      .then((data: Restaurant[]) => setRestaurants(data))
-      .catch((err) => console.log(err));
+    fetch(
+      "https://raw.githubusercontent.com/Sakthi74/food-app-api/master/db.json"
+    )
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(
+        (data: {
+          restaurants: Restaurant[];
+          popularBurgers: PopularItem[];
+        }) => {
+          setRestaurants(data.restaurants || []);
+          setPopularItems(data.popularBurgers || []);
+        }
+      )
+      .catch((err) => console.error("Failed to load search data:", err))
+      .finally(() => setLoading(false));
   }, []);
+
+  const filteredRestaurants = restaurants.filter(
+    (r) => (search ? true : true) // suggested restaurants always show top results
+  );
+
+  const filteredPizza = popularItems.filter(
+    (item) => item.category.toLowerCase() === "pizza"
+  );
 
   return (
-    <>
-      <div>
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-5 md:px-8">
-            <div className="flex items-center gap-4">
-              <RxHamburgerMenu className="text-3xl cursor-pointer" />
+    <div className="max-h-screen overflow-y-auto px-6 pt-6 pb-8">
+      {/* Header */}
+      <div
+        className="flex items-center justify-between"
+        onClick={() => navigate(-1)}
+      >
+        <button
+          onClick={onClose}
+          className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
+        >
+          <ChevronLeft size={20} />
+        </button>
 
-              <div className="flex flex-col">
-                <span className="text-xs font-semibold text-orange-500">
-                  DELIVER TO
-                </span>
-              </div>
-            </div>
-            <div className="text-3xl cursor-pointer rounded-full bg-black p-2 text-white">
-              <FiShoppingBag />
-            </div>
-          </div>
+        <h1 className="text-lg font-medium text-gray-700">Search</h1>
+
+        <div className="relative p-3 bg-black text-white rounded-full cursor-pointer">
+          <FiShoppingBag size={18} />
+          {cartSize > 0 && (
+            <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+              {cartSize}
+            </span>
+          )}
         </div>
-        <div className="px-4 md:px-8">
-          <h1 className="text-2xl font-bold md:text-4xl">
-            Hey Halal, Good Afternoon!
-          </h1>
+      </div>
+
+      {/* Search input */}
+      <div className="relative mt-6">
+        <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search dishes, restaurants"
+          className="w-full h-14 pl-11 pr-11 bg-[#F5F6F8] rounded-2xl outline-none text-gray-800 placeholder:text-gray-400"
+        />
+        {search && (
+          <button
+            onClick={() => setSearch("")}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer"
+          >
+            <FiX size={18} />
+          </button>
+        )}
+      </div>
+
+      {/* Recent Keywords */}
+      <div className="mt-8">
+        <h2 className="text-xl font-semibold text-gray-900">Recent Keywords</h2>
+        <div className="flex gap-3 mt-4 overflow-x-auto scrollbar-hide">
+          {RECENT_KEYWORDS.map((keyword, index) => (
+            <button
+              key={index}
+              onClick={() => setSearch(keyword)}
+              className="whitespace-nowrap px-5 py-2 border border-gray-200 rounded-full text-gray-600 font-medium hover:bg-gray-50 cursor-pointer"
+            >
+              {keyword}
+            </button>
+          ))}
         </div>
+      </div>
 
-        {/* Search */}
-        <div className="relative px-4 mt-6 md:px-8">
-          <FiSearch className="absolute text-xl text-gray-400 left-8 top-1/2 -translate-y-1/2" />
+      {/* Suggested Restaurants */}
+      <div className="mt-8">
+        <h2 className="text-xl font-semibold text-gray-900">
+          Suggested Restaurants
+        </h2>
 
-          <input
-            type="text"
-            placeholder="Search dishes, restaurants"
-            className="w-800px h-12 pl-12 pr-4 bg-[#f6f6f6] border rounded-2xl shadow-sm outline-none focus:ring-2 focus:ring-orange-400 md:h-14"
-          />
-        </div>
-
-        <div className="px-4 mt-10 md:px-8">
-          <h2 className="mb-5 text-2xl font-bold">All Categories</h2>
-
-          <div className="flex gap-5 pb-3 overflow-x-auto scrollbar-hide">
-            {categories.map((category) => (
-              <div
-                key={category.id}
-                className="min-w-[200px] sm:min-w-[220px] md:min-w-[240px] bg-white rounded-3xl shadow-lg p-4 flex-shrink-0 hover:shadow-xl transition"
-              >
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="object-cover w-full h-40 rounded-2xl sm:h-48 md:h-56"
-                />
-
-                <h3 className="mt-4 text-lg font-semibold">{category.name}</h3>
-
-                <div className="flex justify-between mt-2 text-gray-600">
-                  <span>Starting</span>
-                  <span className="font-bold text-orange-500">
-                    ${category.startingPrice}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Restaurants */}
-        <div className="px-4 py-10 md:px-8">
-          <h2 className="mb-6 text-2xl font-bold">Open Restaurants</h2>
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {restaurants.map((restaurant) => (
+        {loading ? (
+          <p className="text-gray-400 mt-4">Loading...</p>
+        ) : (
+          <div className="mt-2">
+            {filteredRestaurants.slice(0, 3).map((restaurant, index) => (
               <div
                 key={restaurant.id}
-                className="overflow-hidden transition duration-300 bg-white shadow-lg rounded-3xl hover:shadow-2xl"
+                className={`flex items-center gap-4 py-4 cursor-pointer ${
+                  index !== filteredRestaurants.slice(0, 3).length - 1
+                    ? "border-b border-gray-100"
+                    : ""
+                }`}
               >
                 <img
                   src={restaurant.image}
                   alt={restaurant.name}
-                  className="object-cover w-full h-52"
+                  className="w-14 h-14 rounded-xl object-cover"
                 />
-
-                <div className="p-5">
-                  <h3 className="text-xl font-semibold">{restaurant.name}</h3>
-
-                  <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <FaRegStar className="text-yellow-500" />
-                      <span>{restaurant.rating}</span>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      <FiTruck />
-                      <span>{restaurant.deliveryFee}</span>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      <FiClock />
-                      <span>{restaurant.deliveryTime}</span>
-                    </div>
+                <div>
+                  <h3 className="font-medium text-gray-800">
+                    {restaurant.name}
+                  </h3>
+                  <div className="flex items-center gap-1 mt-1">
+                    <FaStar className="text-orange-400 text-sm" />
+                    <span className="text-sm text-gray-600">
+                      {restaurant.rating}
+                    </span>
                   </div>
-
-                  <p className="mt-4 text-gray-500">{restaurant.description}</p>
                 </div>
               </div>
             ))}
           </div>
+        )}
+      </div>
+
+      {/* Popular Fast Food */}
+      <div className="mt-8">
+        <h2 className="text-xl font-semibold text-gray-900">
+          Popular Fast Food
+        </h2>
+
+        <div className="flex gap-4 mt-4 grid grid-cols-2 grid-rows-2 md:grid-cols-4 md:grid-rows-1 lg:grid-cols-4 lg:grid-rows-1 lg:overflow-x-scroll">
+          {filteredPizza.slice(0, 8).map((item) => (
+            <div
+              key={item.id}
+              className="flex flex-col cursor-pointer justify-center items-center  "
+            >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md"
+              />
+              <h1 className="font-bold text-center ">{item.name}</h1>
+            </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

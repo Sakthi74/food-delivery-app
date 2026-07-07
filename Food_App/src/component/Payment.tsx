@@ -11,6 +11,8 @@ import { Carousel } from "@/components/ui/carousel";
 import Carousels from "@/components/ui/Carousels";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "@/components/ui/spinner";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 interface Payments {
   id: number;
@@ -68,9 +70,25 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
 
     setTimeout(() => {
       setSpinner(false);
+      notifi();
       navigate("/congrats");
     }, 3000);
   }
+
+  //tostify function
+  const notifi = () => {
+    toast.success(`Your Order Is Confirmed!`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
 
   const billAmt = JSON.parse(localStorage.getItem("totalamt") || "0");
 
