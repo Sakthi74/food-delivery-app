@@ -13,7 +13,7 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
   const [rating, setRating] = useState(0);
 
   return (
-    <div className="bg-white w-full max-h-[90vh] overflow-y-auto">
+    <div className="bg-white w-screen max-h-[90vh] overflow-y-auto flex flex-col  justify-between">
       {/* Header */}
       <div className="flex items-center justify-between p-5 border-b">
         <h2 className="text-lg font-semibold">Filter your search</h2>
@@ -27,7 +27,7 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
       </div>
 
       {/* Offers */}
-      <div className="px-5 py-4">
+      <div className="px-5 py-4 md:mt-[100px] md:flex md:flex-col md:justify-center md:items-center">
         <p className="text-xs font-semibold text-gray-500 mb-3">OFFERS</p>
 
         <Itemfilter
@@ -44,7 +44,7 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
       </div>
 
       {/* Delivery Time */}
-      <div className="px-5 py-4">
+      <div className="px-5 py-4 md:flex md:flex-col md:justify-center md:items-center">
         <p className="text-xs font-semibold text-gray-500 mb-3">
           DELIVERY TIME
         </p>
@@ -58,7 +58,7 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
       </div>
 
       {/* Pricing */}
-      <div className="px-5 py-4">
+      <div className="px-5 py-4 md:flex md:flex-col md:justify-center md:items-center">
         <p className="text-xs font-semibold text-gray-500 mb-4">PRICING</p>
 
         <div className="flex flex-wrap gap-3">
@@ -86,7 +86,7 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
       </div>
 
       {/* Rating */}
-      <div className="px-5 py-4">
+      <div className="px-5 py-4 md:flex md:flex-col md:justify-center md:items-center">
         <p className="text-xs font-semibold text-gray-500 mb-4">RATING</p>
 
         <div className="flex flex-wrap gap-3">
@@ -107,8 +107,8 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
       </div>
 
       {/* Button */}
-      <div className="p-5">
-        <button className="w-full py-4 rounded-2xl bg-[#FF7622] text-white font-semibold hover:bg-orange-600 transition">
+      <div className="p-5 md:flex md:flex-col md:justify-center md:items-center">
+        <button className="w-full py-4 md:w-[600px] rounded-2xl bg-[#FF7622] text-white font-semibold hover:bg-orange-600 transition">
           FILTER
         </button>
       </div>
