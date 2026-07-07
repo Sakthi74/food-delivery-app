@@ -1,7 +1,6 @@
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Clock, Star, Truck } from "lucide-react";
 import React, { useState, useEffect } from "react";
-import { FaRegStar } from "react-icons/fa";
-import { FiTruck, FiClock } from "react-icons/fi";
+
 import { useNavigate } from "react-router-dom";
 
 interface Restaurant {
@@ -74,17 +73,17 @@ const RestaurantData = () => {
                 <p className="mt-4 text-gray-500">{rest.description}</p>
                 <div className="flex flex-wrap gap-4 mt-4 text-sm text-orange-400 cursor-pointer">
                   <div className="flex font-bold  items-center gap-1">
-                    <FaRegStar />
+                    <Star />
                     <span className="font-bold text-black">{rest.rating}</span>
                   </div>
 
                   <div className="flex items-center gap-1">
-                    <FiTruck />
+                    <Truck />
                     <span className="text-black">{rest.deliveryFee}</span>
                   </div>
 
                   <div className="flex items-center gap-1">
-                    <FiClock />
+                    <Clock />
                     <span className="text-black">{rest.deliveryTime}</span>
                   </div>
                 </div>

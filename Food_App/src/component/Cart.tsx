@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { X, ChevronRight } from "lucide-react";
+import { X, ChevronRight, ChevronLeft } from "lucide-react";
 import { useContext } from "react";
 import { LocationContext } from "../Context/LocationContext";
 import { Spinner } from "@/components/ui/spinner";
@@ -125,7 +124,7 @@ const Cart = () => {
               className="p-2 sm:p-2.5 bg-[#2A2A45] rounded-full text-white"
               onClick={() => navigate(-1)}
             >
-              <MdKeyboardArrowLeft size={20} />
+              <ChevronLeft size={20} />
             </button>
             <h1 className="text-white text-sm sm:text-base md:text-lg font-medium">
               Cart

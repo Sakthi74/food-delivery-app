@@ -1,7 +1,6 @@
-import { House, Briefcase, Trash2, SquarePen, X } from "lucide-react";
+import { House, Briefcase, Trash2, SquarePen, X, ChevronLeft } from "lucide-react";
 import { useContext, useState } from "react";
 import { profileContext } from "../Context/ProfileContext";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const AddressPage = () => {
@@ -46,7 +45,7 @@ const AddressPage = () => {
             onClick={() => navigate(-1)}
             className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
           >
-            <MdKeyboardArrowLeft size={20} />
+            <ChevronLeft size={20} />
           </div>
         </div>
       </div>

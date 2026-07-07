@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
-import { MdKeyboardArrowLeft } from "react-icons/md";
+import { ChevronLeft, Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
@@ -17,7 +16,7 @@ const SignupPage = () => {
               className="w-fit p-3 md:p-4 bg-[#ECF0F4] rounded-full cursor-pointer mb-0"
               onClick={() => navigate("/login")}
             >
-              <MdKeyboardArrowLeft size={20} />
+              <ChevronLeft size={20} />
             </div>
           </div>
           <div className="mb-12">

@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FiClock, FiSearch, FiShoppingBag, FiTruck } from "react-icons/fi";
-// import { RxHamburgerMenu } from "react-icons/rx";
-import { FaRegStar } from "react-icons/fa";
-import { TextAlignStart } from "lucide-react";
+import { Clock, Search, ShoppingBag, Star, TextAlignStart, Truck } from "lucide-react";
 
 interface Category {
   id: number;
@@ -58,7 +55,7 @@ function Allcategories1() {
           </div>
         </div>
 
-        <FiShoppingBag className="text-2xl cursor-pointer sm:text-3xl" />
+        <ShoppingBag className="text-2xl cursor-pointer sm:text-3xl" />
       </div>
 
       {/* Greeting */}
@@ -70,7 +67,7 @@ function Allcategories1() {
 
       {/* Search */}
       <div className="relative px-4 mt-8 sm:px-6 lg:px-10">
-        <FiSearch className="absolute ml-[10px] left-8 sm:left-10 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
+        <Search className="absolute ml-[10px] left-8 sm:left-10 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
 
         <input
           type="text"
@@ -135,17 +132,17 @@ function Allcategories1() {
 
                 <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
                   <div className="flex items-center gap-1">
-                    <FaRegStar className="text-yellow-500" />
+                    <Star size={34} className="text-yellow-500" />
                     <span>{restaurant.rating}</span>
                   </div>
 
                   <div className="flex items-center gap-1">
-                    <FiTruck />
+                    <Truck />
                     <span>{restaurant.deliveryFee}</span>
                   </div>
 
                   <div className="flex items-center gap-1">
-                    <FiClock />
+                    <Clock/>
                     <span>{restaurant.deliveryTime}</span>
                   </div>
                 </div>

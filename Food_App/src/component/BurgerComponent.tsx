@@ -1,5 +1,5 @@
+import { Plus } from "lucide-react";
 import React, { useState, useEffect } from "react";
-import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 interface Burger {
@@ -111,7 +111,7 @@ const BurgerComponent = ({ filter }: Props) => {
                     handleAddToCart(burger);
                   }}
                 >
-                  <FaPlus size={14} />
+                  <Plus size={14} />
                 </button>
               </div>
             </div>

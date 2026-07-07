@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { Ellipsis } from "lucide-react";
-import { Star } from "lucide-react";
-import { Truck } from "lucide-react";
-import { Clock } from "lucide-react";
+import { ChevronLeft, Ellipsis, Star, Truck, Clock } from "lucide-react";
 import BurgerComponent from "./BurgerComponent";
 
 import Itemfilter from "./Itemfilter";
@@ -92,7 +88,7 @@ const RestarauntView = () => {
             onClick={() => navigate(-1)}
             className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
           >
-            <MdKeyboardArrowLeft size={20} />
+            <ChevronLeft size={20} />
           </div>
           <h1 className="text-gray-900 font-semibold text-md md:text-lg lg:text-xl">
             Restaurant View

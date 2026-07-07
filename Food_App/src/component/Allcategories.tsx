@@ -1,14 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FiSearch, FiShoppingBag } from "react-icons/fi";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { IoClose } from "react-icons/io5";
-<<<<<<< HEAD
+
+
 import RestaurantData from "./RestrauntData";
 import { LocationContext } from "../Context/LocationContext";
 import { profileContext } from "../Context/ProfileContext";
 import Sidebar from "./Sidebar";
-import { TextAlignStart } from "lucide-react";
+import { Search, ShoppingBag, TextAlignStart,X } from "lucide-react";
 
 interface Category {
   id: number;
@@ -88,7 +86,7 @@ function Allcategories() {
             </div>
           </div>
 
-          <FiShoppingBag
+          <ShoppingBag
             className="text-3xl cursor-pointer bg-black text-white rounded-full"
             onClick={() => navigate("/cart")}
           />

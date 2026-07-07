@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { IoClose } from "react-icons/io5";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+
 import Itemfilter from "./Itemfilter";
+import { Star, X } from "lucide-react";
 
 interface FilterSearchProps {
   onClose: () => void;
@@ -22,7 +22,7 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
           onClick={onClose}
           className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
         >
-          <IoClose size={22} />
+          <X size={22} />
         </button>
       </div>
 
@@ -96,7 +96,7 @@ function FilterSearch({ onClose }: FilterSearchProps): React.JSX.Element {
               onClick={() => setRating(star)}
               className="w-11 h-11 rounded-full border border-[#EFEFEF] flex items-center justify-center"
             >
-              <FaStar
+              <Star
                 className={`text-lg ${
                   star <= rating ? "text-[#FF7622]" : "text-gray-300"
                 }`}

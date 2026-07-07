@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { ChangeEvent } from "react";
-import { IoClose } from "react-icons/io5";
+import { X } from "lucide-react";
+
 import Payment from "./Payment";
 // Payment's prop types are not available here; cast to any to allow passing formData
 const PaymentAny: any = Payment;
@@ -36,7 +37,7 @@ function Addcard() {
         {/* Header */}
         <div className="flex p-[10px]">
           <div className="bg-[#ECF0F4] p-[10px] rounded-3xl ml-[15px]">
-            <IoClose />
+            <X />
           </div>
 
           <div className="ml-[15px] mt-[5px] font-medium">Add Card</div>

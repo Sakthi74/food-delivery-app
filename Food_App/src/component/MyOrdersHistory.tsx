@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { BsThreeDots } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { ChevronLeft, Ellipsis } from "lucide-react";
 
 function MyOrdersHistory() {
   const [ongoing, setOngoing] = useState<any[]>([]);
@@ -35,14 +34,14 @@ function MyOrdersHistory() {
             className="p-2 bg-gray-100 cursor-pointer rounded-full"
             onClick={() => navigate("/trackorder")}
           >
-            <MdKeyboardArrowLeft size={24} />
+            <ChevronLeft size={24} />
           </button>
 
           <h2 className="text-lg font-semibold">My Orders</h2>
         </div>
 
         <button className="p-2 bg-gray-100 rounded-full">
-          <BsThreeDots size={24} className="text-gray-700" />
+          <Ellipsis size={24} className="text-gray-700" />
         </button>
       </div>
 

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FiSearch, FiFilter, FiTruck, FiClock } from "react-icons/fi";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import BurgerComponent from "./BurgerComponent";
-import { FaPlus, FaRegStar } from "react-icons/fa";
-import { SlidersVertical } from "lucide-react";
+import { ChevronLeft, Search, SlidersVertical } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import FilterSearch from "./FilterSearch";
 
@@ -15,14 +12,14 @@ export default function PopularBurgers() {
   return (
     <div className="min-h-screen relative bg-white">
       {/* Navbar */}
-      <div style={{ display: showFilter ? "none" : "block"}}>
+      <div style={{ display: showFilter ? "none" : "block" }}>
         <div className="px-4 py-6">
           <div className="flex items-center justify-between">
             <div
               className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
               onClick={() => navigate(-1)}
             >
-              <MdKeyboardArrowLeft size={20} />
+              <ChevronLeft size={20} />
             </div>
 
             <select
@@ -41,7 +38,7 @@ export default function PopularBurgers() {
                 className="p-4 text-white rounded-full bg-[#121223] cursor-pointer"
                 onClick={() => setShowFilter(true)} // ✅ simplified
               >
-                <FiSearch size={18} />
+                <Search size={18} />
               </div>
 
               <div

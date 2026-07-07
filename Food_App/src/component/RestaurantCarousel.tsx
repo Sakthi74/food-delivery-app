@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { FiClock, FiTruck } from "react-icons/fi";
-import { FaPlus, FaRegStar } from "react-icons/fa";
 import Carousels from "@/components/ui/Carousels";
+import { Clock, Plus, Star, Truck } from "lucide-react";
 
 interface Category {
   id: number;
@@ -46,17 +45,17 @@ const RestaurantCarousel = () => {
         {/* Rating */}
         <div className="flex flex-wrap justify-center sm:justify-between items-center gap-6 border-b pb-6">
           <div className="flex items-center gap-2 text-lg sm:text-xl">
-            <FaRegStar className="text-[#FF873E]" />
+            <Star className="text-[#FF873E]" />
             <span className="font-bold">4.7</span>
           </div>
 
           <div className="flex items-center gap-2 text-lg sm:text-xl">
-            <FiTruck className="text-[#FF873E]" />
+            <Truck className="text-[#FF873E]" />
             <span>Free Delivery</span>
           </div>
 
           <div className="flex items-center gap-2 text-lg sm:text-xl">
-            <FiClock className="text-[#FF873E]" />
+            <Clock className="text-[#FF873E]" />
             <span>20 mins</span>
           </div>
         </div>
@@ -122,7 +121,7 @@ const RestaurantCarousel = () => {
                   </span>
 
                   <button className="w-11 h-11 rounded-full bg-[#F58D1D] text-white flex justify-center items-center hover:bg-orange-600 transition">
-                    <FaPlus />
+                    <Plus />
                   </button>
                 </div>
               </div>

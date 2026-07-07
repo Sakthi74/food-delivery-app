@@ -1,12 +1,15 @@
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
-import { FiPlus } from "react-icons/fi";
+
+
+import { ChevronDown, ChevronLeft, Plus, X } from "lucide-react";
+
 import card_img from "../assets/Images/card_img.png";
 import PaymentOptions from "../components/ui/PaymentOptions";
-import { MdKeyboardArrowDown } from "react-icons/md";
+
 import mastercard from "../assets/Images/payment/mastercard.png";
-import { IoClose } from "react-icons/io5";
+
 import { Carousel } from "@/components/ui/carousel";
 import Carousels from "@/components/ui/Carousels";
 import { useNavigate } from "react-router-dom";
@@ -90,7 +93,7 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
           onClick={() => navigate("/cart")}
         >
           <button className="p-2 bg-gray-100 rounded-full">
-            <MdKeyboardArrowLeft size={24} />
+            <ChevronLeft size={24} />
           </button>
 
           <h1 className="text-xl md:text-2xl font-semibold">Payment</h1>
@@ -124,7 +127,7 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
                   <p className="ml-[20px] text-3xl">************ {cardLast4}</p>
                 </div>
                 <div>
-                  <MdKeyboardArrowDown className="text-3xl" />{" "}
+                  <ChevronDown className="text-3xl" />{" "}
                 </div>
               </div>
             </div>
@@ -135,7 +138,7 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
             onClick={handleAddCard}
             className="mt-6 w-full border-2 cursor-pointer border-orange-400 text-orange-500 rounded-lg py-4 flex justify-center items-center gap-2 hover:bg-orange-50 transition"
           >
-            <FiPlus size={20} />
+            <Plus size={20} />
             ADD NEW
           </button>
         </div>
@@ -163,7 +166,7 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
           {/* Header */}
           <div className="flex bg-white p-[10px]">
             <div className="bg-[#ECF0F4] p-[10px] rounded-3xl ml-[15px]">
-              <IoClose onClick={() => setPopup(false)} />
+              <X onClick={() => setPopup(false)} />
             </div>
 
             <div className="ml-[15px] mt-[5px] font-medium">Add Card</div>

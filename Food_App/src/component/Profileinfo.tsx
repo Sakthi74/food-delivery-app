@@ -1,7 +1,6 @@
-import { User, Mail, Phone } from "lucide-react";
+import { User, Mail, Phone, ChevronLeft } from "lucide-react";
 import { useContext } from "react";
 import { profileContext } from "../Context/ProfileContext";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const Profileinfo = () => {
@@ -23,7 +22,7 @@ const Profileinfo = () => {
               onClick={() => navigate(-1)}
               className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
             >
-              <MdKeyboardArrowLeft size={20} />
+              <ChevronLeft size={20} />
             </div>
             <h1 className="text-gray-900 p-2 flex justify-center font-semibold text-md md:text-lg lg:text-xl">
               Personal Information

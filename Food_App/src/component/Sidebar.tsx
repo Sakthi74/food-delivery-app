@@ -14,8 +14,10 @@ import {
   NotebookPen,
   LogOut,
   Ellipsis,
+  Map,
+  ChevronRight,
+  ChevronLeft
 } from "lucide-react";
-import { Map } from "lucide-react";
 
 const Sidebar = ({
   sidebarpopup,
@@ -70,7 +72,7 @@ const Sidebar = ({
             onClick={() => setSidebar(false)}
             className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
           >
-            <MdKeyboardArrowLeft size={20} />
+            <ChevronLeft size={20} />
           </div>
           <h1 className="text-gray-900 font-semibold text-md md:text-lg lg:text-xl">
             Restaurant View
@@ -117,7 +119,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer text-black"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>
@@ -141,7 +143,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>
@@ -168,7 +170,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer text-black"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>
@@ -189,7 +191,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer text-black"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>
@@ -210,7 +212,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>
@@ -231,7 +233,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer text-black"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>
@@ -255,7 +257,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer text-black"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>
@@ -276,7 +278,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>
@@ -297,7 +299,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>
@@ -323,7 +325,7 @@ const Sidebar = ({
                 className="p-3 md:p-4 cursor-pointer text-black"
                 //onClick={() => navigate(-1)}
               >
-                <MdKeyboardArrowRight size={20} />
+                <ChevronRight size={20} />
               </div>
             </div>
           </div>

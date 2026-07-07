@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useContext, useState } from "react";
 import { profileContext } from "../Context/ProfileContext";
 import Itemfilter from "./Itemfilter";
 import type { Address } from "../Context/ProfileContext";
+import { ChevronLeft } from "lucide-react";
 
 const AddAddress = () => {
   const [selected, setSelected] = useState<string | null>(null);
@@ -48,7 +48,7 @@ const AddAddress = () => {
             onClick={() => navigate(-1)}
             className="p-3 bg-[#ECF0F4] rounded-full cursor-pointer"
           >
-            <MdKeyboardArrowLeft size={20} />
+            <ChevronLeft size={20} />
           </div>
           <h1 className="text-gray-900 p-2 flex justify-center font-semibold text-md md:text-lg lg:text-xl">
             ENTER ADDRESS DETAILS

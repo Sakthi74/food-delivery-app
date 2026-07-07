@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { FiClock, FiSearch, FiTruck } from "react-icons/fi";
-import { FiShoppingBag } from "react-icons/fi";
-import { FaRegStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { Clock, Menu, Search, ShoppingBag, Star, Truck } from "lucide-react";
 
 interface Category {
   id: number;
@@ -47,7 +44,7 @@ const Searching = () => {
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-5 md:px-8">
             <div className="flex items-center gap-4">
-              <RxHamburgerMenu className="text-3xl cursor-pointer" />
+              <Menu className="text-3xl cursor-pointer" />
 
               <div className="flex flex-col">
                 <span className="text-xs font-semibold text-orange-500">
@@ -56,7 +53,7 @@ const Searching = () => {
               </div>
             </div>
             <div className="text-3xl cursor-pointer rounded-full bg-black p-2 text-white">
-              <FiShoppingBag />
+              <ShoppingBag />
             </div>
           </div>
         </div>
@@ -68,7 +65,7 @@ const Searching = () => {
 
         {/* Search */}
         <div className="relative px-4 mt-6 md:px-8">
-          <FiSearch className="absolute text-xl text-gray-400 left-8 top-1/2 -translate-y-1/2" />
+          <Search className="absolute text-xl text-gray-400 left-8 top-1/2 -translate-y-1/2" />
 
           <input
             type="text"
@@ -126,17 +123,17 @@ const Searching = () => {
 
                   <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
-                      <FaRegStar className="text-yellow-500" />
+                      <Star className="text-yellow-500" />
                       <span>{restaurant.rating}</span>
                     </div>
 
                     <div className="flex items-center gap-1">
-                      <FiTruck />
+                      <Truck />
                       <span>{restaurant.deliveryFee}</span>
                     </div>
 
                     <div className="flex items-center gap-1">
-                      <FiClock />
+                      <Clock />
                       <span>{restaurant.deliveryTime}</span>
                     </div>
                   </div>
