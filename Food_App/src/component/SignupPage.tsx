@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSignup } from "../Context/AuthDataContext";
 import { ChevronLeft, Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast, Bounce } from "react-toastify";
@@ -9,6 +10,8 @@ const SignupPage = () => {
   const [reshowPassword, setShowrePassword] = useState(false);
   const [details, setDetails] = useState({ password: "", confirmpassword: "" });
   const navigate = useNavigate();
+
+  const { setEmail, setPassword, email, password } = useSignup();
 
   //tostify function
   const notifi = () => {
@@ -28,6 +31,9 @@ const SignupPage = () => {
   const handleSignup = () => {
     if (details.password === details.confirmpassword) {
       navigate("/log-in");
+      setPassword(details.password);
+      const credentials = { email, password: details.password };
+      localStorage.setItem("creds", JSON.stringify(credentials));
       notifi();
     } else {
       toast.error("Password and Confirm Password fields must be same");
@@ -81,6 +87,8 @@ const SignupPage = () => {
               type="email"
               placeholder="example@gmail.com"
               className="w-full border bg-[#f0f5fa]  border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-[#ff7622]"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 

@@ -7,11 +7,14 @@ import OpeningPage from "./OpeningPage";
 import { useNavigate } from "react-router-dom";
 import { toast, Bounce } from "react-toastify";
 import "react-toastify/ReactToastify.css";
+import { useSignup } from "../Context/AuthDataContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const { email, password } = useSignup();
 
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
@@ -34,40 +37,45 @@ const Login = () => {
       return;
     }
 
-    const email = emailRef.current.value.trim();
-    const password = passwordRef.current.value.trim();
+    const loginEmail = emailRef.current.value.trim();
+    const Loginpassword = passwordRef.current.value.trim();
 
     // Email Validation
-    if (email === "") {
+    if (loginEmail === "") {
       toast.error("Email is required");
       emailRef.current.focus();
       return;
     }
 
-    if (!email.includes("@")) {
+    if (!loginEmail.includes("@")) {
       toast.error("Please enter a valid email");
       emailRef.current.focus();
       return;
     }
 
     // Password Validation
-    if (password === "") {
+    if (Loginpassword === "") {
       toast.error("PASSWORD is required");
       passwordRef.current.focus();
       return;
     }
 
-    if (password.length < 6) {
+    if (Loginpassword.length < 6) {
       toast.error("Password must be at least 6 characters");
       passwordRef.current.focus();
+      return;
+    }
+
+    if (loginEmail != email || Loginpassword != password) {
+      toast.error("Enter valid Credentials");
       return;
     }
 
     // alert("Login Successful!");
     notifi();
     console.log("Before timeout");
-
     localStorage.setItem("isLoggedIn", "true");
+
     setTimeout(() => {
       console.log("Inside timeout");
       navigate("/slidingpage");
