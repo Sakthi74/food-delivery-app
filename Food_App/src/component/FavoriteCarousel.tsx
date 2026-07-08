@@ -95,11 +95,10 @@ function FavoriteCarousel() {
         </div>
       </div>
 
-      <div className="w-full px-6 py-6 text-[15px]">
-        <div className="text-center">
-          {/* ✅ NEXT scrolls carousel, on last slide navigates to /location */}
+      <div className="my-[60px] text-[15px]">
+        <div className="text-center mt-[10px]">
           <button
-            className="w-full max-w-sm mx-auto block py-4 rounded-xl bg-[#FF7622] text-white font-bold"
+            className="w-[350px] py-[20px] rounded-xl cursor-pointer bg-[#FF7622] text-white font-bold"
             onClick={() => {
               if (current === slides.length - 1) {
                 navigate("/location");
@@ -112,8 +111,13 @@ function FavoriteCarousel() {
           </button>
         </div>
 
-        <div className="text-center mt-3">
-          <button onClick={() => navigate("/location")}>skip</button>
+        <div className="text-center mt-[10px] ">
+          <button
+            onClick={() => navigate("/location")}
+            className="cursor-pointer"
+          >
+            skip
+          </button>
         </div>
       </div>
     </div>

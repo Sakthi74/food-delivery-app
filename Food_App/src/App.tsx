@@ -51,7 +51,7 @@ function App() {
           <Route path="/address" element={<AddressPage />} />
           <Route path="/new-address" element={<AddAddress />} />
           <Route path="/congrats" element={<ContratsPage />} />
-          <Route path="/search-bar" element={<Searching />} />
+          <Route path="/search-bar" element={<Searching onClose={() => {}} />} />
           <Route path="/track-order" element={<MyOrdersOpening />} />
           <Route path="/history" element={<MyOrdersHistory />} />
         </Route>
