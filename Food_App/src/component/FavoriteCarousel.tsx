@@ -53,24 +53,24 @@ function FavoriteCarousel() {
   }, [api]);
 
   return (
-    <div className="mt-[0px]">
-      <div className="w-full max-w-sm mx-auto">
+    <div className="flex flex-col min-h-screen justify-between">
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto pt-4">
         <Carousel setApi={setApi}>
           <CarouselContent>
             {slides.map((slide, index) => (
               <CarouselItem key={index}>
-                <div className="flex text-[15px] flex-col items-center px-6">
+                <div className="flex flex-col items-center px-4 sm:px-6">
                   <img
                     src={slide.image}
                     alt={slide.title}
-                    className="h-[500px] object-contain"
+                    className="h-[45vh] max-h-[400px] w-auto object-contain"
                   />
 
-                  <h2 className="mt-10 text-xl font-bold text-center">
+                  <h2 className="mt-6 sm:mt-10 text-lg sm:text-xl font-bold text-center">
                     {slide.title}
                   </h2>
 
-                  <p className="mt-3 text-center text-gray-500">
+                  <p className="mt-2 sm:mt-3 text-sm sm:text-base text-center text-gray-500 px-2">
                     {slide.description}
                   </p>
                 </div>
@@ -80,7 +80,7 @@ function FavoriteCarousel() {
         </Carousel>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-6 sm:mt-8">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -95,11 +95,11 @@ function FavoriteCarousel() {
         </div>
       </div>
 
-      <div className="my-[30px] text-[15px]">
-        <div className="text-center mt-[10px]">
+      <div className="w-full px-6 py-6 text-[15px]">
+        <div className="text-center">
           {/* ✅ NEXT scrolls carousel, on last slide navigates to /location */}
           <button
-            className="w-[350px] py-[20px] rounded-xl bg-[#FF7622] text-white font-bold"
+            className="w-full max-w-sm mx-auto block py-4 rounded-xl bg-[#FF7622] text-white font-bold"
             onClick={() => {
               if (current === slides.length - 1) {
                 navigate("/location");
@@ -112,7 +112,7 @@ function FavoriteCarousel() {
           </button>
         </div>
 
-        <div className="text-center mt-[10px]">
+        <div className="text-center mt-3">
           <button onClick={() => navigate("/location")}>skip</button>
         </div>
       </div>
