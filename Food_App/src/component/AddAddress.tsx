@@ -1,42 +1,49 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { profileContext } from "../Context/ProfileContext";
+import { useState } from "react";
+import { useProfile } from "../Context/ProfileContext";
 import Itemfilter from "./Itemfilter";
 import type { Address } from "../Context/ProfileContext";
 import { ChevronLeft } from "lucide-react";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 const AddAddress = () => {
   const [selected, setSelected] = useState<string | null>(null);
   const [newAddress, setNewAddress] = useState<Address>({
-    id: Date.now(),
+    id: Date.now() + Math.floor(Math.random() * 1000),
     address: "",
     street: "",
     postCode: "",
     apartment: "",
     label: "Home",
   });
-  const context = useContext(profileContext);
 
-  if (!context) {
-    throw new Error("ProfileContext not found");
-  }
-
-  const { addresses, setAddresses } = context;
+  const { addresses, setAddresses } = useProfile();
   const navigate = useNavigate();
 
-
   const handleAddBySubmit = () => {
-        const updatedAddress = [...addresses, newAddress];
-        setAddresses(updatedAddress);
-        localStorage.setItem("addresses", JSON.stringify(updatedAddress));
+    const updatedAddress = [...addresses, newAddress];
+    setAddresses(updatedAddress);
+    localStorage.setItem("addresses", JSON.stringify(updatedAddress));
 
-        console.log(updatedAddress);
-        alert("address created");
-    
-  }
+    console.log(updatedAddress);
+    notifi();
+  };
 
-
+  //tostify function
+  const notifi = () => {
+    toast.success(`Address Created Successfully`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
 
   return (
     <>
@@ -58,8 +65,8 @@ const AddAddress = () => {
         {/* Bottom Card */}
         <div className="-mt-10 bg-transparent rounded-t-3xl px-6 py-8 relative z-10 flex flex-col justify-center items-center">
           {/* SPAN + INPUT */}
-          <div className="flex flex-col w-full md:w-[400px] lg:w-[900px]   gap-2">
-            <span className="text-black font-thin text-sm p-1">
+          <div className="flex flex-col w-full md:w-[400px] lg:w-[900px] p-2  gap-2">
+            <span className="text-black font-thin text-sm p-2">
               House/Office number<sup className="text-red-500">*</sup>
             </span>
             <input
@@ -72,8 +79,8 @@ const AddAddress = () => {
               }
               className="w-full  border bg-[#f0f5fa]  border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-[#ff7622]"
             />
-            <div className="relative  gap-2 w-full md:w-[400px] lg:w-[900px]">
-              <span className="text-black font-thin text-sm p-1">
+            <div className="relative p-2  gap-2 w-full md:w-[400px] lg:w-[900px]">
+              <span className="text-black font-thin text-sm p-2">
                 HOUSE/APARTMENT/OFFICE NAME{" "}
                 <strong className="text-red-500">*</strong>
               </span>
@@ -93,8 +100,8 @@ const AddAddress = () => {
           </div>
           <div className="flex gap-4 w-full md:w-[400px] lg:w-[900px]">
             {/* Street */}
-            <div className="flex flex-col gap-2 flex-1">
-              <span className="text-black font-thin text-sm p-1">
+            <div className="flex flex-col gap-2 flex-1 p-2 ">
+              <span className="text-black font-thin text-sm p-2">
                 STREET<sup className="text-red-500">*</sup>
               </span>
               <input
@@ -110,8 +117,8 @@ const AddAddress = () => {
             </div>
 
             {/* Post Code */}
-            <div className="flex flex-col gap-2 flex-1">
-              <span className="text-black font-thin text-sm p-1">
+            <div className="flex flex-col gap-2 flex-1 p-2">
+              <span className="text-black font-thin text-sm p-2">
                 POST CODE <sup className="text-red-500">*</sup>
               </span>
               <input

@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { useContext } from "react";
-import { LocationContext } from "../Context/LocationContext";
+import { useAddress } from "../Context/LocationContext";
 import locationlogo from "../assets/Images/locationlogo.jpg";
 import "../css/LocationAnimation.css";
 import { MapPin } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 interface LocationDetails {
   lat: number;
   lng: number;
 }
 const AccessLoaction = () => {
-  const { setLocationName } = useContext(LocationContext);
+  const { setLocationName } = useAddress();
   const [location, setLocation] = useState<LocationDetails | null>(null);
   const navigate = useNavigate();
-
 
   const handleLocation = () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -30,12 +30,24 @@ const AccessLoaction = () => {
       const data = await response.json();
       localStorage.setItem("location", data.display_name);
       setLocationName(data.display_name);
-      navigate("/search");
+
+      notifi(data.display_name);
+
+      setTimeout(() => {
+        navigate("/search");
+      }, 2000);
     });
   };
 
-
   console.log(location);
+  const notifi = (address: string) => {
+    toast.success(`Current Location: ${address}`, {
+      position: "top-center",
+      autoClose: 5000,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
   return (
     <>
       <div className="flex flex-col justify-center h-screen items-center  align-middle">

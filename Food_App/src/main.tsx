@@ -8,15 +8,18 @@ import "leaflet/dist/leaflet.css";
 
 import App from "./App";
 import { LocationProvider } from "./Context/LocationContext";
+import { SignupProvider } from "./Context/AuthDataContext";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <ProfileDataProvider>
-        <LocationProvider>
-          <App />
-        </LocationProvider>
-      </ProfileDataProvider>
+      <SignupProvider>
+        <ProfileDataProvider>
+          <LocationProvider>
+            <App />
+          </LocationProvider>
+        </ProfileDataProvider>
+      </SignupProvider>
     </BrowserRouter>
   </StrictMode>
 );

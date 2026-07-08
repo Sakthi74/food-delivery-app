@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { X, ChevronRight, ChevronLeft } from "lucide-react";
-import { useContext } from "react";
-import { LocationContext } from "../Context/LocationContext";
+
+import { useAddress } from "../Context/LocationContext";
 import { Spinner } from "@/components/ui/spinner";
 
 const Cart = () => {
@@ -21,9 +21,14 @@ const Cart = () => {
   const [breakdownOpen, setbreakdownOpen] = useState<boolean>(false);
   const [spinneropen, setspinneropen] = useState<boolean>(false);
 
-  const { locationName } = useContext(LocationContext);
+  const { locationName } = useAddress();
 
   const navigate = useNavigate();
+  const cartLength = cartData.length;
+  useEffect(() => {
+    localStorage.setItem("cartlen", JSON.stringify(cartLength));
+  }, [cartData]);
+  console.log(cartLength);
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -39,21 +44,20 @@ const Cart = () => {
   //handle spinner
 
   const handlepayment = () => {
-        setspinneropen(true);
-        setTimeout(() => {
-          setspinneropen(false);
-          navigate("/paymentpage");
-        }, 2000);
-  }
-
-// handleDeleteete function
-
-  const handleDelete = (id: number): void => {
-    const x = cartData.filter((item) => item.id !== id);
-    setCartData(x);
-    localStorage.setItem("cart", JSON.stringify(x));
+    setspinneropen(true);
+    setTimeout(() => {
+      setspinneropen(false);
+      navigate("/paymentpage");
+    }, 2000);
   };
 
+  // handleDeleteete function
+
+  const handleDelete = (id: number): void => {
+    const filtered = cartData.filter((item) => item.id !== id);
+    setCartData(filtered);
+    localStorage.setItem("cart", JSON.stringify(filtered));
+  };
 
   // updating count
 
@@ -88,13 +92,6 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(update));
   };
 
-
-  const handleRouting = (path: string) => {
-    navigate(path);
-  };
-
-
-
   // when cart is empty
   if (cartData.length === 0) {
     return (
@@ -103,7 +100,7 @@ const Cart = () => {
           <h1 className="text-3xl font-bold text-white">Cart is Empty 🛒</h1>
 
           <button
-            className="px-5 py-2 mt-5 text-white bg-orange-500 rounded-xl"
+            className="px-5 py-2 mt-5 text-white bg-orange-500 rounded-xl cursor-pointer"
             onClick={() => navigate(-1)}
           >
             Go Back
@@ -119,9 +116,9 @@ const Cart = () => {
       <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-black min-h-screen     w-screen mx-auto">
         <div className="flex items-center justify-between">
           {/* back arrow + title */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ">
             <button
-              className="p-2 sm:p-2.5 bg-[#2A2A45] rounded-full text-white"
+              className="p-2 sm:p-2.5 bg-[#2A2A45] rounded-full cursor-pointer text-white"
               onClick={() => navigate(-1)}
             >
               <ChevronLeft size={20} />

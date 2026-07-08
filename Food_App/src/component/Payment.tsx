@@ -1,7 +1,5 @@
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
-
 
 import { ChevronDown, ChevronLeft, Plus, X } from "lucide-react";
 
@@ -10,10 +8,10 @@ import PaymentOptions from "../components/ui/PaymentOptions";
 
 import mastercard from "../assets/Images/payment/mastercard.png";
 
-import { Carousel } from "@/components/ui/carousel";
-import Carousels from "@/components/ui/Carousels";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "@/components/ui/spinner";
+import { toast, Bounce } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 interface Payments {
   id: number;
@@ -50,35 +48,45 @@ const Payment: React.FC<PaymentProps> = ({ formData: initialFormData }) => {
   });
   const navigate = useNavigate();
 
-
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleAddCard = () => {
-        setPopup(true);
-        setFormData({
-          name: initialFormData?.name ?? "",
-          cardNumber: initialFormData?.cardNumber ?? "",
-          expiry: initialFormData?.expiry ?? "",
-          cvc: initialFormData?.cvc ?? "",
-        });
-    
-  }
+    setPopup(true);
+    setFormData({
+      name: initialFormData?.name ?? "",
+      cardNumber: initialFormData?.cardNumber ?? "",
+      expiry: initialFormData?.expiry ?? "",
+      cvc: initialFormData?.cvc ?? "",
+    });
+  };
 
   const handlePaymentConfirm = () => {
+    setPopup(false);
+    setSpinner(true);
 
-        setPopup(false);
-        setSpinner(true);
+    setTimeout(() => {
+      notifi();
+      setSpinner(false);
+      navigate("/congrats");
+    }, 3000);
+  };
 
-        setTimeout(() => {
-          setSpinner(false);
-          navigate("/congrats");
-        }, 3000);
-  
-}
-
+  //tostify function
+  const notifi = () => {
+    toast.success(`Your Order Is Confirmed!`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
 
   const billAmt = JSON.parse(localStorage.getItem("totalamt") || "0");
 
