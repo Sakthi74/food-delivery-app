@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import profilesaul from "../assets/Images/profilesaul.jpg";
 
 import { useProfile } from "../Context/ProfileContext";
@@ -24,6 +25,7 @@ const Sidebar = ({
   sidebarpopup: boolean;
   setSidebar: (popup: boolean) => void;
 }) => {
+  const navigate = useNavigate();
   const { user } = useProfile();
 
   return (

@@ -1,4 +1,3 @@
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
 
@@ -9,8 +8,6 @@ import PaymentOptions from "../components/ui/PaymentOptions";
 
 import mastercard from "../assets/Images/payment/mastercard.png";
 
-import { Carousel } from "@/components/ui/carousel";
-import Carousels from "@/components/ui/Carousels";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "@/components/ui/spinner";
 import { toast, Bounce } from "react-toastify";

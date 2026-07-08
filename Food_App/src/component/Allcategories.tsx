@@ -104,8 +104,8 @@ function Allcategories() {
 
         {/* Greeting */}
         <div className="px-4 md:px-8">
-          <h1 className="text-xl font-bold md:text-4xl lg:text-4xl">
-            Hey {user.fullName}, Good Afternoon!
+          <h1 className="text-xl font-semibold md:text-4xl lg:text-4xl">
+            Hey {user.fullName},<strong> Good Afternoon!</strong>
           </h1>
         </div>
 
@@ -125,7 +125,7 @@ function Allcategories() {
         {/* Categories */}
         <div className="px-4 mt-10 md:px-8">
           <div className="flex justify-between">
-            <h2 className="mb-5 text-xl font-bold md:text-4xl lg:text-4xl font-semibold">
+            <h2 className="mb-5 text-md  md:text-4xl lg:text-4xl font-semibold">
               All Categories
             </h2>
             <div className="flex">
@@ -167,8 +167,8 @@ function Allcategories() {
         </div>
         <div className="flex justify-between px-4 pt-7">
           {" "}
-          <h1 className=" text-xl font-bold md:text-4xl lg:text-4xl font-bold">
-            ALL Restaurants
+          <h1 className=" text-md font-semibold md:text-4xl lg:text-4xl ">
+            Open Restaurants
           </h1>
           <div className="flex hover:text-orange-700">
             <div
