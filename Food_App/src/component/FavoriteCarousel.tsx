@@ -53,7 +53,7 @@ function FavoriteCarousel() {
   }, [api]);
 
   return (
-    <div className="flex flex-col min-h-screen justify-between">
+    <div className="flex flex-col min-h-screen justify-between ">
       <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto pt-4">
         <Carousel setApi={setApi}>
           <CarouselContent>
@@ -95,10 +95,10 @@ function FavoriteCarousel() {
         </div>
       </div>
 
-      <div className="my-[60px] text-[15px]">
+      <div className="my-[90px] text-[15px] ">
         <div className="text-center mt-[10px]">
           <button
-            className="w-[350px] py-[20px] rounded-xl cursor-pointer bg-[#FF7622] text-white font-bold"
+            className="w-[330px] py-[20px] rounded-xl cursor-pointer bg-[#FF7622] text-white font-bold"
             onClick={() => {
               if (current === slides.length - 1) {
                 navigate("/location");
@@ -111,10 +111,10 @@ function FavoriteCarousel() {
           </button>
         </div>
 
-        <div className="text-center mt-[10px] ">
+        <div className="text-center mt-[10px]  ">
           <button
             onClick={() => navigate("/location")}
-            className="cursor-pointer"
+            className="cursor-pointer   "
           >
             skip
           </button>

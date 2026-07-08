@@ -48,7 +48,7 @@ const SignupPage = () => {
           <div className="w-full ">
             <div
               className="w-fit p-3 md:p-4 bg-[#ECF0F4] rounded-full cursor-pointer mb-0"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/log-in")}
             >
               <ChevronLeft size={20} />
             </div>
