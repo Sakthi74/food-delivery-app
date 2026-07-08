@@ -29,7 +29,10 @@ function ContratsPage() {
         </p>
 
         {/* Button */}
-        <button className="mt-8 w-full sm:w-auto px-10 sm:px-16 py-3 bg-[#FF7622] text-white rounded-xl font-semibold hover:bg-orange-600 transition" onClick={()=>navigate("/trackorder")}>
+        <button
+          className="mt-8 w-full sm:w-auto px-10 sm:px-16 py-3 bg-[#FF7622] text-white rounded-xl font-semibold hover:bg-orange-600 transition cursor-pointer"
+          onClick={() => navigate("/track-order")}
+        >
           TRACK ORDER
         </button>
       </div>

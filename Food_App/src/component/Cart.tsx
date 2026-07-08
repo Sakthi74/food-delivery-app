@@ -319,7 +319,7 @@ const Cart = () => {
             )}
             {/* place order button */}
             <button
-              className="w-full mt-6 sm:mt-7 md:mt-8 bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold tracking-wide rounded-2xl py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg"
+              className="w-full mt-6 sm:mt-7 md:mt-8 bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold tracking-wide rounded-2xl py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg cursor-pointer"
               onClick={() => handlepayment()}
             >
               PLACE ORDER
