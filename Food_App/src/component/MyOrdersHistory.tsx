@@ -48,8 +48,8 @@ function MyOrdersHistory() {
       {/* Tabs */}
       <div className="flex">
         <button
-          className="w-1/2 py-3 text-gray-500 border-b border-gray-300 font-medium"
-          onClick={() => navigate("/trackorder")}
+          className="w-1/2 py-3 text-gray-500 border-b border-gray-300 font-medium cursor-pointer"
+          onClick={() => navigate("/track-order")}
         >
           Ongoing
         </button>

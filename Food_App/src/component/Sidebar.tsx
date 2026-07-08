@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import profilesaul from "../assets/Images/profilesaul.jpg";
+import { useTheme } from "next-themes";
 
 import { useProfile } from "../Context/ProfileContext";
 import {
@@ -28,6 +29,7 @@ const Sidebar = ({
   const navigate = useNavigate();
   const { user } = useProfile();
 
+  const { theme, setTheme } = useTheme();
   return (
     <>
       <div
@@ -319,6 +321,11 @@ const Sidebar = ({
             </div>
           </div>
         </div>
+        <button className="text-black" onClick={() => setTheme("light")}>
+          Light
+        </button>
+        <button onClick={() => setTheme("dark")}>Dark</button>
+        <button onClick={() => setTheme("system")}>System</button>
       </div>
     </>
   );

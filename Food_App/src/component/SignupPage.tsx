@@ -133,35 +133,28 @@ const SignupPage = () => {
 
             <input
               type="text"
-              placeholder="Enter your name"
-              value={details.name}
-              onChange={(e) =>
-                setDetails((prev) => ({
-                  ...prev,
-                  name: e.target.value,
-                }))
-              }
-              className="border bg-[#f0f5fa] rounded-lg px-4 py-4 focus:outline-none focus:border-[#ff7622]"
+              placeholder="Eg: Saul goodman"
+              className="w-full  border bg-[#f0f5fa]  border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-[#ff7622]"
             />
           </div>
-
-          {/* Email */}
-          <div className="flex flex-col gap-2 mb-4">
-            <span className="text-sm">
-              EMAIL <sup className="text-red-500">*</sup>
+          <div className="flex flex-col gap-2 p-1 w-full md:w-[400px] lg:w-[700px]">
+            <span className="text-black font-thin text-sm p-2">
+              EMAIL{" "}
+              <strong>
+                <sup className="text-red-500">*</sup>
+              </strong>
             </span>
-
             <input
               type="email"
               placeholder="example@gmail.com"
+              className="w-full border bg-[#f0f5fa]  border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-[#ff7622]"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="border bg-[#f0f5fa] rounded-lg px-4 py-4 focus:outline-none focus:border-[#ff7622]"
             />
           </div>
 
           {/* Password */}
-          <div className="relative flex flex-col gap-2 mb-4">
+          <div className="relative flex flex-col p-2 gap-2 mb-4">
             <span className="text-sm">
               PASSWORD <sup className="text-red-500">*</sup>
             </span>
@@ -177,7 +170,7 @@ const SignupPage = () => {
                   password: e.target.value,
                 }))
               }
-              className="border bg-[#f0f5fa] rounded-lg px-4 py-4 pr-12 focus:outline-none focus:border-[#ff7622]"
+              className=" border-gray-300  bg-[#f0f5fa] rounded-lg px-4 py-6 pr-12 focus:outline-none focus:border-[#ff7622]"
             />
 
             <button
