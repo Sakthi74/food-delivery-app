@@ -21,7 +21,7 @@ import AddAddress from "./component/AddAddress";
 import ContratsPage from "./component/ContratsPage";
 import MyOrdersOpening from "./component/MyOrdersOpening";
 import MyOrdersHistory from "./component/MyOrdersHistory";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer , Bounce} from "react-toastify";
 import Searching from "./component/Searching";
 import PrivateRoute from "./component/PrivateRoute";
 
@@ -51,12 +51,27 @@ function App() {
           <Route path="/address" element={<AddressPage />} />
           <Route path="/new-address" element={<AddAddress />} />
           <Route path="/congrats" element={<ContratsPage />} />
-          <Route path="/search-bar" element={<Searching onClose={() => {}} />} />
+          <Route
+            path="/search-bar"
+            element={<Searching onClose={() => {}} />}
+          />
           <Route path="/track-order" element={<MyOrdersOpening />} />
           <Route path="/history" element={<MyOrdersHistory />} />
         </Route>
       </Routes>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
     </>
   );
 }
